@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
 	def show
-		@data = yahooFinance.get_quotes(YahooFinance::StandardQuote, 'yhoo')
+		@data = YahooFinance.get_quotes(YahooFinance::StandardQuote, 'yhoo')
 	end
 end
