@@ -10,7 +10,7 @@ gem 'pg'
 gem 'yahoo-finance', require: 'yahoo_finance'
 
 #Charting gem called ChartKick
-gem 'chartkick'
+gem 'chartkick', require: 'chartkick'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.0.beta1'
