@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
 	def show
-		@data = YahooFinance.quotes(["BVSP", "NATU3.SA", "USDJPY=X"], [:ask, :bid, :last_trade_date])
+		@data = yahooFinance.get_quotes(YahooFinance::StandardQuote, 'yhoo')
 	end
 end
