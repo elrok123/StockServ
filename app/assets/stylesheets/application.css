@@ -339,7 +339,7 @@ body {
 	position: fixed;
 	height: 100%;
 	width: 100%;
-	background-image: url(http://mycolorscreen.com/wp-content/uploads/wallpapers_2012/267578/2048x1536.jpg);
+	background-image: url("http://mycolorscreen.com/wp-content/uploads/wallpapers_2012/267578/2048x1536.jpg");
 	background-repeat: no-repeat;
     background-size: 150% 150%;
     background-position: center center;
