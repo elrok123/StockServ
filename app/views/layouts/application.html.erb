@@ -17,13 +17,12 @@
 		
 		
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 		<%= csrf_meta_tags %>
 		
 	</head>
-	<body style="background: url(http://mycolorscreen.com/wp-content/uploads/wallpapers_2012/267578/2048x1536.jpg)">
-
+	<body>
+		<div class="shadow-container"></div>
 		<%= yield %>
-		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		
 	</body>
 </html>
