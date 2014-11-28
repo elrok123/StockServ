@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
 	def show
-		@data = YahooFinance.historical_quotes("GOOG")
+		@data = YahooFinance.quotes(["GOOG"], [:ask, :bid, :last_trade_date])
 	end
 end
