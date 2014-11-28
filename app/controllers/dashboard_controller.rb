@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
 	def show
-		@data = YahooFinance.quotes(["GOOG"], [:ask, :bid, :last_trade_date, :close, :dividend_per_share, :day_value_change, :change_real_time])
+		@data = YahooFinance.historical_quotes(["GOOG"], { start_date: Time::now-(24*60*60*10), end_date: Time::now }).group_by()
 	end
 end
