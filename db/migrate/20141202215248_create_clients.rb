@@ -1,8 +1,8 @@
 class CreateClients < ActiveRecord::Migration
   def change
     create_table :clients do |t|
-      t.string :fname
-      t.string :lname
+      t.string :firstname
+      t.string :lastname
       t.string :email
 
       t.timestamps null: false
