@@ -1,10 +1,8 @@
 StockServ
 =========
 
-Codebase:
-[ ![Codeship Status for mccabec123/StockServ](https://codeship.com/projects/de1bfd20-5960-0132-9b23-123ab8314f17/status)](https://codeship.com/projects/50262)
-
 StockServ application for Scott Logic and Heriot-Watt university
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 
@@ -23,3 +21,5 @@ There will be at most three views, I think
 Oh and this is also a commit test. Sorry if I cock it up guys, I tend to break things. Oops.
 >>>>>>> 6fdf4fa01141a3d56a8de5a7a3deac698f919fd5
 Teste
+=======
+>>>>>>> master

@@ -1,16 +1,10 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0.beta4'
+gem 'rails', '4.2.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
-
-#Yahoo finance gem
-gem 'yahoo-finance', require: 'yahoo_finance'
-
-#Charting gem called ChartKick
-gem 'chartkick', require: 'chartkick'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.0.beta1'
@@ -24,6 +18,10 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
 gem 'execjs'
+gem 'yahoo-finance'
+gem 'chartkick'
+gem 'arel'
+gem 'bcrypt'
 
 # Use jQuery as the JavaScript library
 gem 'jquery-rails', '~> 4.0.0.beta2'
@@ -37,9 +35,9 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-# Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
 
+# Use ActiveModel has_secure_password
+# gem 'bcrypt', '~> 3.1.7'
 # Use Unicorn as the app server
 # gem 'unicorn'
 # Use Capistrano for deployment
