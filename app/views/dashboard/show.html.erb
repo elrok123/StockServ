@@ -1,6 +1,9 @@
 <div class="col-md-9 panel panel-default padding-10 mgn-top-5 standard-height generic">
 	<div class="header"><h3>Dashboard</h3></div>
-	<%= @data[0] %>
+	<% @data.each do |derp| %>
+		<% @main_data << [derp.trade_date, derp.high]  %>
+	<% end %>
+	
 	Chart Test:
-	<%= line_chart({20.day.ago => 5, 1368174456 => 4, "2013-05-07 00:00:00 UTC" => 7}) %>
+	<%= line_chart @main_data.map {|e| name: e[0], data: {e[0] => e[1]} } %>
 </div>
