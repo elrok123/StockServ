@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
 	def show
-		@data = YahooFinance.historical_quotes("GOOG", { start_date: 20.days.ago, end_date: Time::now})
+		@data = YahooFinance.historical_quotes("GOOG", { start_date: 180.days.ago, end_date: Time::now})
 		@high = Hash.new()
 		@low = Hash.new()
 		@open = Hash.new()
