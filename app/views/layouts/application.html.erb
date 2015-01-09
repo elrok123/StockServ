@@ -24,60 +24,66 @@
 	</head>
 	<body>
 		<div class="shadow-container"></div>
-		<div class="container">		
-			<div class="row">
-				<div class="panel panel-default center-contents padding-10 generic mgn-top-1 mgn-left-80 " >
-					<span><%= image_tag "conner.jpg", {class: "usr-img"} %> Conner McCabe</span>
-					<span style="color: #fff">| <a href="#">Logout</a></span>
-				</div>
-			</div>	
-			<div class="row">
-				<div class="col-md-3 panel panel-default center-contents padding-10 mgn-top-5 generic">
-					<%= image_tag "logo.png", {class: "logo-cont"} %>
-					<nav class="navbar navbar-inverse padding-1" role="navigation">
-						<ul class="nav navbar-nav" >
-						  	<li class="active">
-							    <a  href="/">
-							        Dashboard
-							    </a>
-							</li><br />
-							<li>
-							    <a href="/profile">
-							        Profile
-							    </a>
-							</li><br />
-							<li>
-							    <a href="/myclients">
-							        My Clients
-							    </a>
-							</li><br />
-							<li>
-							    <a href="/fas">
-							        FA's
-							    </a>
-							</li><br />
-							<li>
-							    <a  href="/meetings">
-							        Meetings
-							    </a>
-							</li><br />
-							<li>
-							    <a href="/calendar">
-							        Calendar
-							    </a>
-							</li><br />
-							<li>
-							    <a href="/settings">
-							        Settings
-							    </a>
-							</li><br />
-						</ul>
+			<div class="container">
+		<% if params[:controller] != "sessions" %>
+					
+				<div class="row">
+					<div class="panel panel-default center-contents padding-10 generic mgn-top-1 mgn-left-80 " >
+						<span><%= image_tag "conner.jpg", {class: "usr-img"} %><%= @user.firstname + " " + @user.surname %></span>
+						<span style="color: #fff">| <a href="/logout">Logout</a></span>
+					</div>
+				</div>	
+				<div class="row">
+					<div class="col-md-3 panel panel-default center-contents padding-10 mgn-top-5 generic">
+						<%= image_tag "logo.png", {class: "logo-cont"} %>
+						<nav class="navbar navbar-inverse padding-1" role="navigation">
+							<ul class="nav navbar-nav" >
+							  	<li class="active">
+								    <a  href="/">
+								        Dashboard
+								    </a>
+								</li><br />
+								<li>
+								    <a href="/profile">
+								        Profile
+								    </a>
+								</li><br />
+								<li>
+								    <a href="/myclients">
+								        My Clients
+								    </a>
+								</li><br />
+								<li>
+								    <a href="/fas">
+								        FA's
+								    </a>
+								</li><br />
+								<li>
+								    <a  href="/meetings">
+								        Meetings
+								    </a>
+								</li><br />
+								<li>
+								    <a href="/calendar">
+								        Calendar
+								    </a>
+								</li><br />
+								<li>
+								    <a href="/settings">
+								        Settings
+								    </a>
+								</li><br />
+							</ul>
 
-					</nav>
-					Copyright © Halwa-Systems 2014
+						</nav>
+						Copyright © Halwa-Systems 2014
+					</div>
+					<%= yield %>
 				</div>
+			<% else %>
 				<%= yield %>
-			</div>
+			<% end %>
+			
 		</div>
 	</body>
 </html>

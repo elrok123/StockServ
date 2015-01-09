@@ -20,7 +20,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'execjs'
 gem 'yahoo-finance'
 gem 'chartkick'
-
+gem 'bcrypt'
 
 # Use jQuery as the JavaScript library
 gem 'jquery-rails', '~> 4.0.0.beta2'
