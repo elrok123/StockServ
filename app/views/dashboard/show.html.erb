@@ -1,9 +1,23 @@
 <div class="col-md-9 panel panel-default padding-10 mgn-top-5 standard-height generic">
 	<div class="header"><h3>Dashboard</h3></div>
-	<% @data.each do |derp| %>
-		<% @main_data << [derp.trade_date, derp.high]  %>
-	<% end %>
-	
-	Chart Test:
-	<%= line_chart @main_data.map {|e| name: e[0], data: {e[0] => e[1]} } %>
-</div>
+	Google (GOOG):
+	<%=
+		line_chart (0..2).map {|e| 
+			{ 
+				name: @info_array[e*2], 
+				data: @info_array[e*2+1]
+			}
+		}, 
+		min:500, 
+		colors:["#6600FF", "#FF0066", "#66CCFF"],
+		library: 
+			{
+				backgroundColor: "#000006", 
+				legend: 
+					{
+						textStyle:{color: "blue"}
+					}
+			 }
+
+	 %>
+</div> 
