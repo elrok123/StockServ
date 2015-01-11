@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
   		end
   	end
   	def get_set_user_details
-  		@user = User.find(session[:user_id])
+  		@user = User.find(session[:user_id]) unless session[:user_id].nil?
   	end
 end
