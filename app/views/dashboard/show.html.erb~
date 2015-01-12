@@ -1,2 +1,41 @@
-<h1>YOURE A POTATO</h1>
+<<<<<<< HEAD
+<h1>YOURE A POTATO11</h1>
 <p>Find me in app/views/dashboard/show.html.erb</p>
+=======
+<div class="col-md-9 panel panel-default padding-10 mgn-top-5 standard-height generic">
+	<div class="header"><h3>Dashboard</h3></div>
+	Google (GOOG):
+	<%=
+		line_chart (0..2).map {|e| 
+			{ 
+				name: @info_array[e*2], 
+				data: @info_array[e*2+1]
+			}
+		}, 
+		min:@lowest, 
+		max:@highest,
+		height: 30,
+		width: 100,
+		colors:["#6600FF", "#FF0066", "#66CCFF"],
+		library: 
+			{
+				title: "Google (GOOG):",
+				color: "#dadada",
+				backgroundColor: "#000006", 
+				legend: 
+					{
+						textStyle:{color: "#dadada"}
+					},
+				pointSize: 3,
+				curveType: 'function',
+				chartArea: 
+					{
+						width: "85%",
+						height: "85%"
+					}
+
+			}
+
+	 %>
+</div> 
+>>>>>>> 431e0ea9a06cace7be6210f5d357909a88ac8836
