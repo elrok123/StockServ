@@ -4,7 +4,7 @@ class CreateMeetings < ActiveRecord::Migration
       t.string :meeting_subject
       t.datetime :date_of_meeting
       t.string :client_name
-      t.description :meeting_topic
+      t.string :meeting_description
       t.timestamps null: false
     end
   end

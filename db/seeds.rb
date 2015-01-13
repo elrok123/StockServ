@@ -5,3 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+client1 = Meeting.create(:meeting_subject => 'Stock Investment', :date_of_meeting => "24/05/2014", :client_name 'John Smith', :meeting_description "We aim to discuss potential stock investments I have lined up")
