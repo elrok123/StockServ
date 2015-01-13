@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  get 'meetings/home'
+  
   get 'users/new'
 
   get 'users/create'
