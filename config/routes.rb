@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
-  get 'meetings/home'
-  
+
   get 'users/new'
 
   get 'users/create'
@@ -17,4 +16,7 @@ Rails.application.routes.draw do
 	get 'dashboard/show'
 	
 	root to: 'dashboard#show'
+
+  resources :meetings
+
 end
