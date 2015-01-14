@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0.beta4'
+gem 'rails', '4.2.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -20,7 +20,7 @@ gem 'therubyracer', platforms: :ruby
 gem 'execjs'
 gem 'yahoo-finance'
 gem 'chartkick'
-
+gem 'bcrypt'
 
 # Use jQuery as the JavaScript library
 gem 'jquery-rails', '~> 4.0.0.beta2'

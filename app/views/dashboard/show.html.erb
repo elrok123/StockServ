@@ -1,30 +1,48 @@
 <div class="col-md-9 panel panel-default padding-10 mgn-top-5 standard-height generic">
 	<div class="header"><h3>Dashboard</h3></div>
-	
-
-	<%  %>
-
 	Google (GOOG):
-<<<<<<< HEAD
-	<%= %>
-=======
-	<%= line_chart (0..2).map {|e| { name: @info_array[e*2], data: @info_array[e*2+1]}}, 
-	min:489,
-	max:600, 
-	colors:["#6600FF", "#FF0066", "#66CCFF"],
-	library: 
-	{
-			backgroundColor: "#000006", 
-			legend: 
-				{
-				textStyle:{color: "#dadada"}
-				},
-			hAxis: {title:"Date",
-				titleTextStyle: {color: "#dadada"},
-				gridlines:{color:"white"}},
-			vAxis: {title: "Numbers",
-				titleTextStyle: {color: "#dadada"}},
+	<%=
+		line_chart (0..2).map {|e| 
+			{ 
+				name: @info_array[e*2], 
+				data: @info_array[e*2+1]
+			}
+		}, 
+		min:@lowest, 
+		max:@highest,
+		height: 30,
+		width: 100,
+		colors:["#6600FF", "#FF0066", "#66CCFF"],
+		library: 
+			{
+				title: "Google (GOOG):",
+				color: "#dadada",
+				backgroundColor: "#000006", 
+				legend: 
+					{
+						textStyle:{color: "#dadada"},
+						hAxis: {title:"Date",
+							titleTextStyle: {color: "#dadada"},
+							gridlines:{
+								color:"white"
+							}
+						},
+						vAxis: {
+							title: "Numbers",
+							titleTextStyle: {color: "#dadada"}
+							},
+						},
+					},
+				pointSize: 3,
+				curveType: 'function',
+				chartArea: 
+					{
+						width: "85%",
+						height: "85%"
+					}
 
-	 }%>
->>>>>>> 97aad93dddfd3b875a883cd4376e20688dcd68b2
+			}
+
+		}
+	 %>
 </div> 
