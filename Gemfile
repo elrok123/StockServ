@@ -20,7 +20,6 @@ gem 'therubyracer', platforms: :ruby
 gem 'execjs'
 gem 'yahoo-finance'
 gem 'chartkick'
-gem 'arel'
 gem 'bcrypt'
 
 # Use jQuery as the JavaScript library

@@ -1,22 +1,32 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
   
 
   get 'users/new'
+=======
+  	get 'sessions/new'
+>>>>>>> master
 
-  get 'users/create'
+  	post 'sessions/create'
 
-  get 'users/login'
+  	get 'sessions/destroy'
 
-  get 'users/logout'
+  	get 'sessions/login'
 
-  get 'sessions/login'
-
-  get 'sessions/logout'
+  	get 'sessions/logout'
 
 	get 'dashboard/show'
+
+	get '/login' => 'sessions#new'
+
+	get '/logout' => 'sessions#destroy'
 	
+<<<<<<< HEAD
 	root to: 'dashboard#show'
 
   resources :meetings
 
+=======
+	root to: 'sessions#new'
+>>>>>>> master
 end

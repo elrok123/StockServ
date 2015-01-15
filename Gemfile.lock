@@ -158,7 +158,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  arel
   bcrypt
   byebug
   chartkick
