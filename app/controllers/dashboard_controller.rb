@@ -14,8 +14,6 @@ class DashboardController < ApplicationController
 		end 
 
 		@info_array = ["High", @high, "Low", @low, "Open", @open]
-
-		#Calculate highest and lowest stock figures to set min and max on the graph
 		@i = -9999999.99 
 		@info_array[1].map {|k, v| @i = v.gsub(/[^\d^\.]/, '').to_f unless @i > v.gsub(/[^\d^\.]/, '').to_f } 
 		@highest = (@i + 50.0).round(-2) 
