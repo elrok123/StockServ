@@ -1,2 +1,29 @@
-<h1>Meetings#new</h1>
-<p>Find me in app/views/meetings/new.html.erb</p>
+<h1>Set up a new meeting</h1>
+
+	<%= form_for :meetings,url: meetings_path do |f| %>
+
+		<p>
+			<%= f.label :meeting_subject %><br>
+			<%= f.text_field :meeting_subject %>
+		</p>
+
+		<p>
+			<%= f.label :meeting_date %><br>
+			<%= f.date_select :meeting_date, start_year:Date.today.year, end_year:2018 %>
+		</p>
+
+		<p>
+			<%= f.label :client_name %><br>
+			<%= f.text_field :client_name %>
+		</p>
+
+		<p>
+			<%= f.label :meeting_description %><br>
+			<%= f.text_area :meeting_description %>
+		</p>
+
+		<p>
+			<%= f.submit %>
+		</p>
+
+	<% end %>
