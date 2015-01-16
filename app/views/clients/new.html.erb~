@@ -1,0 +1,35 @@
+<h1>Add a new client</h1>
+
+<%= form_for :client,url: clients_path do |f| %>
+  <p>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </p>
+  <p>
+    <%= f.label :dob, "Date of birth" %><br>
+    <%= f.date_select :dob, start_year:1920 %>
+  </p>
+  <p>
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </p>
+  <p>
+    <%= f.label :home_tel, "Home Telephone" %><br>
+    <%= f.telephone_field :home_tel %>
+  </p>
+  <p>
+    <%= f.label :mobile_tel, "Mobile Telephone" %><br>
+    <%= f.telephone_field :mobile_tel %>
+  </p>
+  <p>
+    <%= f.label :email %><br>
+    <%= f.email_field :email %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
