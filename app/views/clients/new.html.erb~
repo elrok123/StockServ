@@ -1,6 +1,18 @@
 <h1>Add a new client</h1>
 
 <%= form_for :client,url: clients_path do |f| %>
+ <% if @client.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@client.errors.count, "error") %> require fixing before this client can be saved:
+      </h2>
+      <ul>
+        <% @client.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <p>
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>
@@ -11,7 +23,7 @@
   </p>
   <p>
     <%= f.label :dob, "Date of birth" %><br>
-    <%= f.date_select :dob, start_year:1920 %>
+    <%= f.date_select :dob, start_year:1920, end_year:Date.today.year %>
   </p>
   <p>
     <%= f.label :address %><br>
