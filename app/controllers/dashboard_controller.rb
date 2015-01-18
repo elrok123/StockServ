@@ -1,20 +1,11 @@
 class DashboardController < ApplicationController
 	def show
-<<<<<<< HEAD
-		@data = YahooFinance.historical_quotes("GOOG", { start_date: 50.days.ago, end_date: Time::now})
-		@high = Hash.new()
-		@low = Hash.new()
-		@open = Hash.new()
-		@info_array = Array.new()
-		@stuff = YahooFinance.quotes(["GOOG"], [:name])
-=======
 			@data = get_yhoo_hist_fin
 			@comp_name = YahooFinance.quotes([company_tag], [:name])
 			@high = Hash.new()
 			@low = Hash.new()
 			@open = Hash.new()
 			@info_array = Array.new()
->>>>>>> 307435abd02e3ec5e942dd60a1e8f83395f8ca9e
 
 			#Compile highs and lows tuples for graph
 			@data.each do |e| 
