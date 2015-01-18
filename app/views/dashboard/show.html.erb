@@ -5,8 +5,7 @@
 		<%= text_field_tag(:company_tag) %>
 		<%= submit_tag("Search") %>
 	<% end %>
-
-	Google (<%= @data[0].symbol.upcase %>):
+	<%= @comp_name[0].name %> (<%= @data[0].symbol.upcase %>):
 	<%=
 		line_chart (0..2).map {|e| 
 			{	

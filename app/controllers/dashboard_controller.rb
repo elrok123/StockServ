@@ -1,6 +1,7 @@
 class DashboardController < ApplicationController
 	def show
 			@data = get_yhoo_hist_fin
+			@comp_name = YahooFinance.quotes([company_tag], [:name])
 			@high = Hash.new()
 			@low = Hash.new()
 			@open = Hash.new()
@@ -28,11 +29,11 @@ class DashboardController < ApplicationController
 		end
 	end
 	def get_yhoo_hist_fin
-		quote = YahooFinance.historical_quotes(company_tag, { start_date: 50.days.ago, end_date: Time::now})
-		if quote[0].symbol.upcase != company_tag
-			YahooFinance.historical_quotes("GOOG", { start_date: 50.days.ago, end_date: Time::now})
-		else
-			quote
+		begin
+			quote = YahooFinance.historical_quotes(company_tag, { start_date: 50.days.ago, end_date: Time::now})
+			return quote
+		rescue 
+			return YahooFinance.historical_quotes("GOOG", { start_date: 50.days.ago, end_date: Time::now})
 		end
 	end
 end
