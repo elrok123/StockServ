@@ -5,6 +5,7 @@ class DashboardController < ApplicationController
 		@low = Hash.new()
 		@open = Hash.new()
 		@info_array = Array.new()
+		@stuff = YahooFinance.quotes(["GOOG"], [:name])
 
 		#Compile highs and lows tuples for graph
 		@data.each do |e| 
