@@ -1,53 +1,56 @@
 <div class="col-md-9 panel panel-default padding-10 mgn-top-5 standard-height generic">
 	<div class="header"><h3>Dashboard</h3></div>
-	<%= form_tag("/search", method: "get") do %>
-	<%= label_tag(:q, "Search by symbol:") %>
-	<%= text_field_tag(:q) %>
-	<%= submit_tag("Search") %>
+	<%= form_tag("/dashboard/show", method: :get) do %>
+		<%= label_tag(:q, "Search by symbol:") %>
+		<%= text_field_tag(:company_tag) %>
+		<%= submit_tag("Search") %>
 	<% end %>
-	<%= @stuff%>
+	<%= @comp_name[0].name %> (<%= @data[0].symbol.upcase %>):
 	<%=
 		line_chart (0..2).map {|e| 
-			{ 
+			{	
 				name: @info_array[e*2], 
 				data: @info_array[e*2+1]
 			}
-		}, 
-		min:@lowest, 
-		max:@highest,
-		height: 30,
-		width: 100,
-		colors:["#6600FF", "#FF0066", "#66CCFF"],
-		library: 
-			{
+		},
+		{
+			min: @lowest, 
+			max: @highest,
+			height: 30,
+			width: 100,
+			colors:["#6600FF", "#FF0066", "#66CCFF"],
+			library: {
 				title: "Google (GOOG):",
 				titleTextStyle: {color: "#dadada"},
 				color: "#dadada",
 				backgroundColor: "#000006", 
-				legend: 
-					{
-						textStyle:{color: "#dadada"},
+				legend: {
+					textStyle: {
+						color: "#dadada"
 					},
-				hAxis: 
-					{
+					hAxis: {
 						title:"Date",
-						titleTextStyle: {color: "#dadada"},
-						#gridlines:{color:"white"}
+						titleTextStyle: {
+							color: "#dadada"
+						}
 					},
-				vAxis: 
-					{
+					gridlines: {
+						color:"white"
+					},
+					vAxis: {
 						title: "Numbers",
-						titleTextStyle: {color: "#dadada"},
+						titleTextStyle: {
+							color: "#dadada"
+						}
 					},
+				},
 				pointSize: 3,
-				curveType: 'none',
-				chartArea: 
-					{
-						width: "80%",
-						height: "80%"
-					}
-
+				curveType: 'function',
+				chartArea: {
+					width: "85%",
+					height: "85%"	
+				}
 			}
-
+		}
 	 %>
 </div> 
