@@ -1,38 +1,59 @@
 
 <div class="col-md-9 panel panel-default padding-10 mgn-top-5 standard-height generic">
 	<div class="header"><h3>Dashboard</h3></div>
-	Google (GOOG):
+	<%= form_tag("/dashboard/show", method: :get) do %>
+		<%= label_tag(:q, "Search by symbol:") %>
+		<%= text_field_tag(:company_tag) %>
+		<%= submit_tag("Search") %>
+	<% end %>
+	<%= @comp_name[0].name %> (<%= @data[0].symbol.upcase %>):
 	<%=
 		line_chart (0..2).map {|e| 
-			{ 
+			{	
 				name: @info_array[e*2], 
 				data: @info_array[e*2+1]
 			}
-		}, 
-		min:@lowest, 
-		max:@highest,
-		height: 30,
-		width: 100,
-		colors:["#6600FF", "#FF0066", "#66CCFF"],
-		library: 
-			{
-				title: "Google (GOOG):",
+		},
+		{
+			min: @lowest, 
+			max: @highest,
+			height: 30,
+			width: 100,
+			colors:["#6600FF", "#FF0066", "#66CCFF"],
+			library: {
 				color: "#dadada",
 				backgroundColor: "#000006", 
-				legend: 
-					{
-						textStyle:{color: "#dadada"}
-					},
+				legend: {
+					textStyle: {
+						color: "#dadada"
+					}
+				},
+				hAxis: {
+					title:"Date",
+					titleTextStyle: {
+						color: "#dadada"
+					}
+				},
+				gridlines: {
+					color: "#fff"
+				},
+				vAxis: {
+					title: "Numbers",
+					titleTextStyle: {
+						color: "#dadada"
+					}
+				},
 				pointSize: 3,
 				curveType: 'function',
-				chartArea: 
-					{
-						width: "85%",
-						height: "85%"
-					}
-
+				chartArea: {
+					width: "80%",
+					height: "60%"	
+				}
 			}
-
+		}
 	 %>
 </div> 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 003139968f37fb62465d1f5dd110a8178e59fe80
