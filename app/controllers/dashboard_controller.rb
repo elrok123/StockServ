@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
 	def show
 			@data = get_yhoo_hist_fin
-			@comp_name = YahooFinance.quotes([company_tag], [:name])
+			@comp_name = YahooFinance.quotes([@data[0].symbol.upcase], [:name])
 			@high = Hash.new()
 			@low = Hash.new()
 			@open = Hash.new()
