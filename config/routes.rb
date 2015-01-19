@@ -10,5 +10,4 @@ Rails.application.routes.draw do
 	get '/logout' => 'sessions#destroy'
 		root to: 'sessions#new'		
 	resources :meetings
-
 end

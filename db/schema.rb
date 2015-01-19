@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 20150113183512) do
 
   create_table "meetings", force: :cascade do |t|
     t.string   "meeting_subject"
-    t.datetime "date_of_meeting"
+    t.datetime "meeting_date"
     t.string   "client_name"
-    t.string   "meeting_description"
+    t.text     "meeting_description"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end
