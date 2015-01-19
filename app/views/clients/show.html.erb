@@ -4,4 +4,6 @@ First Name: <%= @client.first_name %> <br/>
 Last Name: <%= @client.last_name %> <br/>
 Date of Birth: <%= @client.dob %> <br/>
 Email: <%= @client.email %>
+<%= link_to 'Back', clients_path %>
+<%= link_to 'Edit', edit_client_path(@client) %>
 </p>
