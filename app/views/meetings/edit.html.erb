@@ -1,47 +1,5 @@
-<h1>Editing Meeting</h1>
+<h1>Edit meeting</h1>
  
-<%= form_for :meeting, url: meeting_path(@meeting), method: :patch do |f| %>
- 
-  <% if @meeting.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@meeting.errors.count, "error") %> prohibited
-        this meeting from being saved:
-      </h2>
-      <ul>
-        <% @meeting.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
- 
-  <p>
-    <%= f.label :meeting_subject %><br>
-    <%= f.text_field :meeting_subject %>
-  </p>
- 
-  <p>
-    <%= f.label :meeting_date %><br>
-    <%= f.date_select :meeting_date, start_year:Date.today.year, end_year:2018 %>
-  </p>
+<%= render 'form' %>
 
-
-  <p>
-
-    <%= f.label :client_name %><br>
-    <%= f.text_area :client_name %>
-  </p>
-
-  <p>
-    <%= f.label : %><br>
-    <%= f.text_area :meeting_description %>
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
- 
-<% end %>
- 
 <%= link_to 'Back', meetings_path %>

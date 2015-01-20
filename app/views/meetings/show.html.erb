@@ -1,17 +1,20 @@
 <h1>Meeting Details</h1>
 
-
-
-
 <p>
   <strong>Meeting subject:</strong>
-  <%= @article.meeting_subject %>
+  <%= @meeting.meeting_subject %>
 </p>
  
 <p>
   <strong>Meeting date:</strong>
   <%= @meeting.meeting_date %>
 </p>
+
+<p>
+  <strong>Meeting time:</strong>
+  <%= @meeting.meeting_time %>
+</p>
+
 
 <p>
   <strong>Client name:</strong>
@@ -23,5 +26,5 @@
   <%= @meeting.meeting_description %>
 </p>
 
-<%= link_to 'Back', meetings_path %> |
+<%= link_to 'All Meetings', meetings_path %> |
 <%= link_to 'Edit', edit_meeting_path(@meeting) %>

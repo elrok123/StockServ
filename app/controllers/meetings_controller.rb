@@ -42,9 +42,9 @@ class MeetingsController < ApplicationController
  
     redirect_to meetings_path
   end
- 
-	private
-	def meeting_params
-	    params.require(:meeting).permit(:meeting_subject, :meeting_date, :client_name, :meeting_description)
-	end
+
+  private
+    def meeting_params
+      params.require(:meeting).permit(:meeting_subject, :meeting_date, :meeting_time, :client_name, :meeting_description)
+    end
 end
