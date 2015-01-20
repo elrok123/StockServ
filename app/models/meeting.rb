@@ -6,22 +6,12 @@ class Meeting < ActiveRecord::Base
 
     validates :meeting_description, length: { maximum: 1000 }
 
+    validate :meeting_datetime_in_past
 
-    validate :meeting_time_cannot_be_in_the_past
+def meeting_datetime_in_past
+   if meeting_date_time < Date.today or meeting_date_time < Time.now
+          errors.add(:meeting_date_time, "can't be in the past")
+  end
+end
 
-    def meeting_time_cannot_be_in_the_past
-
-       if meeting_date == Date.today && meeting_time < Time.now
-          errors.add(:meeting_time, "can't be in the past")
-       end
-    end
-
-    validate :meeting_date_cannot_be_in_the_past
- 
-    def meeting_date_cannot_be_in_the_past
-
-       if !meeting_date.blank? &&  meeting_date < Date.today
-	  errors.add(:meeting_date, "can't be in the past")
-       end
-    end
 end

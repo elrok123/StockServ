@@ -20,13 +20,8 @@
   </p>
  
   <p>
-    <%= f.label :meeting_date %><br>
-    <%= f.date_select :meeting_date, start_year:Date.today.year, :order => [:day,:month,:year] %> 
-  </p>
-
-  <p>
-    <%= f.label :meeting_time %><br>
-    <%= f.time_select :meeting_time, :minute_step => 15 %>
+    <%= f.label :meeting_date_time %><br>
+    <%= f.datetime_select :meeting_date_time, start_year:Date.today.year, :order => [:day,:month,:year], :minute_step => 15 %> 
   </p>
 
   <p>
