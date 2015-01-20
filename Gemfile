@@ -21,9 +21,10 @@ gem 'execjs'
 gem 'yahoo-finance'
 gem 'chartkick'
 gem 'bcrypt'
+gem 'simple_calendar', '~> 1.1.0'
 
 # Use jQuery as the JavaScript library
-gem 'jquery-rails', '~> 4.0.0.beta2'
+gem 'jquery-rails', '~> 4.0.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

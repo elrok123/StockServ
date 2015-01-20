@@ -50,5 +50,17 @@
 				}
 			}
 		}
-	 %>
-</div> 
+	%>
+	<div class="header"><h4>Monthly Meeting Calendar: </h4></div>
+	<%= week_calendar table: {class: "table table-bordered"}, tr: {class: "active"}, td: {}, number_of_weeks: 2 do |date| %>
+		<div class="calendar-box" style="<%= (@calendar_switch == 1 ? "background: #404040; color: #FF0066" : "background: #606060; color: #66CCFF" ).to_s %>">
+			<div class="calendar-box-title"><%= date.to_formatted_s(:long_ordinal) %></div>
+			<div class="calendar-box-content">Still need to add meeting logic</div>
+		</div>
+		<% if @calendar_switch == 1 %>
+			<% @calendar_switch = 0 %>
+		<% elsif @calendar_switch == 0 %>
+			<% @calendar_switch = 1 %>
+		<% end %>
+	<% end %>
+</div>
