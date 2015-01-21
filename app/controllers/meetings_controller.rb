@@ -11,7 +11,7 @@ class MeetingsController < ApplicationController
   def new
     @meeting = Meeting.new
   end
- 
+
   def edit
     @meeting = Meeting.find(params[:id])
   end
