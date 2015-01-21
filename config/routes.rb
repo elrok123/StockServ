@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'market/show'
+
+  get 'market/search'
+
+  get 'market/show'
+
+  get 'market/search'
+
+ 
+
   	get 'sessions/new'
 
   	post 'sessions/create'
@@ -10,6 +20,10 @@ Rails.application.routes.draw do
   	get 'sessions/logout'
 
 	get 'dashboard/show'
+
+	get 'profile/view'
+	get 'profile/edit'
+	get 'profile/delete'
 
 	get '/login' => 'sessions#new'
 
