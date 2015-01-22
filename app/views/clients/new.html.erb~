@@ -14,6 +14,7 @@
     </div>
   <% end %>
   <p>
+  <%= f.hidden_field :session[:user] %>
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>
   </p>
@@ -45,3 +46,4 @@
     <%= f.submit %>
   </p>
 <% end %>
+<%= link_to 'Back', clients_path %>
