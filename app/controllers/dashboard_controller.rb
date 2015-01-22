@@ -34,6 +34,11 @@ class DashboardController < ApplicationController
 			delete_favourite
 			redirect_to "/dashboard/show"
 		end
+
+		if params.has_key?(:favourite_tag) 
+			add_favourite
+			redirect_to "/dashboard/show"
+		end
 	end
 	def company_tag
 		if params.has_key?(:company_tag)
@@ -52,21 +57,25 @@ class DashboardController < ApplicationController
 		end
 	end
 	
-	def get_favourite_symbol
-		if params.has_key?(:stock_symbol)
-			params[:stock_symbol].upcase
-		end
-	end
-	def delete_favourite
-		if Favourite.find(get_favourite_symbol).delete
-			@success = "You have successfully added that favourite"	
+	def get_favourite_symbol(symbol_stock)
+		if params.has_key?(symbol_stock)
+			params[symbol_stock].upcase
 		end
 	end
 
-	def remove_favourite
-		if params.has_key?(:unfavourite_tag)
-			new_favourite = params[:unfavourite_tag].upcase
-			Favourite.find_by(stock_symbol: @new_favourite).destroy
+	def delete_favourite
+		if User.find(session[:user_id]).favourites.delete(Favourite.find(get_favourite_symbol(:stock_symbol)).id)
+			@success = "You have successfully removed that favourite"	
+		end
+	end
+
+	def add_favourite
+		#User.find(session[:user_id]).favourites << Favourite.new(stock_symbol: get_favourite_symbol(:favourite_tag))
+		test_exist = Favourite.new(stock_symbol: get_favourite_symbol(:favourite_tag))
+		if(test_exist.save)
+			Watchlist.new(user_id: session[:user_id], favourite_id: test_exist.id).save
+		else
+			Watchlist.new(user_id: session[:user_id], favourite_id: Favourite.find_by(stock_symbol: get_favourite_symbol(:favourite_tag)).id).save
 		end
 	end
 end

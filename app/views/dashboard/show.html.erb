@@ -87,9 +87,4 @@
 	        <%= text_field_tag(:favourite_tag, nil, class: "tblack")%>
         	<%= submit_tag("Add", class: "btn btn-primary") %>
     	<% end %>
-
-    	<%= form_tag("/dashboard/show", method: :post, class:"") do %>
-        	<%= text_field_tag :unfavourite_tag, nil, class: "tblack" %>
-       	 	<%= submit_tag "Remove", class: "btn btn-danger" %>
-    	<% end %>
 </div> 
