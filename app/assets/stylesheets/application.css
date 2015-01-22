@@ -3,7 +3,7 @@ body {
     background-color: #222;
 }
 
-@media(min-width:768px) {
+@media(min-width:991px) {
     body {
         margin-top: 25px;
     }
@@ -24,7 +24,7 @@ body {
     line-height: normal;
 }
 
-@media(min-width:768px) {
+@media(min-width:991px) {
     #wrapper {
         padding-left: 225px;
     }
@@ -62,6 +62,7 @@ body {
     color: #fff;
     background-color: #000;
 }
+
 
 .top-nav>.open>.dropdown-menu {
     float: left;
@@ -110,7 +111,7 @@ ul.alert-dropdown {
 
 /* Side Navigation */
 
-@media(min-width:768px) {
+@media(min-width:991px) {
     .side-nav {
         position: fixed;
         top: 51px;
@@ -269,3 +270,4 @@ ul.alert-dropdown {
 	  border-top-right-radius: 0;
 	}
 }
+
