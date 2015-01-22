@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
 	get 'dashboard/show'
 
+	post 'dashboard/show'
+
 	get '/login' => 'sessions#new'
 
 	get '/logout' => 'sessions#destroy'

@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+	has_many :watchlists
+  	has_many :favourites, through: :watchlists
+
 	#Accessor for password
 	attr_accessor :password
 
