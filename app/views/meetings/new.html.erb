@@ -1,6 +1,7 @@
-<h1>Set up a new meeting</h1>
+<div class="col-md-9 panel panel-default padding-10 mgn-top-5 standard-height generic">
+	<div class="header"><h1>Set up a new meeting</h1></div>
 
-	<%= form_for :meetings,url: meetings_path do |f| %>
+	<%= form_for :meeting, url: meetings_path do |f| %>
 
 		<p>
 			<%= f.label :meeting_subject %><br>
@@ -8,8 +9,8 @@
 		</p>
 
 		<p>
-			<%= f.label :meeting_date %><br>
-			<%= f.date_select :meeting_date, start_year:Date.today.year, end_year:2018 %>
+			<%= f.label :date_of_meeting %><br>
+			<%= f.date_select :date_of_meeting, start_year: Date.today.year, end_year: 2018 %>
 		</p>
 
 		<p>
@@ -23,7 +24,8 @@
 		</p>
 
 		<p>
-			<%= f.submit %>
+			<%= f.submit class: "btn btn-info" %>
 		</p>
 
 	<% end %>
+</div>
