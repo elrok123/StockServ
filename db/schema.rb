@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113183512) do
+ActiveRecord::Schema.define(version: 20150122153946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,12 @@ ActiveRecord::Schema.define(version: 20150113183512) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "favourites", force: :cascade do |t|
+    t.string   "stock_symbol"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "meetings", force: :cascade do |t|
     t.string   "meeting_subject"
     t.datetime "date_of_meeting"
@@ -43,11 +49,21 @@ ActiveRecord::Schema.define(version: 20150113183512) do
     t.string   "email"
     t.string   "password_salt"
     t.string   "password_hash"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.string   "Users"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "firstname"
     t.string   "surname"
+    t.integer  "access_level",  default: 0
   end
+
+  create_table "watchlists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "favourite_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "watchlists", ["favourite_id"], name: "index_watchlists_on_favourite_id", using: :btree
+  add_index "watchlists", ["user_id"], name: "index_watchlists_on_user_id", using: :btree
 
 end
