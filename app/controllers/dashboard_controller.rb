@@ -13,7 +13,7 @@ class DashboardController < ApplicationController
 			@high[e.trade_date] = e.high 
 			@low[e.trade_date] = e.low 
 			@open[e.trade_date] = e.open 
-		end 
+		end
 
 		@info_array = ["High", @high, "Low", @low, "Open", @open]
 		@i = -9999999.99 
@@ -22,6 +22,8 @@ class DashboardController < ApplicationController
 		@info_array[3].map {|k, v| @i = v.gsub(/[^\d^\.]/, '').to_f unless @i < v.gsub(/[^\d^\.]/, '').to_f }
 		@lowest = (@i - 10.0)
 	end
+	
+private
 	def company_tag
 		if params.has_key?(:company_tag)
 			params[:company_tag].upcase

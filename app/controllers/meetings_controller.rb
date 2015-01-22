@@ -1,15 +1,18 @@
 class MeetingsController < ApplicationController
-    
-    def index
-	@meetings = Meeting.all
-    end
 
     def show
-	@meeting = Meeting.find(params[:id])
+    	@meetings = Array.new
+    	unless Meeting.count > 1
+    		@meetings << Meeting.all.limit(1)
+    	else
+	    	Meeting.all.each do |meeting|
+				@meetings << meeting
+	    	end
+    	end
     end
 
     def new
-	@meeting = Meeting.new
+		@meeting = Meeting.new
     end
 
     def edit
@@ -17,36 +20,35 @@ class MeetingsController < ApplicationController
     end
     
     def create
-
-	@meeting = Meeting.new(meeting_params)
-
-	if @meeting.save
-	    redirect_to(:action => 'index')
-	else
-	    render('new')
-	end
+		@meeting = Meeting.new(meeting_params)
+		if @meeting.save
+		    redirect_to '/meetings/show'
+		else
+		    render 'new'
+		end
     end
 
     def update
-	@meeting = Meeting.find(params[:id])
+		@meeting = Meeting.find(params[:id])
 
-	if( @meeting.update(meeting_params)
-	    redirect_to @meeting
-	else
-	    render 'edit'
-	end
+		if @meeting.update(meeting_params)
+		    redirect_to @meeting
+		else
+		    render 'edit'
+		end
     end
 
     def destroy
-	@meeting = Meeting.find(params[:id])
-	@meeting.destroy
+		@meeting = Meeting.find(params[:id])
+		@meeting.destroy
 
-	redirect_to meetings_path
+		redirect_to meetings_path
     end
 
-    private
+private
+
 	def meeting_params
-	    params.require(:meeting).permit(:meeting_subject, :meeting_date, :client_name, :meeting_description)
+	    params.require(:meeting).permit(:meeting_subject, :date_of_meeting, :client_name, :meeting_description)
 	end
 
 end

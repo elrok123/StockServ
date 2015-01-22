@@ -22,6 +22,7 @@ gem 'yahoo-finance'
 gem 'chartkick'
 gem 'bcrypt'
 gem 'simple_calendar', '~> 1.1.0'
+gem 'rails-erd', github: 'ready4god2513/rails-erd', branch: 'rails-4.2-support-fix'
 
 # Use jQuery as the JavaScript library
 gem 'jquery-rails', '~> 4.0.0'
