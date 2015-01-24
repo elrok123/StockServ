@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
   	def new
+  		if !session[:user_id].nil?
+  			redirect_to "/dashboard/show"
+  		end
 	end
 	def create
 		user = User.authenticate(user_params)

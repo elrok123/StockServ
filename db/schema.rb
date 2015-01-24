@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121165259) do
+ActiveRecord::Schema.define(version: 20150122153946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "add_clients", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "favourites", force: :cascade do |t|
     t.string   "stock_symbol"
@@ -22,16 +35,25 @@ ActiveRecord::Schema.define(version: 20150121165259) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "meetings", force: :cascade do |t|
+    t.string   "meeting_subject"
+    t.datetime "date_of_meeting"
+    t.string   "client_name"
+    t.string   "meeting_description"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
     t.string   "password_salt"
     t.string   "password_hash"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.string   "Users"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "firstname"
     t.string   "surname"
+    t.integer  "access_level",  default: 0
   end
 
   create_table "watchlists", force: :cascade do |t|

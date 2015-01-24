@@ -297,8 +297,7 @@ li {
 
 .grey {
 
-	background: #999999;
-	color: #fff;
+	color: #1a1a1a;
 }
 
 .details {
@@ -495,4 +494,43 @@ h5 {
 
 .tblack{
     color: #000006;
-} 
+}
+table, td, tr {
+	background: #303030;
+	padding: 0;
+	margin: 0;
+}
+.table td, tr {
+	background: #303030;
+	padding: 0;
+	margin: 0;
+}
+.table-bordered td, tr {
+	background: #303030;
+	padding: 0;
+	border-color: #6600FF;
+	margin: 0;
+}
+.calendar-header {
+	width: 100%;
+	padding: 10px;
+	font-size: 2em;
+}
+.calendar-box {
+	width: 100%;
+	height: 100%;
+	background: none;
+	color: #66CCFF;
+	border-radius: 3px;
+	border: 1px #303030 solid;
+}
+.calendar-box-title {
+	border-bottom: 1px #dadada solid;
+	padding: 8px;
+	font-size: 1.1em;
+}
+.calendar-box-content {
+	color: #fff;
+	padding: 8px;
+	font-size: 1.05em;
+}

@@ -1,0 +1,14 @@
+<div class="col-md-9 panel panel-default padding-10 mgn-top-5 standard-height generic">
+	<h1>Meeting Details</h1>
+
+	<p>
+		<% unless @meetings.nil? %>
+			<% @meetings.each do |meeting| %>
+				Subject: <%= meeting.meeting_subject %> <br/>
+				Date: <%= meeting.date_of_meeting %> <br/>
+				Client: <%= meeting.client_name %> <br/>
+				Meeting Description: <%= meeting.meeting_description %>
+			<% end %>
+		<% end %>
+	</p>
+</div>
