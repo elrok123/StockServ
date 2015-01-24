@@ -3,7 +3,7 @@ body {
     background-color: #222;
 }
 
-@media(min-width:991px) {
+@media(min-width:700px) {
     body {
         margin-top: 25px;
     }
@@ -19,12 +19,14 @@ body {
     background-color: #fff;
 }
 
+
+
 .huge {
     font-size: 50px;
     line-height: normal;
 }
 
-@media(min-width:991px) {
+@media(min-width:900px) {
     #wrapper {
         padding-left: 225px;
     }
@@ -62,6 +64,8 @@ body {
     color: #fff;
     background-color: #000;
 }
+
+
 
 
 .top-nav>.open>.dropdown-menu {
@@ -111,7 +115,7 @@ ul.alert-dropdown {
 
 /* Side Navigation */
 
-@media(min-width:991px) {
+@media(min-width:900px) {
     .side-nav {
         position: fixed;
         top: 51px;
