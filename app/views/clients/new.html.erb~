@@ -15,7 +15,7 @@
   <% end %>
   <p>
     <%= f.label :title %><br>
-    <%= f.select_tag :title, options_for_select([["Mr","Mr"],["Mrs","Mrs"],["Miss","Miss"], ["Ms","Ms"],["Dr","Dr"]],1) %>
+    <%= f.select :title, options_for_select([["Mr","Mr"],["Mrs","Mrs"],["Miss","Miss"], ["Ms","Ms"],["Dr","Dr"]],1) %>
   <p>
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>

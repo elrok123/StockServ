@@ -1,9 +1,14 @@
 class ClientsController < ApplicationController
 	def index
-		@clients = Client.all
+		@clients = Client.where("user_id = ?", session[:user_id])
 	end
 	def show
+		#@client = Client.where("id = ? AND user_id = ?", params[:id], session[:user_id])
 		@client = Client.find(params[:id])
+		if @client.user_id != session[:user_id]
+			#Need a permission denied page, for now set it to new
+			render 'new'
+		end	
 	end
 	def new
 		@client = Client.new
