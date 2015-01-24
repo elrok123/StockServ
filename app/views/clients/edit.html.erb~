@@ -1,6 +1,6 @@
 <h1>Edit a client</h1>
 
-<%= form_for :client, url: clients_path(@client), method: :patch do |f| %>
+<%= form_for :client, url: client_path(@client), method: :patch do |f| %>
  <% if @client.errors.any? %>
     <div id="error_explanation">
       <h2>

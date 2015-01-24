@@ -31,9 +31,9 @@ class ClientsController < ApplicationController
 	end
 	def destroy
 		@client = Client.find(params[:id])
-		@client.destroy
-	
-		redirect_to clients_path
+		@client.user_id = nil
+ 		@client.save	
+		redirect_to clients_path			
 	end
 	private
 	def client_params
