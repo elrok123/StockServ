@@ -14,7 +14,9 @@
     </div>
   <% end %>
   <p>
-  <%= f.hidden_field :user %>
+    <%= f.label :title %><br>
+    <%= f.select :title, options_for_select([["Mr","Mr"],["Mrs","Mrs"],["Miss","Miss"], ["Ms","Ms"],["Dr","Dr"]],1) %>
+  <p>
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>
   </p>
