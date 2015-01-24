@@ -1,8 +1,12 @@
 <h1>Client Details</h1>
 <p>
+Title: <%= @client.title %> <br/>
 First Name: <%= @client.first_name %> <br/>
 Last Name: <%= @client.last_name %> <br/>
 Date of Birth: <%= @client.dob %> <br/>
+Address: <%= @client.address %> <br/>
+Home Telephone: <%= @client.home_tel %> <br/>
+Mobile Telephone: <%= @client.mobile_tel %> <br/>
 Email: <%= @client.email %>
 <%= link_to 'Back', clients_path %>
 <%= link_to 'Edit', edit_client_path(@client) %>
