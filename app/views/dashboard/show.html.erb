@@ -1,90 +1,126 @@
-<div class="col-md-9 panel panel-default padding-10 mgn-top-5 standard-height generic">
-	<div class="header"><h3>Dashboard</h3></div>
-	<%= form_tag("/dashboard/show", method: :get, class:"") do %>
-        <%= label_tag(:q,"Search by symbol:") %>
-        <%= text_field_tag(:company_tag, nil, class: "tblack")%>
-        <%= submit_tag("Search", class: "btn btn-primary") %>
-    <% end %>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Dashboard
+        </h1>
+        <ol class="breadcrumb">
+            <li class="active">
+                Dashboard
+            </li>
+        </ol>
+    </div>
+</div>
 
-
-<%= @comp_name[0].name %> (<%= @data[0].symbol.upcase %>):
-	<%=
-		line_chart (0..2).map {|e| 
-			{	
-				name: @info_array[e*2], 
-				data: @info_array[e*2+1]
-			}
-		},
-		{
-			min: @lowest, 
-			max: @highest,
-			height: 30,
-			width: 100,
-			colors:["#6600FF", "#FF0066", "#66CCFF"],
-			library: {
-				color: "#dadada",
-				backgroundColor: "#000006", 
-				legend: {
-					textStyle: {
-						color: "#dadada"
+<div class="row">
+	<div class="col-ld-12 col-md-12 container-fluid panel-default">
+	    <div class="panel panel-primary no-curve">
+	        <div class="panel-heading clearfix no-curve">
+	            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Next Meeting</h4>
+	        </div>
+	        <div class="panel-body">
+	            <%= week_calendar table: {class: "table table-bordered"}, tr: {class: "active"}, td: {}, number_of_weeks: 1 do |date| %>
+					<div class="calendar-box" style="<%= (@calendar_switch == 1 ? "background: #404040; color: #FF0066" : "background: #606060; color: #66CCFF" ).to_s %>">
+						<div class="calendar-box-title"><%= date.to_formatted_s(:long_ordinal) %></div>
+						<div class="calendar-box-content">Still need to add meeting logic</div>
+					</div>
+					<% if @calendar_switch == 1 %>
+						<% @calendar_switch = 0 %>
+					<% elsif @calendar_switch == 0 %>
+						<% @calendar_switch = 1 %>
+					<% end %>
+				<% end %>
+	        </div>
+	    </div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-md-6 container-fluid panel-default">
+	    <div class="panel panel-primary no-curve">
+	        <div class="panel-heading clearfix no-curve">
+	            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Search Clients</h4>
+	                <div class="input-group col-md-offset-6 col-xs-offset-8">
+	                    <input id="Special" type="text" class="form-control no-curve" placeholder="Search">
+	                    <div class="input-group-btn no-curve">
+	                        <button class="btn btn-primary no-curve"><i class="glyphicon glyphicon-search"></i></button>
+	                        
+	                    </div>
+	                </div>
+	        </div>
+	        <div class="panel-body">
+	            aaaaaa
+	        </div>
+	    </div>
+	</div> 
+	<div class="col-xs-12 col-md-6 container-fluid panel-default">
+		<div class="panel panel-primary no-curve">
+	        <div class="panel-heading clearfix no-curve">
+	            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Search Companies</h4>
+	                <div class="input-group col-md-offset-6 col-xs-offset-8">
+	                    <%= form_tag("/dashboard/show", method: :get) do %>
+							<%= text_field_tag :company_tag, nil, class: "form-control no-curve", placeholder: "Search", id: "Special"%>
+							<div class="input-group-btn">
+								<span><%= submit_tag "Submit", class: "btn btn-primary no-curve" %><i class="glyphicon glyphicon-search"></i><span>
+							</div>
+						<% end %>
+	                </div>
+	        </div>
+	        <div class="panel-body">
+	            <%= @comp_name[0].name %> (<%= @data[0].symbol.upcase %>):
+				<%=
+					line_chart (0..2).map {|e| 
+						{	
+							name: @info_array[e*2], 
+							data: @info_array[e*2+1]
+						}
+					},
+					{
+						min: @lowest, 
+						max: @highest,
+						height: 30,
+						width: 100,
+						colors:["#6600FF", "#FF0066", "#66CCFF"],
+						library: {
+							color: "#dadada",
+							backgroundColor: "#000006", 
+							legend: {
+								textStyle: {
+									color: "#dadada"
+								}
+							},
+							hAxis: {
+								title:"Date",
+								titleTextStyle: {
+									color: "#dadada"
+								}
+							},
+							gridlines: {
+								color: "#fff"
+							},
+							vAxis: {
+								title: "Numbers",
+								titleTextStyle: {
+									color: "#dadada"
+								}
+							},
+							pointSize: 8,
+							pointShape: { type: 'square', rotation: 45 },
+							chartArea: {
+								width: "80%",
+								height: "60%"	
+							}
+						}
 					}
-				},
-				hAxis: {
-					title:"Date",
-					titleTextStyle: {
-						color: "#dadada"
-					}
-				},
-				gridlines: {
-					color: "#fff"
-				},
-				vAxis: {
-					title: "Numbers",
-					titleTextStyle: {
-						color: "#dadada"
-					}
-				},
-				pointSize: 3,
-				curveType: 'none',
-				chartArea: {
-					width: "80%",
-					height: "60%"	
-				}
-			}
-		}
-	 %>
-
-	  Favourites:
-    <table class="meetings-table padding-5">
-    	<tr>
-    		<th class="padding-10">Name</th>
-    		<th class="padding-10">Symbol</th>
-    		<th class="padding-10">High</th>
-    		<th class="padding-10">Low</th>
-    		<th class="padding-10">Open</th>
-    		<th class="padding-10"></th>
-
-    	</tr>
-    <% @favourites_data.map.with_index do |e, i| %>
-    <tr>
-    	<td class="padding-10"><%= e.name %></td>
-    	<td class="padding-10"><%= e.symbol %></td>
-    	<td class="padding-10"><%= e.high %></td>
-    	<td class="padding-10"><%= e.low %></td>
-    	<td class="padding-10"><%= e.open %></td>
-    	<td class="padding-10"> 
-    		<%= form_tag "/dashboard/show", method: :post, class:"" do %>
-        		<% #hidden_field_tag :unfavourite_tag, :value => "AAPL" %>
-        		<%= submit_tag (@favourites[i].id).to_s, name: "stock_symbol", class: "btn btn-danger" %>
-    		<% end %>
-    	</td>	
-
-    </tr>
-    <% end %>
-    </table></br>
-	
-	<%= form_tag("/dashboard/show", method: :post, class:"") do %>
-	        <%= text_field_tag(:favourite_tag, nil, class: "tblack")%>
-        	<%= submit_tag("Add", class: "btn btn-primary") %>
-    	<% end %>
-</div> 
+				%>
+	        </div>
+	    </div>
+		<div class="panel panel-primary no-curve">
+	        <div class="panel-heading clearfix no-curve">
+	            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Current Memos</h4>
+	                
+	        </div>
+	        <div class="panel-body">
+	            Panel content
+	        </div>
+	    </div>
+	</div>
+</div>

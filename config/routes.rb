@@ -1,24 +1,44 @@
 Rails.application.routes.draw do
-  	get 'sessions/new'
+  
+  get 'calendar/view'
 
-  	post 'sessions/create'
+  get 'financial_advisors/new'
 
-  	get 'sessions/destroy'
+  get 'financial_advisors/create'
 
-  	get 'sessions/login'
+  get 'financial_advisors/destroy'
 
-  	get 'sessions/logout'
+  get 'financial_advisors/edit'
 
+  get 'financial_advisors/view'
+
+  get 'profile/view'
+
+  get 'profile/edit'
+
+  get 'market/show'
+
+	get 'sessions/new'
+	post 'sessions/create'
+	get 'sessions/destroy'
+	get 'sessions/login'
+	get 'sessions/logout'
 	get 'dashboard/show'
-
-	post 'dashboard/show'
-
 	get '/login' => 'sessions#new'
-
 	get '/logout' => 'sessions#destroy'
 	
 	root to: 'sessions#new'
 
-	match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
+	resources :meetings
+  	get 'market/show'
 
+  	get 'market/search'
+
+  	get 'market/show'
+
+  	get 'market/search'
+
+	get 'profile/view'
+	get 'profile/edit'
+	get 'profile/delete'
 end
