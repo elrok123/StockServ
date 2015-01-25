@@ -4,4 +4,10 @@ class ProfileController < ApplicationController
 
   def edit
   end
+<<<<<<< HEAD
+=======
+
+  def delete
+  end
+>>>>>>> ugis
 end

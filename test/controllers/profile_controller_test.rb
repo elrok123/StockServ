@@ -11,4 +11,12 @@ class ProfileControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+<<<<<<< HEAD
+=======
+  test "should get delete" do
+    get :delete
+    assert_response :success
+  end
+
+>>>>>>> ugis
 end
