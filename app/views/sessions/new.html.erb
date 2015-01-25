@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <div class="wrapper-login ">
   <img class="center-block" style="max-width:350px; margin-top: -7px;" src="/assets/logoheadersignin.png"></a>
@@ -25,3 +26,17 @@
     <% end %>
   </div>
     
+=======
+<div class="login-container">
+    <div id="output"></div>
+    <%= image_tag "logo.png", {class: "logo-cont"} %>
+    <div class="form-box">
+        <%= form_for :user, url: "/sessions/create" do |f| %>
+        	<%= f.text_field :email, placeholder: "Email", required: "", type: "text"  %>
+        	<%= f.password_field :password, placeholder: "Password", required: "", type: "password"  %>
+        	<br />
+        	<%= f.submit "Sign In", class: "btn btn-info btn-block login" %>
+        <% end %>
+    </div>
+</div>
+>>>>>>> jack

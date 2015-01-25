@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="row">
 
 
@@ -85,3 +86,95 @@
 	</div>
 </div>
 
+=======
+<div class="col-md-9 panel panel-default padding-10 mgn-top-5 standard-height generic">
+	<div class="header"><h3>Dashboard</h3></div>
+	<%= form_tag("/dashboard/show", method: :get, class:"") do %>
+        <%= label_tag(:q,"Search by symbol:") %>
+        <%= text_field_tag(:company_tag, nil, class: "tblack")%>
+        <%= submit_tag("Search", class: "btn btn-primary") %>
+    <% end %>
+
+
+<%= @comp_name[0].name %> (<%= @data[0].symbol.upcase %>):
+	<%=
+		line_chart (0..2).map {|e| 
+			{	
+				name: @info_array[e*2], 
+				data: @info_array[e*2+1]
+			}
+		},
+		{
+			min: @lowest, 
+			max: @highest,
+			height: 30,
+			width: 100,
+			colors:["#6600FF", "#FF0066", "#66CCFF"],
+			library: {
+				color: "#dadada",
+				backgroundColor: "#000006", 
+				legend: {
+					textStyle: {
+						color: "#dadada"
+					}
+				},
+				hAxis: {
+					title:"Date",
+					titleTextStyle: {
+						color: "#dadada"
+					}
+				},
+				gridlines: {
+					color: "#fff"
+				},
+				vAxis: {
+					title: "Numbers",
+					titleTextStyle: {
+						color: "#dadada"
+					}
+				},
+				pointSize: 3,
+				curveType: 'none',
+				chartArea: {
+					width: "80%",
+					height: "60%"	
+				}
+			}
+		}
+	 %>
+
+	  Favourites:
+    <table class="meetings-table padding-5">
+    	<tr>
+    		<th class="padding-10">Name</th>
+    		<th class="padding-10">Symbol</th>
+    		<th class="padding-10">High</th>
+    		<th class="padding-10">Low</th>
+    		<th class="padding-10">Open</th>
+    		<th class="padding-10"></th>
+
+    	</tr>
+    <% @favourites_data.map.with_index do |e, i| %>
+    <tr>
+    	<td class="padding-10"><%= e.name %></td>
+    	<td class="padding-10"><%= e.symbol %></td>
+    	<td class="padding-10"><%= e.high %></td>
+    	<td class="padding-10"><%= e.low %></td>
+    	<td class="padding-10"><%= e.open %></td>
+    	<td class="padding-10"> 
+    		<%= form_tag "/dashboard/show", method: :post, class:"" do %>
+        		<% #hidden_field_tag :unfavourite_tag, :value => "AAPL" %>
+        		<%= submit_tag (@favourites[i].id).to_s, name: "stock_symbol", class: "btn btn-danger" %>
+    		<% end %>
+    	</td>	
+
+    </tr>
+    <% end %>
+    </table></br>
+	
+	<%= form_tag("/dashboard/show", method: :post, class:"") do %>
+	        <%= text_field_tag(:favourite_tag, nil, class: "tblack")%>
+        	<%= submit_tag("Add", class: "btn btn-primary") %>
+    	<% end %>
+</div> 
+>>>>>>> jack

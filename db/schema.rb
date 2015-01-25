@@ -11,11 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150122153946) do
+=======
+ActiveRecord::Schema.define(version: 20150121165259) do
+>>>>>>> jack
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< HEAD
   create_table "meetings", force: :cascade do |t|
     t.string   "meeting_subject"
     t.datetime "meeting_date"
@@ -23,6 +28,12 @@ ActiveRecord::Schema.define(version: 20150122153946) do
     t.text     "meeting_description"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+=======
+  create_table "favourites", force: :cascade do |t|
+    t.string   "stock_symbol"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+>>>>>>> jack
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,5 +47,15 @@ ActiveRecord::Schema.define(version: 20150122153946) do
     t.string   "surname"
     t.integer  "access_level",  default: 0
   end
+
+  create_table "watchlists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "favourite_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "watchlists", ["favourite_id"], name: "index_watchlists_on_favourite_id", using: :btree
+  add_index "watchlists", ["user_id"], name: "index_watchlists_on_user_id", using: :btree
 
 end

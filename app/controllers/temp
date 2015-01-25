@@ -1,0 +1,2 @@
+derp = Favourite.new(stock_symbol: "AAPL")
+derp.users << User.find(1)
