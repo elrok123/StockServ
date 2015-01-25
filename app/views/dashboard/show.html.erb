@@ -1,4 +1,8 @@
 <div class="row">
+
+
+
+
     <div class="col-lg-12">
         <h1 class="page-header">
             Dashboard
@@ -50,70 +54,8 @@
 	            aaaaaa
 	        </div>
 	    </div>
-	</div> 
-	<div class="col-xs-12 col-md-6 container-fluid panel-default">
-		<div class="panel panel-primary no-curve">
-	        <div class="panel-heading clearfix no-curve">
-	            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Search Companies</h4>
-	                <div class="input-group col-md-offset-6 col-xs-offset-8">
-	                    <%= form_tag("/dashboard/show", method: :get) do %>
-							<%= text_field_tag :company_tag, nil, class: "form-control no-curve", placeholder: "Search", id: "Special"%>
-							<div class="input-group-btn">
-								<span><%= submit_tag "Submit", class: "btn btn-primary no-curve" %><i class="glyphicon glyphicon-search"></i><span>
-							</div>
-						<% end %>
-	                </div>
-	        </div>
-	        <div class="panel-body">
-	            <%= @comp_name[0].name %> (<%= @data[0].symbol.upcase %>):
-				<%=
-					line_chart (0..2).map {|e| 
-						{	
-							name: @info_array[e*2], 
-							data: @info_array[e*2+1]
-						}
-					},
-					{
-						min: @lowest, 
-						max: @highest,
-						height: 30,
-						width: 100,
-						colors:["#6600FF", "#FF0066", "#66CCFF"],
-						library: {
-							color: "#dadada",
-							backgroundColor: "#000006", 
-							legend: {
-								textStyle: {
-									color: "#dadada"
-								}
-							},
-							hAxis: {
-								title:"Date",
-								titleTextStyle: {
-									color: "#dadada"
-								}
-							},
-							gridlines: {
-								color: "#fff"
-							},
-							vAxis: {
-								title: "Numbers",
-								titleTextStyle: {
-									color: "#dadada"
-								}
-							},
-							pointSize: 8,
-							pointShape: { type: 'square', rotation: 45 },
-							chartArea: {
-								width: "80%",
-								height: "60%"	
-							}
-						}
-					}
-				%>
-	        </div>
-	    </div>
-		<div class="panel panel-primary no-curve">
+
+	    <div class="panel panel-primary no-curve">
 	        <div class="panel-heading clearfix no-curve">
 	            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Current Memos</h4>
 	                
@@ -122,5 +64,72 @@
 	            Panel content
 	        </div>
 	    </div>
+	</div> 
+	<div class="col-xs-12 col-md-6 container-fluid panel-default">
+		
+	    <div class="panel panel-primary no-curve">
+	        <div class="panel-heading clearfix no-curve">
+	            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Search Companies</h4>
+	                <div class="input-group col-md-offset-6 col-xs-offset-8">
+	                    <input id="Special" type="text" class="form-control no-curve" placeholder="Search">
+	                    <div class="input-group-btn no-curve">
+	                        <button class="btn btn-primary no-curve"><i class="glyphicon glyphicon-search"></i></button>
+	                        
+	                    </div>
+	                </div>
+	        </div>
+	        <div class="panel-body">
+	            
+	        </div>
+	    </div>
+	
+		
+	    <div class="panel panel-primary no-curve">
+	         <div class="panel-heading clearfix no-curve">
+	            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Followed Companies</h4>
+	               
+	                    <%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
+	        <%= text_field_tag(:favourite_tag, nil, class: "form-control tblack", placeholder: "Enter company tag")%>
+	        <div class="input-group-btn no-curve">
+        	<%= submit_tag("Add", class: "btn btn-primary pull-right") %>
+    	<% end %>
+    	
+	                </div>
+	        </div>
+	        <div class="panel-body">
+	            <table class="table table-striped">
+    	<tr>
+    		<th class="padding-10">Name</th>
+    		<th class="padding-10">Symbol</th>
+    		<th class="padding-10">High</th>
+    		<th class="padding-10">Low</th>
+    		<th class="padding-10">Open</th>
+    		<th class="padding-10"></th>
+
+    	</tr>
+    <% @favourites_data.map.with_index do |e, i| %>
+    <tr>
+    	<td class="padding-10"><%= e.name %></td>
+    	<td class="padding-10"><%= e.symbol %></td>
+    	<td class="padding-10"><%= e.high %></td>
+    	<td class="padding-10"><%= e.low %></td>
+    	<td class="padding-10"><%= e.open %></td>
+    	<td class="padding-10"> 
+    		<%= form_tag "/dashboard/show", method: :post, class:"" do %>
+        		<% #hidden_field_tag :unfavourite_tag, :value => "AAPL" %>
+        		
+        		<button type="submit" name="stock_symbol" value=<%=(@favourites[i].id).to_s%> class="btn btn-danger">Remove</button>
+
+    		<% end %>
+    	</td>	
+
+    </tr>
+    <% end %>
+    </table>
+	
+	
+	        </div>
+	    </div>
+
 	</div>
 </div>

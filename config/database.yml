@@ -25,7 +25,12 @@ default: &default
 development:
   <<: *default
 
+<<<<<<< HEAD
   database: jacky_stockserv_development
+=======
+  database: oogis_stockserv_development
+
+>>>>>>> origin/ugis
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
