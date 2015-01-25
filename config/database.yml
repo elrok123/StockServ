@@ -24,11 +24,9 @@ default: &default
 
 development:
   <<: *default
-<<<<<<< HEAD
+
   database: oogis_stockserv_development
-=======
-  database: jacky_stockserv_development
->>>>>>> jack
+
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -62,11 +60,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-<<<<<<< HEAD
+
   database: oogis_stockserv_test
-=======
-  database: jacky_stockserv_test
->>>>>>> jack
+
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -89,10 +85,8 @@ test:
 #
 production:
   <<: *default
-<<<<<<< HEAD
+
   database: oogis_stockserv_production
-=======
-  database: jacky_stockserv_production
->>>>>>> jack
+
   username: stockserv
   password: <%= ENV['STOCKSERV_DATABASE_PASSWORD'] %>

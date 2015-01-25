@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150122153946) do
-=======
-ActiveRecord::Schema.define(version: 20150121165259) do
->>>>>>> jack
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
+  create_table "favourites", force: :cascade do |t|
+    t.string   "stock_symbol"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "meetings", force: :cascade do |t|
     t.string   "meeting_subject"
     t.datetime "meeting_date"
@@ -28,12 +29,6 @@ ActiveRecord::Schema.define(version: 20150121165259) do
     t.text     "meeting_description"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
-=======
-  create_table "favourites", force: :cascade do |t|
-    t.string   "stock_symbol"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
->>>>>>> jack
   end
 
   create_table "users", force: :cascade do |t|

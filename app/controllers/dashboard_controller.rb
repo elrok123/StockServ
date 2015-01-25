@@ -2,18 +2,13 @@ class DashboardController < ApplicationController
 
 	def show
 		@data = get_yhoo_hist_fin
-<<<<<<< HEAD
-=======
-		#add_favourite
-		#remove_favourite
-		
->>>>>>> jack
+
 		@comp_name = YahooFinance.quotes([@data[0].symbol.upcase], [:name])
 		@high = Hash.new()
 		@low = Hash.new()
 		@open = Hash.new()
 		@info_array = Array.new()
-<<<<<<< HEAD
+
 		@calendar_switch = 1
 
 		#Compile highs and lows tuples for graph
@@ -29,7 +24,7 @@ class DashboardController < ApplicationController
 		@highest = (@i + 10.0)
 		@info_array[3].map {|k, v| @i = v.gsub(/[^\d^\.]/, '').to_f unless @i < v.gsub(/[^\d^\.]/, '').to_f }
 		@lowest = (@i - 10.0)
-=======
+
 		@favourites_data = Array.new()
 		#Compile highs and lows tuples for graph
 		@data.each do |e| 
@@ -60,7 +55,7 @@ class DashboardController < ApplicationController
 			add_favourite
 			redirect_to "/dashboard/show"
 		end
->>>>>>> jack
+
 	end
 	
 private
@@ -80,11 +75,7 @@ private
 			return YahooFinance.historical_quotes("GOOG", {start_date: 50.days.ago, end_date: Time::now})
 		end
 	end
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> jack
 	def get_favourite_symbol(symbol_stock)
 		if params.has_key?(symbol_stock)
 			params[symbol_stock].upcase
@@ -106,9 +97,7 @@ private
 			Watchlist.new(user_id: session[:user_id], favourite_id: Favourite.find_by(stock_symbol: get_favourite_symbol(:favourite_tag)).id).save
 		end
 	end
-<<<<<<< HEAD
+
 
 end
-=======
-end
->>>>>>> jack
+
