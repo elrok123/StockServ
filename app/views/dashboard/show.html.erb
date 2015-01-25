@@ -1,85 +1,68 @@
-<div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Dashboard
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li class="active">
-                                Dashboard
-                            </li>
-                            
-                        </ol>
-                    </div>
-                </div>
-
-
-
-<div class="row">
-<div class="col-xs-12 col-md-6 container-fluid panel-default">
-	
-	
-    <div class="panel panel-primary no-curve">
-        <div class="panel-heading clearfix no-curve">
-            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Next Meeting</h4>
-                    </div>
-        <div class="panel-body">
-            Panel content
-        </div>
-    </div>
-
-
-
-<div class="panel panel-primary no-curve">
-        <div class="panel-heading clearfix no-curve">
-            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Search Clients</h4>
-                <div class="input-group col-md-offset-6 col-xs-offset-8">
-                    <input id="Special" type="text" class="form-control no-curve" placeholder="Search">
-                    <div class="input-group-btn no-curve">
-                        <button class="btn btn-primary no-curve"><i class="glyphicon glyphicon-search"></i></button>
-                        
-                    </div>
-                </div>
-        </div>
-        <div class="panel-body">
-            
-        </div>
-    </div>
-
-</div> 
-
-
-
-<div class="col-xs-12 col-md-6 container-fluid panel-default">
-	
-	<div class="panel panel-primary no-curve">
-        <div class="panel-heading clearfix no-curve">
-            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Search Companies</h4>
-                <div class="input-group col-md-offset-6 col-xs-offset-8">
-                    <input id="Special" type="text" class="form-control no-curve" placeholder="Search">
-                    <div class="input-group-btn">
-                        <button class="btn btn-primary no-curve"><i class="glyphicon glyphicon-search"></i></button>
-                        
-                    </div>
-                </div>
-        </div>
-        <div class="panel-body">
-            Panel content
-        </div>
-    </div>
- 
-
-	<div class="panel panel-primary no-curve">
-        <div class="panel-heading clearfix no-curve">
-            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Quick Notes</h4>
-                
-        </div>
-        <div class="panel-body">
-            Panel content
-        </div>
-    </div><!-- end of the second column -->
-
-
-
-</div> <!-- end of row -->
+<div class="col-md-9 panel panel-default padding-10 mgn-top-5 standard-height generic">
+	<div class="header"><h3>Dashboard</h3></div>
+	<%= form_tag("/dashboard/show", method: :get) do %>
+		<%= label_tag(:q, "Search by symbol:") %>
+		<%= text_field_tag(:company_tag) %>
+		<%= submit_tag("Search") %>
+	<% end %>
+	<%= @comp_name[0].name %> (<%= @data[0].symbol.upcase %>):
+	<%=
+		line_chart (0..2).map {|e| 
+			{	
+				name: @info_array[e*2], 
+				data: @info_array[e*2+1]
+			}
+		},
+		{
+			min: @lowest, 
+			max: @highest,
+			height: 30,
+			width: 100,
+			colors:["#6600FF", "#FF0066", "#66CCFF"],
+			library: {
+				color: "#dadada",
+				backgroundColor: "#000006", 
+				legend: {
+					textStyle: {
+						color: "#dadada"
+					}
+				},
+				hAxis: {
+					title:"Date",
+					titleTextStyle: {
+						color: "#dadada"
+					}
+				},
+				gridlines: {
+					color: "#fff"
+				},
+				vAxis: {
+					title: "Numbers",
+					titleTextStyle: {
+						color: "#dadada"
+					}
+				},
+				pointSize: 8,
+				pointShape: { type: 'square', rotation: 45 },
+				chartArea: {
+					width: "80%",
+					height: "60%"	
+				}
+			}
+		}
+	%>
+	<div class="header"><h4>Monthly Meeting Calendar: </h4></div>
+	<%= week_calendar table: {class: "table table-bordered"}, tr: {class: "active"}, td: {}, number_of_weeks: 2 do |date| %>
+		<div class="calendar-box" style="<%= (@calendar_switch == 1 ? "background: #404040; color: #FF0066" : "background: #606060; color: #66CCFF" ).to_s %>">
+			<div class="calendar-box-title"><%= date.to_formatted_s(:long_ordinal) %></div>
+			<div class="calendar-box-content">Still need to add meeting logic</div>
+		</div>
+		<% if @calendar_switch == 1 %>
+			<% @calendar_switch = 0 %>
+		<% elsif @calendar_switch == 0 %>
+			<% @calendar_switch = 1 %>
+		<% end %>
+	<% end %>
+</div>
 
 
