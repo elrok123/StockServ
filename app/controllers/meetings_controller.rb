@@ -6,7 +6,7 @@ class MeetingsController < ApplicationController
     		@meetings << Meeting.all.limit(1)
     	else
 	    	Meeting.all.each do |meeting|
-				@meetings << meeting
+			@meetings << meeting
 	    	end
     	end
     end

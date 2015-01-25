@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 	get '/login' => 'sessions#new'
 	get '/logout' => 'sessions#destroy'
 	get 'market/show'
+	get 'profile/view'
+	get 'profile/edit'
 	
 	
 	root to: 'sessions#new'
