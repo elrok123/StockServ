@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class MarketControllerTest < ActionController::TestCase
+<<<<<<< HEAD
+  # test "the truth" do
+  #   assert true
+  # end
+=======
   test "should get show" do
     get :show
     assert_response :success
@@ -11,4 +16,5 @@ class MarketControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+>>>>>>> ugis
 end

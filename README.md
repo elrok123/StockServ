@@ -5,6 +5,7 @@ StockServ
 StockServ application for Scott Logic and Heriot-Watt university
 
 
+
 This is a test 
 
 At present this branch is being used for developing client functionality.
@@ -18,4 +19,5 @@ add clients to an FA it may also be necessary to include an FA model, which will
 There will be at most three views, I think
 
 Oh and this is also a commit test. Sorry if I cock it up guys, I tend to break things. Oops.
+
 

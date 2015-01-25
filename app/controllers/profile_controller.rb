@@ -7,4 +7,5 @@ class ProfileController < ApplicationController
 
   def delete
   end
+
 end
