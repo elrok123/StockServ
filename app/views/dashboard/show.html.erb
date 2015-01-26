@@ -45,7 +45,7 @@
 				<div class="input-group col-md-offset-6 col-xs-offset-8">
 					<input id="Special" type="text" class="form-control no-curve" placeholder="Search">
 					<div class="input-group-btn no-curve">
-						<button class="btn btn-primary no-curve"><i class="glyphicon glyphicon-search"></i></button>
+						<button class="btn btn-info no-curve"><i class="glyphicon glyphicon-search"></i></button>
 						
 					</div>
 				</div>
@@ -73,7 +73,7 @@
 				<div class="input-group col-md-offset-6 col-xs-offset-8">
 					<input id="Special" type="text" class="form-control no-curve" placeholder="Search">
 					<div class="input-group-btn no-curve">
-						<button class="btn btn-primary no-curve"><i class="glyphicon glyphicon-search"></i></button>
+						<button class="btn btn-info no-curve"><i class="glyphicon glyphicon-search"></i></button>
 						
 					</div>
 				</div>
@@ -91,7 +91,7 @@
 				<%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
 				<%= text_field_tag(:favourite_tag, nil, class: "form-control tblack", placeholder: "Enter company tag")%>
 				<div class="input-group-btn no-curve">
-					<%= submit_tag("Add", class: "btn btn-primary pull-right") %>
+					<%= submit_tag("Add", class: "btn btn-info pull-right") %>
 					<% end %>
 					
 				</div>
@@ -118,7 +118,7 @@
 							<%= form_tag "/dashboard/show", method: :post, class:"" do %>
 							<% #hidden_field_tag :unfavourite_tag, :value => "AAPL" %>
 							
-							<button type="submit" name="stock_symbol" value=<%=(@favourites[i].id).to_s%> class="btn btn-danger">Remove</button>
+							<button type="submit" name="stock_symbol" value=<%=(@favourites[i].id).to_s%> class="btn btn-danger btn-xs">Remove</button>
 
 							<% end %>
 						</td>	
