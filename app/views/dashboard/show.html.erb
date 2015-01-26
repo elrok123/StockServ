@@ -1,9 +1,4 @@
-
 <div class="row">
-
-
-
-
 	<div class="col-lg-12">
 		<h1 class="page-header">
 			Dashboard
@@ -43,16 +38,34 @@
 		<div class="panel panel-primary no-curve">
 			<div class="panel-heading clearfix no-curve">
 				<h4 class="panel-title pull-left" style="padding-top: 7.5px;">Search Clients</h4>
-				<div class="input-group col-md-offset-6 col-xs-offset-8">
-					<input id="Special" type="text" class="form-control no-curve" placeholder="Search">
-					<div class="input-group-btn no-curve">
-						<button class="btn btn-info no-curve"><i class="glyphicon glyphicon-search"></i></button>
-						
-					</div>
+				<%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
+				<%= text_field_tag(:search_client_name, nil, class: "form-control tblack", placeholder: "Enter client name")%>
+				<div class="input-group-btn no-curve">
+					<%= submit_tag("Search", class: "btn btn-info pull-right") %>
+					<% end %>
 				</div>
 			</div>
 			<div class="panel-body">
-				aaaaaa
+				<table class="table table-striped">
+					<% if @search_client_data %>
+					<tr>
+						<th class="padding-10">First name</th>
+						<th class="padding-10">Last name</th>
+						<th class="padding-10">Email</th>
+						<th class="padding-10"></th>
+					</tr>
+					<% @search_client_data.each do |e| %>
+					<tr>
+						<td class="padding-10"><%= e.first_name %></td>
+						<td class="padding-10"><%= e.last_name %></td>
+						<td class="padding-10"><%= e.email %></td>
+						<td class="padding-10"><a href=/clients/<%= e.id %>>Additional Info...</a></td>
+					<% end %>
+					</tr>
+					<% else %>
+					Search for a client...
+					<% end %>
+				</table>
 			</div>
 		</div>
 
@@ -71,16 +84,41 @@
 		<div class="panel panel-primary no-curve">
 			<div class="panel-heading clearfix no-curve">
 				<h4 class="panel-title pull-left" style="padding-top: 7.5px;">Search Companies</h4>
-				<div class="input-group col-md-offset-6 col-xs-offset-8">
-					<input id="Special" type="text" class="form-control no-curve" placeholder="Search">
-					<div class="input-group-btn no-curve">
-						<button class="btn btn-info no-curve"><i class="glyphicon glyphicon-search"></i></button>
-						
-					</div>
+				<%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
+				<%= text_field_tag(:search_company_tag, nil, class: "form-control tblack", placeholder: "Enter company tag")%>
+				<div class="input-group-btn no-curve">
+					<%= submit_tag("Search", class: "btn btn-info pull-right") %>
+					<% end %>
 				</div>
 			</div>
 			<div class="panel-body">
-				
+				<table class="table table-striped">
+					<% if @search_company_data %>
+					<tr>
+						<th class="padding-10">Name</th>
+						<th class="padding-10">Symbol</th>
+						<th class="padding-10">High</th>
+						<th class="padding-10">Low</th>
+						<th class="padding-10">Open</th>
+						<th class="padding-10"></th>
+					</tr>
+					Results For: <%= @search_company_data[0].symbol %>
+					<tr>
+						<%= form_tag "/dashboard/show", method: :post, class:"" do %>
+						<td class="padding-10"><%= @search_company_data[0].name %></td>
+						<td class="padding-10"><%= @search_company_data[0].symbol %></td>
+						<td class="padding-10"><%= @search_company_data[0].high %></td>
+						<td class="padding-10"><%= @search_company_data[0].low %></td>
+						<td class="padding-10"><%= @search_company_data[0].open %></td>
+						<td>
+							<button type="submit" name="favourite_tag" value=<%=@search_company_data[0].symbol%> class="btn btn-success btn-xs">Add</button>
+						</td>
+						<% end %>
+					</tr>
+					<% else %>
+					Search for a company...
+					<% end %>
+				</table>
 			</div>
 		</div>
 		
@@ -119,7 +157,6 @@
 						<td class="padding-10"> 
 							
 							<% #hidden_field_tag :unfavourite_tag, :value => "AAPL" %>
-							
 							<button type="submit" name="stock_symbol" value=<%=(@favourites[i].id).to_s%> class="btn btn-danger btn-xs">Remove</button>
 
 							<% end %>
@@ -135,9 +172,4 @@
 
 	</div>
 </div>
-
-
-
-
-
-
+>>>>>>> dd59d69c285f68f3ed44f1c3aa26b0a964aefb82

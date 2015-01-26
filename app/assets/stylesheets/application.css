@@ -208,7 +208,6 @@ ul.alert-dropdown {
 .panel-red {
     border-color: #d9534f;
 }
-
 .panel-red .panel-heading {
     border-color: #d9534f;
     color: #fff;
@@ -325,11 +324,9 @@ ul.alert-dropdown {
 {margin-top:20px;
 }
 
-
 .tblack{
     color: #000006;
 } 
-
 .calendar-header {
     width: 100%;
     padding: 10px;

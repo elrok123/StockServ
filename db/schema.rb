@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20150122165519) do
     t.string   "meeting_subject"
     t.datetime "meeting_date"
     t.string   "client_name"
+    t.string   "address"
+    
     t.text     "meeting_description"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
