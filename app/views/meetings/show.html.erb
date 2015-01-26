@@ -14,24 +14,28 @@
 	<div class="panel panel-primary no-curve">
         <div class="panel-heading clearfix no-curve">
             <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Next Meeting</h4>
-                    </div>
+            <div class="input-group-btn">
+                <a href="/meetings/new"><button class="btn btn-warning no-curve pull-right">Add Meeting</button></a>
+            </div>  
+        </div>
+
         <div class="panel-body">
             <p>
         		<% if !@meetings.nil? && @meetings.count > 1 %>
         			<% @meetings.each do |meeting| %>
-        				Subject: <%= @meeting.meeting_subject %> <br/>
-        				Date: <%= @meeting.date_of_meeting %> <br/>
-        				Client: <%= @meeting.client_name %> <br/>
+        				Subject: <%= meeting.meeting_subject %> <br/>
+        				Date: <%= meeting.meeting_date %> <br/>
+        				Client: <%= meeting.client_name %> <br/>
         				Meeting Description: <%= meeting.meeting_description %>
         			<% end %>
-                <% elsif !@meetings.count == 1 %>
-                    Subject: <%= @meeting.meeting_subject %> <br/>
-                    Date: <%= @meeting.date_of_meeting %> <br/>
-                    Client: <%= @meeting.client_name %> <br/>
-                    Meeting Description: <%= @meeting.meeting_description %>
+                <% elsif @meetings.count == 1 %>
+                    Subject: <%= meeting.meeting_subject %> <br/>
+                    Date: <%= meeting.meeting_date %> <br/>
+                    Client: <%= meeting.client_name %> <br/>
+                    Meeting Description: <%= meeting.meeting_description %>
                 <% else %>
                     No meetings currently...
-        		<% end %>
+                <% end %>
         	</p>
         </div>
     </div>

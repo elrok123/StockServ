@@ -2,16 +2,18 @@ class MeetingsController < ApplicationController
 
     def show
     	@meetings = Array.new
-    	unless Meeting.count > 1
+    	unless Meeting.all.count > 1
     		@meetings << Meeting.all.limit(1)
     	else
 	    	Meeting.all.each do |meeting|
-			@meetings << meeting
+				@meetings << meeting
 	    	end
     	end
     end
 
     def new
+    	@clients = Client.all
+
 		@meeting = Meeting.new
     end
 
@@ -24,7 +26,7 @@ class MeetingsController < ApplicationController
 		if @meeting.save
 		    redirect_to '/meetings/show'
 		else
-		    render 'new'
+		    redirect_to '/meetings/new'
 		end
     end
 
@@ -48,7 +50,7 @@ class MeetingsController < ApplicationController
 private
 
 	def meeting_params
-	    params.require(:meeting).permit(:meeting_subject, :date_of_meeting, :client_name, :meeting_description)
+	    params.require(:meeting).permit(:meeting_subject, :meeting_date, :client_name, :meeting_description)
 	end
 
 end
