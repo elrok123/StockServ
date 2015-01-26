@@ -1,0 +1,17 @@
+[conner@elrok stockserv]$ rake db:migrate:status
+
+database: jacky_stockserv_development
+
+ Status   Migration ID    Migration Name
+--------------------------------------------------
+   up     20141202215248  Create clients
+   up     20150107040722  Create users
+   up     20150107041657  Add fields to users
+   up     20150109161739  Create add clients
+   up     20150113183512  Create meetings
+   up     20150121134351  Add permissions to users
+   up     20150121154443  Create watchlists
+   up     20150121161200  ********** NO FILE **********
+   up     20150121165259  ********** NO FILE **********
+   up     20150122153946  Remove column from users
+

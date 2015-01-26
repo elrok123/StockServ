@@ -12,4 +12,8 @@
 /tmp
 
 #Ignore certain configs
-/config/databse.yml
+/config/database.yml
+
+/Gemfile
+/Gemfile.lock
+/README.md
