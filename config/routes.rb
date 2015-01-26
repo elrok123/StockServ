@@ -13,12 +13,18 @@ Rails.application.routes.draw do
 	get 'profile/view'
 	get 'profile/edit'
 	post 'dashboard/show'
+	get 'clients/show'
 	
 	
 	root to: 'sessions#new'
 
+
 	resources :meetings
  match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
+
+	
+	resources :clients
+
 end
 
 
