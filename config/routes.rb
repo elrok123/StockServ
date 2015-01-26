@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 	post 'dashboard/show'
 	get 'clients/show'
 	post 'meetings/create'
+	get "/calendar/view"
 	
 	root to: 'sessions#new'
 
