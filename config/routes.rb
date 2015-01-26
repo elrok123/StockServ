@@ -1,23 +1,6 @@
+
 Rails.application.routes.draw do
   
-  get 'calendar/view'
-
-  get 'financial_advisors/new'
-
-  get 'financial_advisors/create'
-
-  get 'financial_advisors/destroy'
-
-  get 'financial_advisors/edit'
-
-  get 'financial_advisors/view'
-
-  get 'profile/view'
-
-  get 'profile/edit'
-
-  get 'market/show'
-
 	get 'sessions/new'
 	post 'sessions/create'
 	get 'sessions/destroy'
@@ -26,19 +9,22 @@ Rails.application.routes.draw do
 	get 'dashboard/show'
 	get '/login' => 'sessions#new'
 	get '/logout' => 'sessions#destroy'
+	get 'market/show'
+	get 'profile/view'
+	get 'profile/edit'
+	post 'dashboard/show'
+	get 'clients/show'
+	
 	
 	root to: 'sessions#new'
 
+
 	resources :meetings
-  	get 'market/show'
+ match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
 
-  	get 'market/search'
+	
+	resources :clients
 
-  	get 'market/show'
-
-  	get 'market/search'
-
-	get 'profile/view'
-	get 'profile/edit'
-	get 'profile/delete'
 end
+
+

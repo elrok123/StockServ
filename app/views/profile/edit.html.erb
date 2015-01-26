@@ -1,2 +1,74 @@
-<h1>Profile#edit</h1>
-<p>Find me in app/views/profile/edit.html.erb</p>
+<div class="row">
+                     <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Profile
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <a href="/dashboard/show">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="/profile/view">Profile</a>
+                            </li>
+                            <li class="active">
+                                Edit Profile
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+
+      <div class="row">
+      <div class="container-fluid">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 toppad" >
+   
+   		
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= @user.firstname + " " + @user.surname %></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
+                
+                
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                     
+                   
+                         <tr>
+                            
+                        <tr>
+                        <td>Home Address</td>
+                        <td><input type="address" class="form-control" id="exampleInputAddess" value="Address"></td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><input type="email" class="form-control" id="exampleInputEmail1" value="Email"></td>
+                      </tr>
+                      <tr>
+                        <td>Landline</td>
+                        <td><input type="landline" class="form-control" id="landline" value="Landline">
+                        </td>
+                          </tr>
+                          <tr>
+                        <td>Mobile</td>
+                        <td><input type="mobile" class="form-control" id="mobile" value="Mobile">
+                        </td>
+                          </tr>
+                     
+                    </tbody>
+                  </table>
+                  <span class="pull-right">
+                  <a href="edit.html" data-original-title="Save Changes" data-toggle="tooltip" type="button" class="btn btn-success"><i class="fa fa-save"></i> Save </a>
+                  <a href="view.html" data-original-title="Return" data-toggle="tooltip" type="button" class="btn btn-danger"><i class="fa fa-warning"></i> Discard </a>
+              </span>
+                </div>
+              </div>
+            </div>
+           </div>                 
+          </div>
+        </div>
+      </div>
+    
