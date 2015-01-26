@@ -47,13 +47,13 @@
 			</div>
 			<div class="panel-body">
 				<table class="table table-striped">
+					<% if @search_client_data %>
 					<tr>
 						<th class="padding-10">First name</th>
 						<th class="padding-10">Last name</th>
 						<th class="padding-10">Email</th>
 						<th class="padding-10"></th>
 					</tr>
-					<% if @search_client_data %>
 					<% @search_client_data.each do |e| %>
 					<tr>
 						<td class="padding-10"><%= e.first_name %></td>
@@ -61,8 +61,10 @@
 						<td class="padding-10"><%= e.email %></td>
 						<td class="padding-10"><a href=/clients/<%= e.id %>>Additional Info...</a></td>
 					<% end %>
-					<% end %>
 					</tr>
+					<% else %>
+					Search for a client...
+					<% end %>
 				</table>
 			</div>
 		</div>
@@ -91,22 +93,30 @@
 			</div>
 			<div class="panel-body">
 				<table class="table table-striped">
+					<% if @search_company_data %>
 					<tr>
 						<th class="padding-10">Name</th>
 						<th class="padding-10">Symbol</th>
 						<th class="padding-10">High</th>
 						<th class="padding-10">Low</th>
 						<th class="padding-10">Open</th>
+						<th class="padding-10"></th>
 					</tr>
-					<% if @search_company_data %>
 					Results For: <%= @search_company_data[0].symbol %>
 					<tr>
+						<%= form_tag "/dashboard/show", method: :post, class:"" do %>
 						<td class="padding-10"><%= @search_company_data[0].name %></td>
 						<td class="padding-10"><%= @search_company_data[0].symbol %></td>
 						<td class="padding-10"><%= @search_company_data[0].high %></td>
 						<td class="padding-10"><%= @search_company_data[0].low %></td>
 						<td class="padding-10"><%= @search_company_data[0].open %></td>
+						<td>
+							<button type="submit" name="favourite_tag" value=<%=@search_company_data[0].symbol%> class="btn btn-success btn-xs">Add</button>
+						</td>
+						<% end %>
 					</tr>
+					<% else %>
+					Search for a company...
 					<% end %>
 				</table>
 			</div>
