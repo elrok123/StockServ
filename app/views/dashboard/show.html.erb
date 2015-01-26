@@ -1,54 +1,159 @@
-<div class="col-md-9 panel panel-default padding-10 mgn-top-5 standard-height generic">
-	<div class="header"><h3>Dashboard</h3></div>
-	
-	<%= form_tag("/search", method: "get") do %>
-		<%= label_tag(:q, "Search by symbol:") %>
-		<%= text_field_tag(:q) %>
-		<%= submit_tag("Search") %>
-	<% end %>
-
-	Google (GOOG):
-	<%=
-		line_chart (0..2).map {|e| 
-			{	
-				name: @info_array[e*2], 
-				data: @info_array[e*2+1]
-			}
-		},
-		{
-			min: @lowest, 
-			max: @highest,
-			height: 30,
-			width: 100,
-			colors:["#6600FF", "#FF0066", "#66CCFF"],
-			library: {
-					title: "Google (GOOG):",
-					color: "#dadada",
-					backgroundColor: "#000006", 
-					legend: {
-							textStyle: {
-								color: "#dadada"
-							},
-							hAxis: {title:"Date",
-							titleTextStyle: {
-								color: "#dadada"
-							},
-							gridlines: {
-								color:"white"
-							},
-							vAxis: {
-								title: "Numbers",
-								titleTextStyle: {color: "#dadada"}
-							}
-					},
-					pointSize: 3,
-					curveType: 'function',
-					chartArea: {
-						width: "85%",
-						height: "85%"
-					}
-				}
-			}
-		}
-	 %>
-</div> 
+<div class="row">
+<div class="col-lg-12">
+<h1 class="page-header">
+Dashboard
+</h1>
+<ol class="breadcrumb">
+<li class="active">
+Dashboard
+</li>
+</ol>
+</div>
+</div>
+<div class="row">
+<div class="col-ld-12 col-md-12 container-fluid panel-default">
+<div class="panel panel-primary no-curve">
+<div class="panel-heading clearfix no-curve">
+<h4 class="panel-title pull-left" style="padding-top: 7.5px;">Next Meeting</h4>
+</div>
+<div class="panel-body">
+<%= week_calendar table: {class: "table table-bordered"}, tr: {class: "active"}, td: {}, number_of_weeks: 1 do |date| %>
+<div class="calendar-box" style="<%= (@calendar_switch == 1 ? "background: #404040; color: #FF0066" : "background: #606060; color: #66CCFF" ).to_s %>">
+<div class="calendar-box-title"><%= date.to_formatted_s(:long_ordinal) %></div>
+<div class="calendar-box-content">Still need to add meeting logic</div>
+</div>
+<% if @calendar_switch == 1 %>
+<% @calendar_switch = 0 %>
+<% elsif @calendar_switch == 0 %>
+<% @calendar_switch = 1 %>
+<% end %>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-12 col-md-6 container-fluid panel-default">
+<div class="panel panel-primary no-curve">
+<div class="panel-heading clearfix no-curve">
+<h4 class="panel-title pull-left" style="padding-top: 7.5px;">Search Clients</h4>
+<%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
+<%= text_field_tag(:search_client_name, nil, class: "form-control tblack", placeholder: "Enter client name")%>
+<div class="input-group-btn no-curve">
+<%= submit_tag("Search", class: "btn btn-info pull-right") %>
+<% end %>
+</div>
+</div>
+<div class="panel-body">
+<table class="table table-striped">
+<% if @search_client_data %>
+<tr>
+<th class="padding-10">First name</th>
+<th class="padding-10">Last name</th>
+<th class="padding-10">Email</th>
+<th class="padding-10"></th>
+</tr>
+<% @search_client_data.each do |e| %>
+<tr>
+<td class="padding-10"><%= e.first_name %></td>
+<td class="padding-10"><%= e.last_name %></td>
+<td class="padding-10"><%= e.email %></td>
+<td class="padding-10"><a href=/clients/<%= e.id %>>Additional Info...</a></td>
+<% end %>
+</tr>
+<% else %>
+Search for a client...
+<% end %>
+</table>
+</div>
+</div>
+<div class="panel panel-primary no-curve">
+<div class="panel-heading clearfix no-curve">
+<h4 class="panel-title pull-left" style="padding-top: 7.5px;">Current Memos</h4>
+</div>
+<div class="panel-body">
+Panel content
+</div>
+</div>
+</div>
+<div class="col-xs-12 col-md-6 container-fluid panel-default">
+<div class="panel panel-primary no-curve">
+<div class="panel-heading clearfix no-curve">
+<h4 class="panel-title pull-left" style="padding-top: 7.5px;">Search Companies</h4>
+<%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
+<%= text_field_tag(:search_company_tag, nil, class: "form-control tblack", placeholder: "Enter company tag")%>
+<div class="input-group-btn no-curve">
+<%= submit_tag("Search", class: "btn btn-info pull-right") %>
+<% end %>
+</div>
+</div>
+<div class="panel-body">
+<table class="table table-striped">
+<% if @search_company_data %>
+<tr>
+<th class="padding-10">Name</th>
+<th class="padding-10">Symbol</th>
+<th class="padding-10">High</th>
+<th class="padding-10">Low</th>
+<th class="padding-10">Open</th>
+<th class="padding-10"></th>
+</tr>
+Results For: <%= @search_company_data[0].symbol %>
+<tr>
+<%= form_tag "/dashboard/show", method: :post, class:"" do %>
+<td class="padding-10"><%= @search_company_data[0].name %></td>
+<td class="padding-10"><%= @search_company_data[0].symbol %></td>
+<td class="padding-10"><%= @search_company_data[0].high %></td>
+<td class="padding-10"><%= @search_company_data[0].low %></td>
+<td class="padding-10"><%= @search_company_data[0].open %></td>
+<td>
+<button type="submit" name="favourite_tag" value=<%=@search_company_data[0].symbol%> class="btn btn-success btn-xs">Add</button>
+</td>
+<% end %>
+</tr>
+<% else %>
+Search for a company...
+<% end %>
+</table>
+</div>
+</div>
+<div class="panel panel-primary no-curve">
+<div class="panel-heading clearfix no-curve">
+<h4 class="panel-title pull-left" style="padding-top: 7.5px;">Followed Companies</h4>
+<%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
+<%= text_field_tag(:favourite_tag, nil, class: "form-control tblack", placeholder: "Enter company tag")%>
+<div class="input-group-btn no-curve">
+<%= submit_tag("Add", class: "btn btn-info pull-right") %>
+<% end %>
+</div>
+</div>
+<div class="panel-body">
+<table class="table table-striped">
+<tr>
+<th class="padding-10">Name</th>
+<th class="padding-10">Symbol</th>
+<th class="padding-10">High</th>
+<th class="padding-10">Low</th>
+<th class="padding-10">Open</th>
+<th class="padding-10"></th>
+</tr>
+<% @favourites_data.map.with_index do |e, i| %>
+<%= form_tag "/dashboard/show", method: :post, class:"" do %>
+<tr>
+<td class="padding-10"><%= e.name %></td>
+<td class="padding-10"><%= e.symbol %></td>
+<td class="padding-10"><%= e.high %></td>
+<td class="padding-10"><%= e.low %></td>
+<td class="padding-10"><%= e.open %></td>
+<td class="padding-10">
+<% #hidden_field_tag :unfavourite_tag, :value => "AAPL" %>
+<button type="submit" name="stock_symbol" value=<%=(@favourites[i].id).to_s%> class="btn btn-danger btn-xs">Remove</button>
+<% end %>
+</td>
+</tr>
+<% end %>
+</table>
+</div>
+</div>
+</div>
+</div>

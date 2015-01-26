@@ -17,12 +17,12 @@ end
 
 
 def show
-		@meetings = Array.new
-	unless Meeting.all.count > 1
-		@meetings << Meeting.all.limit(1)
+		@memos = Array.new
+	unless Memo.all.count > 1
+		@memo << Memo.all.limit(1)
 	else
-		Meeting.all.each do |meeting|
-			@meetings << meeting
+		Memo.all.each do |memo|
+			@memos << memo
 		end
 	end
 end
