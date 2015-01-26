@@ -56,6 +56,14 @@ class DashboardController < ApplicationController
 			redirect_to "/dashboard/show"
 		end
 
+		if params.has_key?(:search_company_tag)
+			search_company
+		end
+
+		if params.has_key?(:search_client_name)
+			search_client
+		end
+
 	end
 	
 private
@@ -96,6 +104,15 @@ private
 		else
 			Watchlist.new(user_id: session[:user_id], favourite_id: Favourite.find_by(stock_symbol: get_favourite_symbol(:favourite_tag)).id).save
 		end
+	end
+
+	def search_company
+		@search_company_data = YahooFinance.quotes([params[:search_company_tag].upcase], [:high, :name, :symbol, :low, :open])
+	end
+
+	def search_client
+		search_term = params[:search_client_name].downcase.split
+		@search_client_data = Client.where(first_name: search_term.first.humanize, last_name: search_term.last.humanize)
 	end
 
 
