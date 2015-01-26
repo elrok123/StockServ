@@ -112,7 +112,7 @@ private
 
 	def search_client
 		search_term = params[:search_client_name].downcase.split
-		@search_client_data = Client.where(first_name: search_term.first.humanize, last_name: search_term.last.humanize)
+		@search_client_data = Client.where("first_name='#{search_term.first.humanize}' OR last_name='#{search_term.last.humanize}'")
 	end
 
 
