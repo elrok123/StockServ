@@ -137,6 +137,7 @@
 
 					</tr>
 					<% @favourites_data.map.with_index do |e, i| %>
+					<%= form_tag "/dashboard/show", method: :post, class:"" do %>
 					<tr>
 						<td class="padding-10"><%= e.name %></td>
 						<td class="padding-10"><%= e.symbol %></td>
@@ -144,7 +145,7 @@
 						<td class="padding-10"><%= e.low %></td>
 						<td class="padding-10"><%= e.open %></td>
 						<td class="padding-10"> 
-							<%= form_tag "/dashboard/show", method: :post, class:"" do %>
+							
 							<% #hidden_field_tag :unfavourite_tag, :value => "AAPL" %>
 							<button type="submit" name="stock_symbol" value=<%=(@favourites[i].id).to_s%> class="btn btn-danger btn-xs">Remove</button>
 
