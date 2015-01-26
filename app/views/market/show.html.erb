@@ -1,0 +1,84 @@
+
+<div class="row">
+                     <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Market
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <a href="/dashboard/show">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                Market
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+
+<div class="row">
+
+<div class="panel panel-primary">
+   <div class="panel-heading">
+      <h3 class="panel-title">Search Graphs</h3>
+   </div>
+   <div class="panel-body">
+      
+	
+	<%= form_tag("/market/show", method: :get) do %>
+		<%= text_field_tag(:company_tag, nil, class: "make-text-black") %>
+	
+		<%= submit_tag("Search", class: "btn btn-primary") %>
+		
+	<% end %>
+	<%= @comp_name[0].name %> (<%= @data[0].symbol.upcase %>):
+	<%=
+		line_chart (0..2).map {|e| 
+			{	
+				name: @info_array[e*2], 
+				data: @info_array[e*2+1]
+			}
+		},
+		{
+			min: @lowest, 
+			max: @highest,
+			height: 30,
+			width: 100,
+			colors:["#6600FF", "#FF0066", "#66CCFF"],
+			library: {
+				color: "#dadada",
+				backgroundColor: "#000006", 
+				legend: {
+					textStyle: {
+						color: "#dadada"
+					}
+				},
+				hAxis: {
+					title:"Date",
+					titleTextStyle: {
+						color: "#dadada"
+					}
+				},
+				gridlines: {
+					color: "#fff"
+				},
+				vAxis: {
+					title: "Numbers",
+					titleTextStyle: {
+						color: "#dadada"
+					}
+				},
+				pointSize: 3,
+				curveType: 'function',
+				chartArea: {
+					width: "80%",
+					height: "60%"	
+				}
+			}
+		}
+	 %>
+</div>
+</div>
+
+</div>
+                

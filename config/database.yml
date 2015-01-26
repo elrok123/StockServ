@@ -83,4 +83,4 @@ production:
   <<: *default
   database: stockserv_production
   username: stockserv
-  password: <%= ENV['STOCKSERV_DATABASE_PASSWORD'] %>
+  password: mccabec123

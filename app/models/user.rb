@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 	before_save :encrypt_password
 	validates_presence_of :email
 	validates_uniqueness_of :email
+	has_many :clients
 
 	def self.authenticate(details)
 		user = find_by_email(details[:email])

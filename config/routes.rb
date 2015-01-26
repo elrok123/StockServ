@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
   
 	get 'sessions/new'
@@ -6,13 +7,22 @@ Rails.application.routes.draw do
 	get 'sessions/login'
 	get 'sessions/logout'
 	get 'dashboard/show'
-	post 'dashboard/show'
-
 	get '/login' => 'sessions#new'
 	get '/logout' => 'sessions#destroy'
+	get 'market/show'
+	get 'profile/view'
+	get 'profile/edit'
+	post 'dashboard/show'
+	get 'clients/show'
+	
 	
 	root to: 'sessions#new'
 
+
 	resources :meetings
+ 	match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
+	resources :clients
 
 end
+
+

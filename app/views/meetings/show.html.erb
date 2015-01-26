@@ -17,15 +17,22 @@
                     </div>
         <div class="panel-body">
             <p>
-		<% unless @meetings.nil? %>
-			<%= @meetings.each do |meeting| %>
-				Subject: <%= meeting.meeting_subject %> <br/>
-				Date: <%= meeting.date_of_meeting %> <br/>
-				Client: <%= meeting.client_name %> <br/>
-				Meeting Description: <%= meeting.meeting_description %>
-			<% end %>
-		<% end %>
-	</p>
+        		<% if !@meetings.nil? && @meetings.count > 1 %>
+        			<% @meetings.each do |meeting| %>
+        				Subject: <%= @meeting.meeting_subject %> <br/>
+        				Date: <%= @meeting.date_of_meeting %> <br/>
+        				Client: <%= @meeting.client_name %> <br/>
+        				Meeting Description: <%= meeting.meeting_description %>
+        			<% end %>
+                <% elsif !@meetings.count == 1 %>
+                    Subject: <%= @meeting.meeting_subject %> <br/>
+                    Date: <%= @meeting.date_of_meeting %> <br/>
+                    Client: <%= @meeting.client_name %> <br/>
+                    Meeting Description: <%= @meeting.meeting_description %>
+                <% else %>
+                    No meetings currently...
+        		<% end %>
+        	</p>
         </div>
     </div>
 
