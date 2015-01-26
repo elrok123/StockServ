@@ -38,23 +38,18 @@
                          <tr>
                             
                         <tr>
-                        <td>Home Address</td>
-                        <td>>>Address<<</td>
+                        <td>Username</td>
+                        <td><%= @user.username %></td>
                       </tr>
                       <tr>
                         <td>Email</td>
-                        <td><a href="mailto:info@support.com">>>email that links<<</a></td>
+                        <td><a href="mailto:info@support.com"><%= @user.email %></a></td>
                       </tr>
                       <tr>
-                        <td>Landline</td>
-                        <td>01245678910
-                        </td>
+                        <td>Acount Created</td>
+                        <td><%= @user.created_at %></td>
                           </tr>
-                          <tr>
-                        <td>Mobile</td>
-                        <td>07565945215
-                        </td>
-                          </tr>
+                          
                      
                     </tbody>
                   </table>
