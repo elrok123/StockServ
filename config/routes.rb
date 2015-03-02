@@ -1,6 +1,8 @@
 
 Rails.application.routes.draw do
   
+  get 'calendar/show'
+
 	get 'sessions/new'
 	post 'sessions/create'
 	get 'sessions/destroy'
