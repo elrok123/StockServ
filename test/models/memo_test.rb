@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ClientsControllerTest < ActionController::TestCase
+class MemoTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
