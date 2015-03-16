@@ -75,10 +75,10 @@
                   <span class="pull-right">
                   	<%= link_to 'Edit', edit_client_path(@client), class: "btn btn-warning" %>
                   <%= link_to 'Back to Client List', clients_path, class: "btn btn-info" %>
+                  <%= link_to 'Portfolio', portfolio_path(@client), class: "btn btn-success" %>
                   <%= link_to 'Delete', client_path(@client),
         method: :delete,
         data: { confirm: 'Are you sure?' }, class: "btn btn-danger " %>
-                  
                 </span>
                 </div>
               </div>
