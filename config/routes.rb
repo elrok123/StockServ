@@ -1,8 +1,6 @@
 
 Rails.application.routes.draw do
   
-  get 'calendar/show'
-
 	get 'sessions/new'
 	post 'sessions/create'
 	get 'sessions/destroy'
@@ -23,5 +21,6 @@ Rails.application.routes.draw do
 	resources :meetings
  	match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
 	resources :clients
+	resources :portfolios
 
 end
