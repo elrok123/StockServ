@@ -21,7 +21,18 @@
 				<%= week_calendar table: {class: "table table-bordered"}, tr: {class: "active"}, td: {}, number_of_weeks: 1 do |date| %>
 					<div class="calendar-box" style="<%= (@calendar_switch == 1 ? "background: #404040; color: #FF0066" : "background: #606060; color: #66CCFF" ).to_s %>">
 						<div class="calendar-box-title"><%= date.to_formatted_s(:long_ordinal) %></div>
-						<div class="calendar-box-content">Still need to add meeting logic</div>
+						<div class="calendar-box-content">
+							<% if @meetings[date.to_formatted_s(:db)].to_a.count == 1 %>
+								<%= @meetings[date.to_formatted_s(:db)][0][0] %></br><%= @meetings[date.to_formatted_s(:db)][0][1] %></br></br>
+							<% elsif @meetings[date.to_formatted_s(:db)].to_a.count > 1  %>
+								<% @meetings[date.to_formatted_s(:db)].each do |meeting| %>
+									<%= meeting[0] %></br><%= meeting[1] %></br></br>
+								<% end %>
+							<% else %>
+								No meetings scheduled...
+							<% end %>
+							</br>
+						</div>
 					</div>
 					<% if @calendar_switch == 1 %>
 						<% @calendar_switch = 0 %>
