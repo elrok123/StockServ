@@ -72,7 +72,7 @@
 						<td class="padding-10"><%= e.last_name %></td>
 						<td class="padding-10"><%= e.email %></td>
 						<td class="padding-10"><%= link_to 'Portfolio', portfolio_path(e), class: "btn btn-success btn-xs" %></td>
-						<td class="padding-10"><a class =  "btn btn-info btn-xs" href=/clients/<%= e.id %>>Additional Info...</a></td>
+						<td class="padding-10"><%= link_to 'Additional info', client_path(e), class: "btn btn-info btn-xs" %></td>
 					<% end %>
 					</tr>
 					<% else %>
