@@ -3,10 +3,10 @@ class ClientsController < ApplicationController
 		@clients = Client.where("user_id = ?", session[:user_id])
 	end
 	def show
-		@client = Client.find(params[:id])
-		if @client.user_id != session[:user_id]
-			#Need a permission denied page, for now set it to new
-			render 'new'
+		@client = Client.find_by_id(params[:id])
+		if @client.nil? || @client.user_id != session[:user_id]
+			#This can be replaced with a custom "permission denied" or "no such client" page
+			render :file => "/app/views/errors/error404.erb"
 		end	
 	end
 	def new
