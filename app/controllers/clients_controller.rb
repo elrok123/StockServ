@@ -5,8 +5,7 @@ class ClientsController < ApplicationController
 	def show
 		@client = Client.find(params[:id])
 		if @client.user_id != session[:user_id]
-			#Need a permission denied page, for now set it to new
-			render 'new'
+			render 'denied'
 		end	
 	end
 	def new
