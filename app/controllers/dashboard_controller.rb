@@ -31,6 +31,12 @@ class DashboardController < ApplicationController
 			delete_favourite
 			redirect_to "/dashboard/show"
 		end
+
+		if params.has_key?(:memo_box) 
+			:memo_box
+			save_memo
+			redirect_to "/dashboard/show"
+		end
 		
 		@calendar_switch = 1
 
@@ -55,7 +61,12 @@ class DashboardController < ApplicationController
 		@highest = (@i + 10.0)
 		@info_array[3].map {|k, v| @i = v.gsub(/[^\d^\.]/, '').to_f unless @i < v.gsub(/[^\d^\.]/, '').to_f }
 		@lowest = (@i - 10.0)
+		@memo = get_memo[0]
+		if(@memo)
+			@memo_description = @memo.description
+		end
 	end
+
 private
 	def company_tag
 		if params.has_key?(:company_tag)
@@ -93,6 +104,18 @@ private
 			Watchlist.new(user_id: session[:user_id], favourite_id: test_exist.id).save
 		else
 			Watchlist.new(user_id: session[:user_id], favourite_id: Favourite.find_by(stock_symbol: get_favourite_symbol(:favourite_tag)).id).save
+		end
+	end
+
+	def get_memo
+		 return Memo.where("user_id = #{session[:user_id]}")
+	end
+
+	def save_memo
+		if(@memo = get_memo[0])
+			@memo.update_attribute(:description, params[:memo_box])
+		else
+			Memo.new(user_id: session[:user_id], description: params[:memo_box]).save
 		end
 	end
 

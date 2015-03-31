@@ -88,7 +88,10 @@
 				
 			</div>
 			<div class="panel-body">
-				Panel content
+				<%= form_tag("/dashboard/show", method: :post) do %>
+				<%= text_area_tag(:memo_box, @memo_description, rows: 7, class: "form-control")%></br>
+				<%= submit_tag("Save", class: "btn btn-success pull-left") %>
+				<% end %>
 			</div>
 		</div>
 	</div> 
