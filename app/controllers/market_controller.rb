@@ -15,12 +15,13 @@ class MarketController < ApplicationController
 			end 
 
 			@info_array = ["High", @high, "Low", @low, "Open", @open]
-			@i = -9999999.99 
+			@i = -9.99 
 			@info_array[1].map {|k, v| @i = v.gsub(/[^\d^\.]/, '').to_f unless @i > v.gsub(/[^\d^\.]/, '').to_f } 
 			@highest = (@i + 50.0).round(-2) 
 			@info_array[3].map {|k, v| @i = v.gsub(/[^\d^\.]/, '').to_f unless @i < v.gsub(/[^\d^\.]/, '').to_f } 
 			@lowest = (@i - 50.0).round(-2) 
 	end
+	
 	def company_tag
 		if params.has_key?(:company_tag)
 			params[:company_tag].upcase

@@ -1,0 +1,127 @@
+<div class="row">
+ <div class="col-lg-12">
+  <h1 class="page-header">
+    <%= @client.first_name + " " + @client.last_name + " Portfolio" %>
+  </h1>
+ </div>
+</div>
+
+<div class="row">
+
+    <div class="col-xs-12 col-md-3 container-fluid panel-default" >
+      <div class="panel panel-primary no-curve">
+        <div class="panel-heading">
+          <h3 class="panel-title" style="padding-top: 7.5px;">Balance Info</h3>
+        </div>
+        <%= form_tag("PUTSTUFFHERE", method: :post) do %>
+        <div class="panel-body">
+          Current Balance: £<%= @client.balance %> </br>
+          <%= text_field_tag(:funds_to_add, nil, class: "form-control tblack", placeholder: "Enter amount of money")%></br>
+          <button type="submit" name="add_money" value="funds_to_add" class="btn btn-success">Add funds</button>
+        </div>
+        <% end %>
+      </div>                 
+    </div>
+    <div class="col-xs-12 col-md-9 container-fluid panel-default">
+
+      <div class="panel panel-primary no-curve">
+        <div class="panel-heading clearfix no-curve">
+          <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Stock Buying</h4>
+          <%= form_tag("PUTSTUFFHERE", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
+          <%= text_field_tag(:search_company_tag, nil, class: "form-control tblack", placeholder: "Enter company tag")%>
+          <div class="input-group-btn no-curve">
+            <%= submit_tag("Search", class: "btn btn-primary pull-right") %>
+            <% end %>
+          </div>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped">
+            <% if @search_company_data %>
+            <tr>
+              <th class="padding-10">Name</th>
+              <th class="padding-10">Symbol</th>
+              <th class="padding-10">High</th>
+              <th class="padding-10">Low</th>
+              <th class="padding-10">Open</th>
+              <th class="padding-10"></th>
+              <th class="padding-10"></th>
+            </tr>
+            <tr>
+              <td class="padding-10"><%= @search_company_data[0].name %></td>
+              <td class="padding-10"><%= @search_company_data[0].symbol %></td>
+              <td class="padding-10"><%= @search_company_data[0].high %></td>
+              <td class="padding-10"><%= @search_company_data[0].low %></td>
+              <td class="padding-10"><%= @search_company_data[0].open %></td>
+            
+            
+              <%= form_tag "PUTSTUFFHERE", method: :post, class:"" do %>
+              <td>
+                <%= text_field_tag(:shares_to_alter, nil, class: "form-control tblack", placeholder: "Enter number of shares")%>
+              </td>
+              <td>
+                <button type="submit" name="buy_shares" value=<%=@search_company_data[0].symbol%> class="btn btn-success">Buy</button>
+              </td>
+            </tr>
+            <% end %>
+            <% else %>
+            Search for a company...
+            <% end %>
+          </table>
+        </div>
+      </div>
+  </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-xs-12 col-md-9 container-fluid panel-default">
+
+      <div class="panel panel-primary no-curve">
+        <div class="panel-heading clearfix no-curve">
+          <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Stock Selling</h4>          
+          <div class="input-group-btn no-curve">
+             </div>
+        </div>
+        <div class="panel-body">
+          <table class="table table-striped">
+            <% if @search_company_data %>
+            <tr>
+              <th class="padding-10">Name</th>
+              <th class="padding-10">Symbol</th>
+              <th class="padding-10">High</th>
+              <th class="padding-10">Low</th>
+              <th class="padding-10">Open</th>
+              <th class="padding-10">Shares Owned</th>
+              <th class="padding-10"></th>
+              <th class="padding-10"></th>
+              <th class="padding-10"></th>
+            </tr>
+            <tr>
+              <td class="padding-10"><%= @search_company_data[0].name %></td>
+              <td class="padding-10"><%= @search_company_data[0].symbol %></td>
+              <td class="padding-10"><%= @search_company_data[0].high %></td>
+              <td class="padding-10"><%= @search_company_data[0].low %></td>
+              <td class="padding-10"><%= @search_company_data[0].open %></td>
+              <td class="padding-10"><!--OWNED SHARES !--></td>
+            
+            
+              <%= form_tag "PUTSTUFFHERE", method: :post, class:"" do %>
+              <td>
+                <%= text_field_tag(:shares_to_alter, nil, class: "form-control tblack", placeholder: "Enter number of shares")%>
+              </td>
+              <td>
+                <button type="submit" name="buy_shares" value=<%=@search_company_data[0].symbol%> class="btn btn-success">Sell</button>
+              </td>
+              <td>
+                <button type="submit" name="sell_shares" value=<%=@search_company_data[0].symbol%> class="btn btn-danger">Sell All</button>
+              </td>
+            </tr>
+            <% end %>
+            <% else %>
+            Search for a company...
+            <% end %>
+          </table>
+        </div>
+      </div>
+  </div>
+  </div>

@@ -1,6 +1,6 @@
 body {
     margin-top: 100px;
-    background-color: #428BCA;
+    background-color: #583e55;
     
 }
 
@@ -47,7 +47,7 @@ body {
     }
 }
 .navbar-inverse {
-    background-color: #428BCA;
+    background-color: #3e313c;
     border-color: #080808;
 }
 
@@ -61,7 +61,7 @@ body {
 
 .top-nav {
     padding: 0 15px;
-    background-color: #428BCA;
+    background-color: #3e313c;
     color: #fff;
 }
 
@@ -86,7 +86,7 @@ body {
 .top-nav>.open>a:hover,
 .top-nav>.open>a:focus {
     color: #fff;
-    background-color: #428bca;
+    background-color: #3e313c;
 }
 
 
@@ -149,7 +149,7 @@ ul.alert-dropdown {
         border: none;
         border-radius: 0;
         overflow-y: auto;
-        background-color: #428BCA;
+        background-color: #583e55;
     }
 
     .side-nav>li>a {
@@ -157,13 +157,15 @@ ul.alert-dropdown {
     }
 
 
-
+    .navbar-nav>.active>a {
+        background-color: #4c9689 !important;
+    }
 
 
     .side-nav li a:hover,
     .side-nav li a:focus {
         outline: none;
-        background-color: #428bca !important;
+        background-color: #3e313c !important;
     }
 }
 
@@ -179,7 +181,7 @@ ul.alert-dropdown {
 }
 
 .side-nav>li>ul>li>a:hover {
-    color: #428bca;
+    color: #fff;
 }
 
 /* Flot Chart Containers */
@@ -199,23 +201,33 @@ ul.alert-dropdown {
 .huge {
     font-size: 40px;
 }
-
-.panel-green {
-    border-color: #5cb85c;
-}
-
-.panel-green .panel-heading {
-    border-color: #5cb85c;
+.btn-green {
+    background-color: #4c9689;
     color: #fff;
-    background-color: #5cb85c;
 }
 
-.panel-green a {
-    color: #5cb85c;
+.list-group-item-text{
+    color:#000006;
 }
 
-.panel-green a:hover {
-    color: #3d8b3d;
+.panel-primary {
+    border-color: #583e55;
+}
+
+.panel-primary .panel-heading {
+    border-color: #583e55;
+    color: #fff;
+    background-color: #583e55;
+}
+
+.panel-primary a {
+    color: #fff;
+    font-weight: bold;
+}
+
+.panel-primary a:hover {
+    color: #fff;
+    font-weight: bold;
 }
 
 .panel-red {

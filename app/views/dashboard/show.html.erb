@@ -21,7 +21,18 @@
 				<%= week_calendar table: {class: "table table-bordered"}, tr: {class: "active"}, td: {}, number_of_weeks: 1 do |date| %>
 					<div class="calendar-box" style="<%= (@calendar_switch == 1 ? "background: #404040; color: #FF0066" : "background: #606060; color: #66CCFF" ).to_s %>">
 						<div class="calendar-box-title"><%= date.to_formatted_s(:long_ordinal) %></div>
-						<div class="calendar-box-content">Still need to add meeting logic</div>
+						<div class="calendar-box-content">
+							<% if @meetings[date.to_formatted_s(:db)].to_a.count == 1 %>
+								<%= @meetings[date.to_formatted_s(:db)][0][0] %></br><%= @meetings[date.to_formatted_s(:db)][0][1] %></br></br>
+							<% elsif @meetings[date.to_formatted_s(:db)].to_a.count > 1  %>
+								<% @meetings[date.to_formatted_s(:db)].each do |meeting| %>
+									<%= meeting[0] %></br><%= meeting[1] %></br></br>
+								<% end %>
+							<% else %>
+								No meetings scheduled...
+							<% end %>
+							</br>
+						</div>
 					</div>
 					<% if @calendar_switch == 1 %>
 						<% @calendar_switch = 0 %>
@@ -41,7 +52,7 @@
 				<%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
 				<%= text_field_tag(:search_client_name, nil, class: "form-control tblack", placeholder: "Enter client name")%>
 				<div class="input-group-btn no-curve">
-					<%= submit_tag("Search", class: "btn btn-info pull-right") %>
+					<%= submit_tag("Search", class: "btn btn-primary pull-right") %>
 					<% end %>
 				</div>
 			</div>
@@ -53,13 +64,15 @@
 						<th class="padding-10">Last name</th>
 						<th class="padding-10">Email</th>
 						<th class="padding-10"></th>
+						<th class="padding-10"></th>
 					</tr>
 					<% @search_client_data.each do |e| %>
 					<tr>
 						<td class="padding-10"><%= e.first_name %></td>
 						<td class="padding-10"><%= e.last_name %></td>
 						<td class="padding-10"><%= e.email %></td>
-						<td class="padding-10"><a href=/clients/<%= e.id %>>Additional Info...</a></td>
+						<td class="padding-10"><%= link_to 'Portfolio', portfolio_path(e), class: "btn btn-success btn-xs" %></td>
+						<td class="padding-10"><%= link_to 'Additional info', client_path(e), class: "btn btn-info btn-xs" %></td>
 					<% end %>
 					</tr>
 					<% else %>
@@ -87,7 +100,7 @@
 				<%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
 				<%= text_field_tag(:search_company_tag, nil, class: "form-control tblack", placeholder: "Enter company tag")%>
 				<div class="input-group-btn no-curve">
-					<%= submit_tag("Search", class: "btn btn-info pull-right") %>
+					<%= submit_tag("Search", class: "btn btn-primary pull-right") %>
 					<% end %>
 				</div>
 			</div>
@@ -130,7 +143,7 @@
 				<%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
 				<%= text_field_tag(:favourite_tag, nil, class: "form-control tblack", placeholder: "Enter company tag")%>
 				<div class="input-group-btn no-curve">
-					<%= submit_tag("Add", class: "btn btn-info pull-right") %>
+					<%= submit_tag("Add", class: "btn btn-primary pull-right") %>
 					<% end %>
 					
 				</div>

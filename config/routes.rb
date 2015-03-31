@@ -15,12 +15,13 @@ Rails.application.routes.draw do
 	post 'dashboard/show'
 	get 'clients/show'
 	post 'meetings/create'
-	get "/calendar/view"
+	get "/calendar/show"
 	
 	root to: 'sessions#new'
 
 	resources :meetings
  	match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
 	resources :clients
+	resources :portfolios
 
 end

@@ -1,0 +1,50 @@
+
+<div class="row">
+                     <div class="col-lg-6">
+                        <h1 class="page-header">
+                            Calendar
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <a href="/dashboard/show">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                Calendar
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+<div class="row">
+	<div class="col-ld-12 col-md-12 container-fluid panel-default">
+		<div class="panel panel-primary no-curve">
+			<div class="panel-heading clearfix no-curve">
+				<h4 class="panel-title pull-left" style="padding-top: 7.5px;">Meeting Calendar</h4>
+			</div>
+			<div class="panel-body">
+				<%= month_calendar table: {class: "table table-bordered"}, tr: {class: "active"}, td: {} do |date| %>
+					<div class="calendar-box" style="<%= (@calendar_switch == 1 ? "background: #404040; color: #FF0066" : "background: #606060; color: #66CCFF" ).to_s %>">
+						<div class="calendar-box-title"><%= date.to_formatted_s(:long_ordinal) %></div>
+						<div class="calendar-box-content">
+							<% if @meetings[date.to_formatted_s(:db)].to_a.count == 1 %>
+								<%= @meetings[date.to_formatted_s(:db)][0][0] %></br><%= @meetings[date.to_formatted_s(:db)][0][1] %></br></br>
+							<% elsif @meetings[date.to_formatted_s(:db)].to_a.count > 1  %>
+								<% @meetings[date.to_formatted_s(:db)].each do |meeting| %>
+									<%= meeting[0] %></br><%= meeting[1] %></br></br>
+								<% end %>
+							<% else %>
+								No meetings scheduled...
+							<% end %>
+							</br>
+						</div>
+					</div>
+					<% if @calendar_switch == 1 %>
+						<% @calendar_switch = 0 %>
+					<% elsif @calendar_switch == 0 %>
+						<% @calendar_switch = 1 %>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
