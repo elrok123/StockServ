@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126121849) do
+ActiveRecord::Schema.define(version: 20150330181643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,10 +42,20 @@ ActiveRecord::Schema.define(version: 20150126121849) do
   create_table "meetings", force: :cascade do |t|
     t.string   "meeting_subject"
     t.datetime "meeting_date"
-    t.string   "client_name"
     t.text     "meeting_description"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "user_id"
+    t.integer  "client_id"
+  end
+
+  add_index "meetings", ["client_id"], name: "index_meetings_on_client_id", using: :btree
+  add_index "meetings", ["user_id"], name: "index_meetings_on_user_id", using: :btree
+
+  create_table "memos", force: :cascade do |t|
+    t.text     "memo_description"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,4 +1,7 @@
 class Meeting < ActiveRecord::Base
+	belongs_to :user
+	belongs_to :client
+
     validates :meeting_subject, presence: true,
 				length: { 
 					  minimum: 2,
