@@ -113,9 +113,10 @@ private
 
 	def save_memo
 		if(@memo = get_memo[0])
-			@memo.update_attribute(:description, params[:memo_box])
+			@description = params[:memo_box]
+			@memo.update_attribute(:description, @description)
 		else
-			Memo.new(user_id: session[:user_id], description: params[:memo_box]).save
+			Memo.new(user_id: session[:user_id], description: @description).save
 		end
 	end
 

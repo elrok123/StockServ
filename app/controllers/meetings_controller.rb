@@ -2,13 +2,14 @@ class MeetingsController < ApplicationController
 
     def show
     	@meetings = Array.new
-    	unless Meeting.all.count > 1
+    	unless Meeting.all.count > 0
     		@meetings << Meeting.all.limit(1)
     	else
 	    	Meeting.all.each do |meeting|
 				@meetings << meeting
 	    	end
     	end
+    	@meetings = @meetings.sort_by &:meeting_date
     end
 
     def new
@@ -44,7 +45,7 @@ class MeetingsController < ApplicationController
 		@meeting = Meeting.find(params[:id])
 		@meeting.destroy
 
-		redirect_to meetings_path
+		redirect_to '/meetings/show'
     end
 
 private

@@ -28,7 +28,7 @@
       
 	
 	<%= form_tag("/market/show", method: :get) do %>
-		<%= text_field_tag(:company_tag, nil) %>
+		<%= text_field_tag(:company_tag, nil, placeholder: "Enter company tag") %>
 	
 		<%= submit_tag("Search", class: "btn btn-primary") %>
 		
@@ -89,9 +89,9 @@
    </div>
    <div class="panel-body">
 	<%= form_tag("/market/show", method: :get) do %>
-		Company 1: <%= text_field_tag(:company_tag_a, nil) %>
+		Company 1: <%= text_field_tag(:company_tag_a, nil, placeholder: "Enter company tag") %>
 		</br>
-		Company 2: <%= text_field_tag(:company_tag_b, nil) %>
+		Company 2: <%= text_field_tag(:company_tag_b, nil, placeholder: "Enter company tag") %>
 		</br>
 		<%= submit_tag("Compare", class: "btn btn-primary") %>
 		
