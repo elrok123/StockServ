@@ -1,7 +1,7 @@
 
 Rails.application.routes.draw do
   
-  get 'calendar/show'
+  get 'portfolios/add'
 
 	get 'sessions/new'
 	post 'sessions/create'
@@ -17,11 +17,14 @@ Rails.application.routes.draw do
 	post 'dashboard/show'
 	get 'clients/show'
 	post 'meetings/create'
+	get "/calendar/show"
+	post '/portfolios/add' => 'portfolios#add'
 	
 	root to: 'sessions#new'
 
 	resources :meetings
  	match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
 	resources :clients
+	resources :portfolios
 
 end

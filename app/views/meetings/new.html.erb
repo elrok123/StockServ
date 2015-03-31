@@ -41,6 +41,7 @@
                   <tr>
                     <td>Subject</td>
                     <td><%= f.text_field :meeting_subject %></td>
+                    <%= f.hidden_field :user_id, value: session[:user_id] %>
                   </tr>
                  
                   <tr>

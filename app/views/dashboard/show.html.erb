@@ -52,7 +52,7 @@
 				<%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
 				<%= text_field_tag(:search_client_name, nil, class: "form-control tblack", placeholder: "Enter client name")%>
 				<div class="input-group-btn no-curve">
-					<%= submit_tag("Search", class: "btn btn-info pull-right") %>
+					<%= submit_tag("Search", class: "btn btn-primary pull-right") %>
 					<% end %>
 				</div>
 			</div>
@@ -64,13 +64,15 @@
 						<th class="padding-10">Last name</th>
 						<th class="padding-10">Email</th>
 						<th class="padding-10"></th>
+						<th class="padding-10"></th>
 					</tr>
 					<% @search_client_data.each do |e| %>
 					<tr>
 						<td class="padding-10"><%= e.first_name %></td>
 						<td class="padding-10"><%= e.last_name %></td>
 						<td class="padding-10"><%= e.email %></td>
-						<td class="padding-10"><a href=/clients/<%= e.id %>>Additional Info...</a></td>
+						<td class="padding-10"><%= link_to 'Portfolio', portfolio_path(e), class: "btn btn-success btn-xs" %></td>
+						<td class="padding-10"><%= link_to 'Additional info', client_path(e), class: "btn btn-info btn-xs" %></td>
 					<% end %>
 					</tr>
 					<% else %>
@@ -98,7 +100,7 @@
 				<%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
 				<%= text_field_tag(:search_company_tag, nil, class: "form-control tblack", placeholder: "Enter company tag")%>
 				<div class="input-group-btn no-curve">
-					<%= submit_tag("Search", class: "btn btn-info pull-right") %>
+					<%= submit_tag("Search", class: "btn btn-primary pull-right") %>
 					<% end %>
 				</div>
 			</div>
@@ -141,7 +143,7 @@
 				<%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
 				<%= text_field_tag(:favourite_tag, nil, class: "form-control tblack", placeholder: "Enter company tag")%>
 				<div class="input-group-btn no-curve">
-					<%= submit_tag("Add", class: "btn btn-info pull-right") %>
+					<%= submit_tag("Add", class: "btn btn-primary pull-right") %>
 					<% end %>
 					
 				</div>

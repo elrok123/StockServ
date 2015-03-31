@@ -1,11 +1,11 @@
 class MeetingsController < ApplicationController
-
     def show
-    	@meetings = Array.new
-    	unless User.find(session[:user_id]).meetings. > 1
-    		@meetings << Meeting.all.limit(1)
+    	
+    	if User.find(session[:user_id]).meetings.count == 1
+    		@meetings = User.find(session[:user_id]).meetings
     	else
-	    	Meeting.all.each do |meeting|
+    		@meetings = Array.new
+	    	User.find(session[:user_id]).meetings.each do |meeting|
 				@meetings << meeting
 	    	end
     	end
@@ -50,7 +50,6 @@ class MeetingsController < ApplicationController
 private
 
 	def meeting_params
-	    params.require(:meeting).permit(:meeting_subject, :meeting_date, :client_name, :meeting_description)
+	    params.require(:meeting).permit(:meeting_subject, :meeting_date, :user_id, :client_id, :meeting_description)
 	end
-
 end

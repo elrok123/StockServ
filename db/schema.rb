@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331141420) do
+ActiveRecord::Schema.define(version: 20150331191936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,11 +24,12 @@ ActiveRecord::Schema.define(version: 20150331141420) do
     t.string   "home_tel"
     t.string   "mobile_tel"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.integer  "user_id"
     t.string   "title"
     t.float    "balance"
+    t.decimal  "funds",      precision: 8, scale: 2, default: 0.0
   end
 
   add_index "clients", ["user_id"], name: "index_clients_on_user_id", using: :btree
