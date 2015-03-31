@@ -22,20 +22,20 @@
 
 <div class="panel panel-primary">
 	 <div class="panel-heading">
-      <h3 class="panel-title">Search Graphs</h3>
+      <h3 class="panel-title">Search Company</h3>
    </div>
    <div class="panel-body">
       
 	
 	<%= form_tag("/market/show", method: :get) do %>
-		<%= text_field_tag(:company_tag, nil, class: "make-text-black") %>
+		<%= text_field_tag(:company_tag, nil) %>
 	
 		<%= submit_tag("Search", class: "btn btn-primary") %>
 		
 	<% end %>
 	<%= @comp_name[0].name %> (<%= @data[0].symbol.upcase %>):
 	<%=
-		line_chart (0..2).map {|e| 
+		line_chart (0..3).map {|e| 
 			{	
 				name: @info_array[e*2], 
 				data: @info_array[e*2+1]
@@ -44,6 +44,69 @@
 		{
 			min: @lowest, 
 			max: @highest,
+			height: 30,
+			width: 100,
+			colors:["#6600FF", "#FF0066", "#66CCFF", "#4C9689"],
+			library: {
+				color: "#000006",
+				backgroundColor: "#fff", 
+				legend: {
+					textStyle: {
+						color: "#000006"
+					}
+				},
+				hAxis: {
+					title:"Date",
+					titleTextStyle: {
+						color: "#000006"
+					}
+				},
+				gridlines: {
+					color: "#000006"
+				},
+				vAxis: {
+					title: "Numbers",
+					titleTextStyle: {
+						color: "#000006"
+					}
+				},
+				pointSize: 3,
+				curveType: 'function',
+				chartArea: {
+					width: "80%",
+					height: "60%"	
+				}
+			}
+		}
+	 %>
+
+	</div>
+</div>
+
+<div class="panel panel-primary">
+	 <div class="panel-heading">
+      <h3 class="panel-title">Compare Companies</h3>
+   </div>
+   <div class="panel-body">
+	<%= form_tag("/market/show", method: :get) do %>
+		Company 1: <%= text_field_tag(:company_tag_a, nil) %>
+		</br>
+		Company 2: <%= text_field_tag(:company_tag_b, nil) %>
+		</br>
+		<%= submit_tag("Compare", class: "btn btn-primary") %>
+		
+	<% end %>
+	<%= @comp_name_a[0].name %> (<%= @data_a[0].symbol.upcase %>): and <%= @comp_name_b[0].name %> (<%= @data_b[0].symbol.upcase %>):
+	<%=
+		line_chart (0..1).map {|e| 
+			{	
+				name: @info_array_compare[e*2], 
+				data: @info_array_compare[e*2+1]
+			}
+		},
+		{
+			min: @lowest_compare, 
+			max: @highest_compare,
 			height: 30,
 			width: 100,
 			colors:["#6600FF", "#FF0066", "#66CCFF"],
@@ -80,9 +143,8 @@
 		}
 	 %>
 
+	</div>
 </div>
-</div>
-
 
 </div>
 
