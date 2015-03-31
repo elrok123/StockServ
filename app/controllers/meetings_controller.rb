@@ -1,14 +1,21 @@
 class MeetingsController < ApplicationController
     def show
+<<<<<<< .merge_file_4LYRcs
     	
     	if User.find(session[:user_id]).meetings.count == 1
     		@meetings = User.find(session[:user_id]).meetings
+=======
+    	@meetings = Array.new
+    	unless Meeting.all.count > 0
+    		@meetings << Meeting.all.limit(1)
+>>>>>>> .merge_file_sEMyHs
     	else
     		@meetings = Array.new
 	    	User.find(session[:user_id]).meetings.each do |meeting|
 				@meetings << meeting
 	    	end
     	end
+    	@meetings = @meetings.sort_by &:meeting_date
     end
 
     def new
@@ -44,7 +51,7 @@ class MeetingsController < ApplicationController
 		@meeting = Meeting.find(params[:id])
 		@meeting.destroy
 
-		redirect_to meetings_path
+		redirect_to '/meetings/show'
     end
 
 private

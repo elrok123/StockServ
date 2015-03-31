@@ -32,20 +32,45 @@
                      <a class="list-group-item">
         				<h4 class="list-group-item-heading">Subject: <%= meeting.meeting_subject %></h4> <br/>
                         <p class="list-group-item-text">
+<<<<<<< .merge_file_I7k7pP
         				Date: <%= meeting.meeting_date.strftime("%A, %B %d, %Y") %> <br/>
         				Client: <%= meeting.client.first_name + " " + meeting.client.last_name %> <br/>
                         Time: <%= meeting.meeting_date.strftime("%H:%M %p") %> <br/>
         				Meeting Description: <%= meeting.meeting_description %>
+=======
+        				Date: <%= meeting.meeting_date %> <br/>
+        				Client: <%= meeting.client_name %> <br/>
+        				Meeting Description: <%= meeting.meeting_description %> <br>
+>>>>>>> .merge_file_XSelgP
                         </p>
+                        <%= link_to 'Remove', meeting_path(meeting), method: :delete, data: { confirm: 'Are you sure you want to remove your meeting with '+meeting.client_name+'?' }, class: "btn btn-danger btn-xs" %>
                         </a>
+                        </br>
+                        </br>
         			<% end %>
                    
                 <% elsif @meetings.count == 1 %>
+<<<<<<< .merge_file_I7k7pP
                     Subject: <%= @meetings[0].meeting_subject %> <br/>
                     Date: <%= @meetings[0].meeting_date.strftime("%A, %B %d, %Y") %> <br/>
                     Time: <%= @meetings[0].meeting_date.strftime("%H:%M %p") %> <br/>
                     Client: <%= @meetings[0].client.first_name + " " + @meetings[0].client.last_name %> <br/>
                     Meeting Description: <%= @meetings[0].meeting_description %>
+=======
+                <% @meetings.each do |meeting| %>
+                     <a class="list-group-item">
+                        <h4 class="list-group-item-heading">Subject: <%= meeting.meeting_subject %></h4> <br/>
+                        <p class="list-group-item-text">
+                        Date: <%= meeting.meeting_date %> <br/>
+                        Client: <%= meeting.client_name %> <br/>
+                        Meeting Description: <%= meeting.meeting_description %> <br>
+                        </p>
+                        <%= link_to 'Remove', meeting_path(meeting), method: :delete, data: { confirm: 'Are you sure you want to remove your meeting with '+meeting.client_name+'?' }, class: "btn btn-danger btn-xs" %>
+                        </a>
+                        </br>
+                        </br>
+                    <% end %>
+>>>>>>> .merge_file_XSelgP
                 <% else %>
                     No meetings currently...
                 <% end %>

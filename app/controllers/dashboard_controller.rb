@@ -31,6 +31,12 @@ class DashboardController < ApplicationController
 			delete_favourite
 			redirect_to "/dashboard/show"
 		end
+
+		if params.has_key?(:memo_box) 
+			:memo_box
+			save_memo
+			redirect_to "/dashboard/show"
+		end
 		
 		@calendar_switch = 1
 
@@ -55,7 +61,12 @@ class DashboardController < ApplicationController
 		@highest = (@i + 10.0)
 		@info_array[3].map {|k, v| @i = v.gsub(/[^\d^\.]/, '').to_f unless @i < v.gsub(/[^\d^\.]/, '').to_f }
 		@lowest = (@i - 10.0)
+		@memo = get_memo[0]
+		if(@memo)
+			@memo_description = @memo.description
+		end
 	end
+
 private
 	def company_tag
 		if params.has_key?(:company_tag)
@@ -96,6 +107,19 @@ private
 		end
 	end
 
+	def get_memo
+		 return Memo.where("user_id = #{session[:user_id]}")
+	end
+
+	def save_memo
+		if(@memo = get_memo[0])
+			@description = params[:memo_box]
+			@memo.update_attribute(:description, @description)
+		else
+			Memo.new(user_id: session[:user_id], description: @description).save
+		end
+	end
+
 	def search_company
 		@search_company_data = YahooFinance.quotes([params[:search_company_tag].upcase], [:high, :name, :symbol, :low, :open])
 	end
@@ -107,6 +131,7 @@ private
 	def get_meetings_by_week(start_date=nil)
 		meetings ||= Hash.new()
 		if start_date.nil?
+<<<<<<< .merge_file_C2dFzn
 			User.find(session[:user_id]).meetings.where(meeting_date: Date.today.beginning_of_week.strftime..Date.today.end_of_week.strftime).each do |meeting|
 				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] ||= Array.new()
 				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] << [Meeting.find(meeting.id).client.full_name, meeting.meeting_time]
@@ -115,6 +140,16 @@ private
 			User.find(session[:user_id]).meetings.where(meeting_date: start_date.to_date.beginning_of_week.strftime..start_date.to_date.end_of_week.strftime).order(:meeting_date).each do |meeting|
 				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] ||= Array.new()
 				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] << [Meeting.find(meeting.id).client.full_name, meeting.meeting_time]
+=======
+			Meeting.where(meeting_date: Date.today.beginning_of_week.strftime..Date.today.end_of_week.strftime).each do |meeting|
+				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] ||= Array.new()
+				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] << [meeting.client_name, meeting.meeting_time]
+			end
+		else
+			Meeting.where(meeting_date: start_date.to_date.beginning_of_week.strftime..start_date.to_date.end_of_week.strftime).each do |meeting|
+				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] ||= Array.new()
+				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] << [meeting.client_name, meeting.meeting_time]
+>>>>>>> .merge_file_pB1CMq
 			end
 		end
 		return meetings
