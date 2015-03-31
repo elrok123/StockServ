@@ -1,14 +1,14 @@
 class MeetingsController < ApplicationController
 
+    def index
+        @meetings = Meeting.where("user_id = ?", session[:user_id])
+    end
     def show
-    	@meetings = Array.new
-    	unless Meeting.all.count > 1
-    		@meetings << Meeting.all.limit(1)
-    	else
-	    	Meeting.all.each do |meeting|
-				@meetings << meeting
-	    	end
-    	end
+        @meeting = Meeting.find_by_id(params[:id])
+         if @meeting.nil? || @meeting.user_id != session[:user_id]
+         #This can be replaced with a custom "permission denied" or "no such client" page
+                 render :file => "/app/views/errors/error404.erb"
+         end
     end
 
     def new
@@ -50,7 +50,7 @@ class MeetingsController < ApplicationController
 private
 
 	def meeting_params
-	    params.require(:meeting).permit(:meeting_subject, :meeting_date, :client_name, :meeting_description)
+	    params.require(:meeting).permit(:meeting_subject, :meeting_date, :client_name, :meeting_description).merge(user_id: session[:user_id])
 	end
 
 end
