@@ -34,7 +34,7 @@ class DashboardController < ApplicationController
 		
 		@calendar_switch = 1
 
-		@meetings = get_meetings_by_date
+		@meetings = get_meetings_by_week
 
 		if params.has_key?(:favourite_tag) 
 			add_favourite
@@ -102,13 +102,13 @@ private
 
 	def search_client
 		search_term = params[:search_client_name].downcase.split
-		@search_client_data = Client.where("first_name='#{search_term.first.humanize}' OR last_name='#{search_term.last.humanize}'")
+		@search_client_data = Client.where("user_id = #{session[:user_id]} AND first_name='#{search_term.first.humanize}' OR user_id = #{session[:user_id]} AND last_name='#{search_term.last.humanize}'")
 	end
-	def get_meetings_by_date
+	def get_meetings_by_week
 		meetings ||= Hash.new()
 		Meeting.where(meeting_date: Date.today.beginning_of_week.strftime..Date.today.end_of_week.strftime).each do |meeting|
-			meetings[meeting.meeting_date.to_s.to_sym] ||= Array.new()
-			meetings[meeting.meeting_date.to_s.to_sym] << meeting.meeting_time
+			meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] ||= Array.new()
+			meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] << [meeting.client_name, meeting.meeting_time]
 		end
 		return meetings
 	end

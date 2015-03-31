@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Meetings</h1>
+            <ol class="breadcrumb">
+                <li>
+                                <a href="/dashboard/show">Dashboard</a>
+                            </li>
+                <li>
+                   <a href="/meetings/show">Meetings</a>
+                </li>
+                <li class="active">
+                    New Meeting
+                </li>
+                            
+            </ol>
+    </div>
+</div>
+
+
+
+<div class="row">
+  <div class="container-fluid">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 toppad" >
+     
+      
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Add New Meeting</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+                   
+            
+            <div class=" col-md-9 col-lg-9 "> 
+              <%= form_for @meeting, url: "/meetings/create" do |f| %>
+              <table class="table table-user-information">
+                <tbody>
+                
+                <tr>
+                  
+                  <tr>
+                    <td>Subject</td>
+                    <td><%= f.text_field :meeting_subject %></td>
+                  </tr>
+                 
+                  <tr>
+                    <td>Select Client</td>
+                    <td><%= f.collection_select :client_name, @clients, :full_name, :full_name, prompt: "Please select a client..." %></td>
+                  </tr>
+                  <tr>
+                    <td>Date of Meeting</td>
+                    <td><%= f.date_select :meeting_date, start_year: Date.today.year, end_year: 2018 %></td>
+                  </tr>
+                  <tr>
+                    <td>Meeting Description</td>
+                    <td> <%= f.text_area :meeting_description %></td>
+                  </tr>
+                  
+                  
+                </tbody>
+              </table>
+              <span class="pull-right">
+              <%= f.submit class: "btn btn-primary" %>
+                
+                <% end %>
+                <a href="/meetings/show" data-original-title="Return" data-toggle="tooltip" type="button" class="btn btn-danger">Cancel </a>
+              </span>
+              
+            </div>
+          </div>
+        </div>
+      </div>                 
+    </div>
+  </div>
+</div>
