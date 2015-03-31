@@ -2,7 +2,7 @@ class MeetingsController < ApplicationController
 
     def show
     	@meetings = Array.new
-    	unless Meeting.all.count > 1
+    	unless User.find(session[:user_id]).meetings. > 1
     		@meetings << Meeting.all.limit(1)
     	else
 	    	Meeting.all.each do |meeting|
@@ -12,7 +12,7 @@ class MeetingsController < ApplicationController
     end
 
     def new
-    	@clients = Client.all
+    	@clients = Client.where(user_id: session[:user_id]).order(:first_name, :last_name)
 
 		@meeting = Meeting.new
     end

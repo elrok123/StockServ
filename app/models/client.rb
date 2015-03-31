@@ -1,6 +1,6 @@
 class Client < ActiveRecord::Base
 	has_many :meetings
-    has_many :users, through: :meetings
+    belongs_to :user
 
     validates_uniqueness_of :last_name, :scope => [:first_name, :address], :message => ('implies that a client with these details already exists in the database')
 	validates_uniqueness_of :email, :scope => [:first_name, :last_name], :message => ('implies that a client with these details already exists in the database')

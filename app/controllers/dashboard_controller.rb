@@ -109,12 +109,12 @@ private
 		if start_date.nil?
 			Meeting.where(meeting_date: Date.today.beginning_of_week.strftime..Date.today.end_of_week.strftime).each do |meeting|
 				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] ||= Array.new()
-				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] << [meeting.client_name, meeting.meeting_time]
+				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] << [Client.find(meeting.id).full_name, meeting.meeting_time]
 			end
 		else
-			Meeting.where(meeting_date: start_date.to_date.beginning_of_week.strftime..start_date.to_date.end_of_week.strftime).each do |meeting|
+			Meeting.where(meeting_date: start_date.to_date.beginning_of_week.strftime..start_date.to_date.end_of_week.strftime).order(:meeting_date).each do |meeting|
 				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] ||= Array.new()
-				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] << [meeting.client_name, meeting.meeting_time]
+				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] << [Client.find(meeting.id).full_name, meeting.meeting_time]
 			end
 		end
 		return meetings
