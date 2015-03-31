@@ -22,9 +22,9 @@
       <div class="input-group col-md-offset-6 col-xs-offset-8">
         <input id="Special" type="text" class="form-control no-curve" placeholder="Search">
         <div class="input-group-btn">
-          <button class="btn btn-info no-curve"><i class="glyphicon glyphicon-search "></i></button>&nbsp;
+          <button class="btn btn-primary no-curve"><i class="glyphicon glyphicon-search "></i></button>&nbsp;
           <div class="divider"></div>
-          <a href="/clients/new"><button class="btn btn-warning no-curve">Add Client</button></a>
+          <a href="/clients/new"><button class="btn btn-primary no-curve">Add Client</button></a>
           
         </div>
       </div>
@@ -44,11 +44,11 @@
         <td><%= client.first_name %> <%= client.last_name %></td>
         <td><%= client.email %></td>
         <td><%= link_to 'Show', client_path(client), class: "btn btn-warning btn-xs" %></td>
-        <td><%= link_to 'Edit', edit_client_path(client), class: "btn btn-info btn-xs" %></td>
+        <td><%= link_to 'Edit', edit_client_path(client), class: "btn btn-primary btn-xs" %></td>
         <td><%= link_to 'Portfolio', portfolio_path(client), class: "btn btn-success btn-xs" %></td>
         <td><%= link_to 'Delete', client_path(client),
         method: :delete,
-        data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+        data: { confirm: 'Are you sure you want to delete?' }, class: "btn btn-danger btn-xs" %></td>
       </tr>
       <% end %>
     </table>

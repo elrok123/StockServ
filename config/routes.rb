@@ -10,11 +10,13 @@ Rails.application.routes.draw do
 	get '/login' => 'sessions#new'
 	get '/logout' => 'sessions#destroy'
 	get 'market/show'
+	post 'market/show'
 	get 'profile/view'
 	get 'profile/edit'
 	post 'dashboard/show'
 	get 'clients/show'
 	post 'meetings/create'
+	get "/calendar/show"
 	
 	root to: 'sessions#new'
 

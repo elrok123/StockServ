@@ -52,7 +52,7 @@
 				<%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
 				<%= text_field_tag(:search_client_name, nil, class: "form-control tblack", placeholder: "Enter client name")%>
 				<div class="input-group-btn no-curve">
-					<%= submit_tag("Search", class: "btn btn-info pull-right") %>
+					<%= submit_tag("Search", class: "btn btn-primary pull-right") %>
 					<% end %>
 				</div>
 			</div>
@@ -100,7 +100,7 @@
 				<%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
 				<%= text_field_tag(:search_company_tag, nil, class: "form-control tblack", placeholder: "Enter company tag")%>
 				<div class="input-group-btn no-curve">
-					<%= submit_tag("Search", class: "btn btn-info pull-right") %>
+					<%= submit_tag("Search", class: "btn btn-primary pull-right") %>
 					<% end %>
 				</div>
 			</div>
@@ -117,12 +117,14 @@
 					</tr>
 					Results For: <%= @search_company_data[0].symbol %>
 					<tr>
-						<%= form_tag "/dashboard/show", method: :post, class:"" do %>
-						<td class="padding-10"><%= @search_company_data[0].name %></td>
+						<%= form_tag "/market/show", method: :post, class:"" do %>
+						<td class="padding-10 tblack"><button type="submit" name="company_tag" value=<%=(@search_company_data[0].symbol).to_s%> class="btn btn-xs"><%= @search_company_data[0].name %></button></td>
+						<% end %>
 						<td class="padding-10"><%= @search_company_data[0].symbol %></td>
 						<td class="padding-10"><%= @search_company_data[0].high %></td>
 						<td class="padding-10"><%= @search_company_data[0].low %></td>
 						<td class="padding-10"><%= @search_company_data[0].open %></td>
+						<%= form_tag "/dashboard/show", method: :post, class:"" do %>
 						<td>
 							<button type="submit" name="favourite_tag" value=<%=@search_company_data[0].symbol%> class="btn btn-success btn-xs">Add</button>
 						</td>
@@ -143,7 +145,7 @@
 				<%= form_tag("/dashboard/show", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
 				<%= text_field_tag(:favourite_tag, nil, class: "form-control tblack", placeholder: "Enter company tag")%>
 				<div class="input-group-btn no-curve">
-					<%= submit_tag("Add", class: "btn btn-info pull-right") %>
+					<%= submit_tag("Add", class: "btn btn-primary pull-right") %>
 					<% end %>
 					
 				</div>
@@ -160,15 +162,16 @@
 
 					</tr>
 					<% @favourites_data.map.with_index do |e, i| %>
-					<%= form_tag "/dashboard/show", method: :post, class:"" do %>
 					<tr>
-						<td class="padding-10"><%= e.name %></td>
+						<%= form_tag "/market/show", method: :post, class:"" do %>
+						<td class="padding-10 tblack"><button type="submit" name="company_tag" value=<%=(e.symbol).to_s%> class="btn btn-xs"><%= e.name %></button></td>
+						<% end %>
 						<td class="padding-10"><%= e.symbol %></td>
 						<td class="padding-10"><%= e.high %></td>
 						<td class="padding-10"><%= e.low %></td>
 						<td class="padding-10"><%= e.open %></td>
 						<td class="padding-10"> 
-							
+						<%= form_tag "/dashboard/show", method: :post, class:"" do %>
 							<% #hidden_field_tag :unfavourite_tag, :value => "AAPL" %>
 							<button type="submit" name="stock_symbol" value=<%=(@favourites[i].id).to_s%> class="btn btn-danger btn-xs">Remove</button>
 
