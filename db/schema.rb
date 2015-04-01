@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401034824) do
+ActiveRecord::Schema.define(version: 20150401024557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20150401034824) do
   create_table "owned_shares", force: :cascade do |t|
     t.integer  "share_id"
     t.integer  "client_id"
+    t.string   "company_tag"
     t.decimal  "close_price", precision: 8, scale: 2, default: 0.0
     t.integer  "quantity"
     t.datetime "created_at",                                        null: false
