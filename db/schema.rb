@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150401034824) do
+=======
+ActiveRecord::Schema.define(version: 20150401024557) do
+>>>>>>> 0c1f7dff608f0fe2a82b3387e7f31833596c2210
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +54,9 @@ ActiveRecord::Schema.define(version: 20150401034824) do
     t.datetime "meeting_date"
   end
 
+  add_index "meetings", ["client_id"], name: "index_meetings_on_client_id", using: :btree
+  add_index "meetings", ["user_id"], name: "index_meetings_on_user_id", using: :btree
+
   create_table "memos", force: :cascade do |t|
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -57,6 +64,11 @@ ActiveRecord::Schema.define(version: 20150401034824) do
     t.integer  "user_id"
   end
 
+<<<<<<< HEAD
+=======
+  add_index "memos", ["user_id"], name: "index_memos_on_user_id", using: :btree
+
+>>>>>>> 0c1f7dff608f0fe2a82b3387e7f31833596c2210
   create_table "owned_shares", force: :cascade do |t|
     t.integer  "share_id"
     t.integer  "client_id"

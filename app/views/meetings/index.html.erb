@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Meetings</h1>
+            <ol class="breadcrumb">
+                <li>
+                                <a href="/dashboard/show">Dashboard</a>
+                            </li>
+                <li class="active">
+                    Meetings
+                </li>
+                            
+            </ol>
+    </div>
+</div>
+
+<div class="row">  
+<div class="col-ld-12 col-md-8 container-fluid panel-default">              
+    <div class="panel panel-primary no-curve">
+        <div class="panel-heading clearfix no-curve">
+            <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Meetings List</h4>
+            <div class="input-group-btn">
+                <a href="/meetings/new"><button class="btn btn-warning no-curve pull-right">Add Meeting</button></a>
+            </div>  
+        </div>
+
+        <div class="panel-body">
+        <div class="list-group">
+        
+         <div class="list-group">
+                <% if !@meetings.nil? && @meetings.count > 1 %>
+                <% @meetings.each do |meeting| %>
+                            <h4 class="list-group-item-heading">Subject: <%= meeting.meeting_subject %></h4> <br/>
+                            <p class="list-group-item-text">
+                            Date: <%= meeting.meeting_date.strftime("%A, %B %d, %Y") %> <br/>
+                            Client: <%= meeting.client.first_name + " " + meeting.client.last_name%> <br/>
+                            Time: <%= meeting.meeting_date.strftime("%H:%M %p") %> <br/>
+                            Meeting Description: <%= meeting.meeting_description %>
+                            </p>
+                            <%= link_to 'Remove', meeting_path(meeting), method: :delete, data: { confirm: 'Are you sure you want to remove your meeting with '+meeting.client.first_name+'?' }, class: "btn btn-danger btn-xs" %>
+                            <%= link_to 'Edit', edit_meeting_path(meeting), class: "btn btn-warning btn-xs" %>
+                        </br></br>
+                    <% end %>
+                <% elsif !@meetings.nil? && @meetings.count == 1 %>
+                            <h4 class="list-group-item-heading">Subject: <%= @meetings[0].meeting_subject %></h4> <br/>
+                            <p class="list-group-item-text">
+                            Date: <%= @meetings[0].meeting_date.strftime("%A, %B %d, %Y") %> <br/>
+                            Client: <%= @meetings[0].client.first_name + " " + @meetings[0].client.last_name%> <br/>
+                            Time: <%= @meetings[0].meeting_date.strftime("%H:%M %p") %> <br/>
+                            Meeting Description: <%= @meetings[0].meeting_description %>
+                            </p>
+                            <%= link_to 'Remove', meeting_path(@meetings[0]), method: :delete, data: { confirm: 'Are you sure you want to remove your meeting with '+@meetings[0].client.first_name+'?' }, class: "btn btn-danger btn-xs" %>
+                            <%= link_to 'Edit', edit_meeting_path(@meetings[0]), class: "btn btn-warning btn-xs" %>
+                        </br></br>
+                <% else %>
+                    No meetings currently...
+                <% end %>
+                
+            
+            </div>
+        </div>
+    </div>
+
+</div>  
+</div>

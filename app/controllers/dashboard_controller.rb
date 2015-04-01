@@ -25,7 +25,7 @@ class DashboardController < ApplicationController
 		@favourites_data = Array.new()
 		@favourites = User.find(session[:user_id]).favourites
 
-		@favourites_data = YahooFinance.quotes(@favourites.collect {|e| e.stock_symbol }, [:high, :name, :symbol, :low, :open])
+		@favourites_data = YahooFinance.quotes(@favourites.collect {|e| e.stock_symbol }, [:high, :name, :symbol, :low, :open, :close])
 
 		if params.has_key?(:stock_symbol) 
 			delete_favourite
@@ -42,17 +42,26 @@ class DashboardController < ApplicationController
 
 		@meetings = get_meetings_by_week(params[:start_date])
 
-		if params.has_key?(:favourite_tag) 
-			add_favourite
-			redirect_to "/dashboard/show"
+		if params.has_key?(:favourite_tag)
+			if(params[:favourite_tag]).present? 
+				add_favourite
+				redirect_to "/dashboard/show"
+			else
+				flash.now[:alert] = 'Please enter a stock ticker'
+				render "show"
+			end
 		end
 
 		if params.has_key?(:search_company_tag)
-			search_company
+			if( params[:search_company_tag]).present?
+				search_company
+			end
 		end
 
 		if params.has_key?(:search_client_name)
-			search_client
+			if( params[:search_client_name]).present?
+				search_client
+			end
 		end
 
 		@info_array = ["High", @high, "Low", @low, "Open", @open]
@@ -125,12 +134,13 @@ private
 	end
 
 	def search_company
-		@search_company_data = YahooFinance.quotes([params[:search_company_tag].upcase], [:high, :name, :symbol, :low, :open])
+		@search_company_data = YahooFinance.quotes([params[:search_company_tag].upcase], [:high, :name, :symbol, :low, :open, :close])
 	end
 
 	def search_client
 		search_term = params[:client_name].downcase.split
 		@search_client_data = Client.where("user_id = #{session[:user_id]} AND first_name='#{search_term.first.humanize}' OR user_id = #{session[:user_id]} AND last_name='#{search_term.last.humanize}'")
+	
 	end
 	def get_meetings_by_week(start_date=nil)
 		meetings ||= Hash.new()

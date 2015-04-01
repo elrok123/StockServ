@@ -1,6 +1,14 @@
 
 Rails.application.routes.draw do
   
+  get 'users/new'
+
+  get 'users/create'
+
+  get 'users/edit'
+
+  get 'users/destroy'
+
 	get 'sessions/new'
 	post 'sessions/create'
 	get 'sessions/destroy'
@@ -28,5 +36,6 @@ Rails.application.routes.draw do
 	resources :clients
 	resources :users
 	resources :portfolios
+	resources :users
 
 end

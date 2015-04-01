@@ -1,21 +1,24 @@
 <div class="row">
- <div class="col-lg-12">
-  <h1 class="page-header">
-    Users
-  </h1>
-  <ol class="breadcrumb">
-    <li>
-      <a href="/dashboard/show">Dashboard</a>
-    </li>
-    <li>
-      <a href="/users">Users</a>
-    </li>
-    <li class="active">
-      New User
-    </li>
-  </ol>
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      Users
+    </h1>
+    <ol class="breadcrumb">
+      <li>
+        <a href="/dashboard/show">Dashboard</a>
+      </li>
+      <li>
+        <a href="/users">Users</a>
+      </li>
+      <li class="active">
+        Edit
+      </li>
+    </ol>
+  </div>
 </div>
-</div>
+
+
+
 
 <div class="row">
   <div class="container-fluid">
@@ -32,17 +35,18 @@
             
             
             <div class=" col-md-9 col-lg-9 "> 
-              <%= form_for :user_entry,:html => { :class =>
-                'table-user-information' }, url: users_path do |f| %>
-              <table class="table table-user-information">
+              <%= form_for :user_entry, url: user_path(@user_entry),:html => { :class =>
+                'table-user-information' }, method: :patch do |f| %>
+                <table class="table table-user-information">
                 <tbody>
-                 <% if @user_entry.errors.any? %>
+                 
+                 <% if @user.errors.any? %>
                  <div id="error_explanation">
                   <h2>
-                    <%= pluralize(@user_entry.errors.count, "error") %> require fixing before this user can be saved:
+                    <%= pluralize(@user.errors.count, "error") %> require fixing before this user can be saved:
                   </h2>
                   <ul>
-                    <% @user_entry.errors.full_messages.each do |msg| %>
+                    <% @user.errors.full_messages.each do |msg| %>
                     <li><%= msg %></li>
                     <% end %>
                   </ul>
@@ -75,17 +79,18 @@
                     <td><%= f.select :access_level, [1,2] %></td>
                   </tr>                  
                 </tbody>
-              </table>
-              <span class="pull-right">
-                <%= f.submit class: "btn btn-success", data: { no_turbolink: true }%>
-                <% end %>
-                <a href="/users" data-original-title="Return" data-toggle="tooltip" type="button" class="btn btn-danger">Cancel </a>
-              </span>
-              
+                  
+                </table>
+                <span class="pull-right">
+                  <%= f.submit class: "btn btn-success", data: { no_turbolink: true } %>
+                  <% end %>
+                  <a href="/users" data-original-title="Return" data-toggle="tooltip" type="button" class="btn btn-warning">Discard Changes </a>
+                </span>
+                
+              </div>
             </div>
           </div>
-        </div>
-      </div>                 
+        </div>                 
+      </div>
     </div>
   </div>
-</div>

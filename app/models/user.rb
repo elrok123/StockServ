@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
 	validates :password, :presence => true,
 	:confirmation => true
 	before_save :encrypt_password
+	validates_presence_of :firstname
+	validates_presence_of :surname
 	validates_presence_of :email
 	validates_uniqueness_of :email
 	has_many :clients
@@ -24,6 +26,10 @@ class User < ActiveRecord::Base
 		else
 			nil
 		end
+	end
+
+	def fullname
+		self.firstname + " " + self.surname
 	end
 
 private

@@ -115,6 +115,7 @@
 						<th class="padding-10">High</th>
 						<th class="padding-10">Low</th>
 						<th class="padding-10">Open</th>
+						<th class="padding-10">Close</th>
 						<th class="padding-10"></th>
 					</tr>
 					Results For: <%= @search_company_data[0].symbol %>
@@ -126,6 +127,7 @@
 						<td class="padding-10"><%= @search_company_data[0].high %></td>
 						<td class="padding-10"><%= @search_company_data[0].low %></td>
 						<td class="padding-10"><%= @search_company_data[0].open %></td>
+						<td class="padding-10"><%= @search_company_data[0].close %></td>
 						<%= form_tag "/dashboard/show", method: :post, class:"" do %>
 						<td>
 							<button type="submit" name="favourite_tag" value=<%=@search_company_data[0].symbol%> class="btn btn-success btn-xs">Add</button>
@@ -153,6 +155,7 @@
 				</div>
 			</div>
 			<div class="panel-body">
+				<% if flash[:alert] %> Please enter a valid stock ticker <% end %>
 				<table class="table table-striped">
 					<tr>
 						<th class="padding-10">Name</th>
@@ -160,6 +163,7 @@
 						<th class="padding-10">High</th>
 						<th class="padding-10">Low</th>
 						<th class="padding-10">Open</th>
+						<th class="padding-10">Close</th>
 						<th class="padding-10"></th>
 
 					</tr>
@@ -172,6 +176,7 @@
 						<td class="padding-10"><%= e.high %></td>
 						<td class="padding-10"><%= e.low %></td>
 						<td class="padding-10"><%= e.open %></td>
+						<td class="padding-10"><%= e.close %></td>
 						<td class="padding-10"> 
 						<%= form_tag "/dashboard/show", method: :post, class:"" do %>
 							<% #hidden_field_tag :unfavourite_tag, :value => "AAPL" %>
