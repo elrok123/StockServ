@@ -1,18 +1,21 @@
 class ClientsController < ApplicationController
 	def index
 		@clients = Client.where("user_id = ?", session[:user_id])
+		@users = User.all.order(:firstname, :surname)
 		if @user.access_level > 1
 			@clients = Client.all
 		end
 	end
 	def show
 		@client = Client.find_by_id(params[:id])
+		@users = User.all.order(:firstname, :surname)
 		if (@client.nil? || @client.user_id != session[:user_id]) && @user.access_level<2
 			#This can be replaced with a custom "permission denied" or "no such client" page
 			render :file => "/app/views/errors/error404.erb"
 		end	
 	end
 	def new
+		@users = User.all.order(:firstname, :surname)
 		@client = Client.new
 	end
 	def get_clients
@@ -39,8 +42,11 @@ class ClientsController < ApplicationController
 		end
 	end
 	def create
+		@users = User.all.order(:firstname, :surname)
 		@client = Client.new(client_params)
+		if params.has_key?(:user_id) 
 		@client.user_id = session[:user_id]
+		end
 		if @client.save
 			redirect_to @client
 		else
@@ -55,6 +61,6 @@ class ClientsController < ApplicationController
 	end
 	private
 	def client_params
-		params.require(:client).permit(:first_name, :last_name, :dob, :address, :home_tel, :mobile_tel, :email, :title, :user)	
+		params.require(:client).permit(:first_name, :last_name, :dob, :address, :home_tel, :mobile_tel, :email, :title, :user, :user_id)	
 	end
 end

@@ -84,6 +84,12 @@
                     <td>Email</td>
                     <td><%= f.email_field :email,class: "form-control" %></td>
                   </tr>
+                  <% if @user.access_level > 1 %>
+                    <tr>
+                      <td>User</td>
+                      <td><%= f.collection_select :user_id, @users, :id, :fullname, prompt: "Please select a user.." %></td>
+                    </tr>
+                   <% end %>
                   
                 </tbody>
               </table>

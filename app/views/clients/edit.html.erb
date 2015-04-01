@@ -91,11 +91,10 @@
                     <% if @user.access_level > 1 %>
                     <tr>
                       <td>User</td>
-                      <td><%= f.collection_select :user_id, @users, :id, :fullname, prompt: "Please select a user..." %></td>
+                      <td><%= f.collection_select :user_id, @users, :id, :fullname, prompt: "Please select a user.." %></td>
                     </tr>
-                             <% end %>
+                   <% end %>
                   </tbody>
-                  
                 </table>
                 <span class="pull-right">
                   <%= f.submit class: "btn btn-success", data: { no_turbolink: true } %>
