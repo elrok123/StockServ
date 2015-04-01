@@ -9,7 +9,7 @@
                    <a href="/meetings">Meetings</a>
                 </li>
                 <li class="active">
-                    New Meeting
+                    Edit Meeting
                 </li>
                             
             </ol>
@@ -25,17 +25,19 @@
       
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="panel-title">Add New Meeting</h3>
+          <h3 class="panel-title">Edit Meeting</h3>
         </div>
         <div class="panel-body">
           <div class="row">
                    
             
             <div class=" col-md-9 col-lg-9 "> 
-              <%= form_for @meeting, url: "/meetings/create" do |f| %>
+              <%= form_for :meeting, url: meeting_path(@meeting), method: :patch  do |f| %>
               <table class="table table-user-information">
                 <tbody>
+                
                 <tr>
+                  
                   <tr>
                     <td>Subject</td>
                     <td><%= f.text_field :meeting_subject %></td>
@@ -44,7 +46,7 @@
                  
                   <tr>
                     <td>Select Client</td>
-                    <td><%= f.collection_select :client_id, @clients, :id, :full_name, prompt: "Please select a client..." %></td>
+<td><%= f.collection_select :user_id, @clients, :id, :full_name, prompt: "Please select a client..." %></td>
                   </tr>
                   <tr>
                     <td>Date of Meeting</td>
@@ -54,10 +56,12 @@
                     <td>Meeting Description</td>
                     <td> <%= f.text_area :meeting_description %></td>
                   </tr>
+                  
+                  
                 </tbody>
               </table>
               <span class="pull-right">
-              <%= f.submit class: "btn btn-info" %>
+              <%= f.submit class: "btn btn-info",data: { no_turbolink: true } %>
                 
                 <% end %>
                 <a href="/meetings" data-original-title="Return" data-toggle="tooltip" type="button" class="btn btn-danger">Cancel </a>

@@ -74,15 +74,18 @@
 							Market
 						</a>
 					</li>
+<<<<<<< HEAD
 					
+=======
+>>>>>>> jack
 					<li class=<%= current_class?('/clients') %>>
 						<a href="/clients">
 							<i class="fa fa-users"></i>
 							My Clients
 						</a>
 					</li>
-					<li class=<%= current_class?('/meetings/show') %>>
-						<a  href="/meetings/show">
+					<li class=<%= current_class?('/meetings') %>>
+						<a  href="/meetings">
 							<i class="fa fa-slideshare"></i>
 							Meetings
 						</a>
@@ -93,6 +96,7 @@
 							
 							Calendar
 						</a>
+<<<<<<< HEAD
 					</li>
 					<% if @user.access_level > 1 %>
 						<li class=<%= current_class?('/users/index') %>>
@@ -104,6 +108,18 @@
 						</li>
 					<% end %>
 					<br />
+=======
+					</li><br />
+					<% if @user.access_level > 1 %>
+                        <li class=<%= current_class?('/users/index') %>>
+                            <a href="/users">
+                                <i class="fa  fa-user"></i>
+                                
+                                Users
+                            </a>
+                        </li>
+                    <% end %>
+>>>>>>> jack
 					
 				</ul>
 			</div>

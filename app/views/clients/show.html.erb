@@ -68,6 +68,12 @@
                         <td>Email</td>
                         <td><%= @client.email %></td>
                       </tr>
+                      <% if @user.access_level > 1 %>
+                    <tr>
+                      <td>User</td>
+                      <td><%= @client.user.firstname + " " + @client.user.surname %></td>
+                    </tr>
+                      <% end %>
                       
                      
                     </tbody>
@@ -78,7 +84,7 @@
                   <%= link_to 'Portfolio', portfolio_path(@client), class: "btn btn-success" %>
                   <%= link_to 'Delete', client_path(@client),
         method: :delete,
-        data: { confirm: 'Are you sure?' }, class: "btn btn-danger " %>
+        data: { confirm: "Are you sure you want to delete " + @client.first_name + " " + @client.last_name + "?" }, class: "btn btn-danger " %>
                 </span>
                 </div>
               </div>

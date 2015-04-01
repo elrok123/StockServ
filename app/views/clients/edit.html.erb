@@ -58,7 +58,7 @@
                     
                     <tr>
                       <td>Title</td>
-                      <td><%= f.select :title, options_for_select([["Mr","Mr"],["Mrs","Mrs"],["Miss","Miss"], ["Ms","Ms"],["Dr","Dr"]],1) %></td>
+                      <td><%= f.select :title, ["Mr","Mrs","Miss","Ms","Dr"] %></td>
                     </tr>
                     <tr>
                       <td>First Name</td>
@@ -88,9 +88,13 @@
                       <td>Email</td>
                       <td><%= f.email_field :email,class: "form-control" %></td>
                     </tr>
-
+                    <% if @user.access_level > 1 %>
+                    <tr>
+                      <td>User</td>
+                      <td><%= f.collection_select :user_id, @users, :id, :fullname, prompt: "Please select a user.." %></td>
+                    </tr>
+                   <% end %>
                   </tbody>
-                  
                 </table>
                 <span class="pull-right">
                   <%= f.submit class: "btn btn-success", data: { no_turbolink: true } %>

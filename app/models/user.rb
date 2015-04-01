@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
 		end
 	end
 
+	def fullname
+		self.firstname + " " + self.surname
+	end
+
 private
 	def encrypt_password
 		if password.present?
