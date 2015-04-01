@@ -1,5 +1,7 @@
 class Client < ActiveRecord::Base
 	has_many :meetings
+	has_many :shares
+	has_many :shares, through: :owned_shares
 
     belongs_to :user
 

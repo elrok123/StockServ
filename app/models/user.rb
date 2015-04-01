@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
   	has_many :clients, through: :meetings
 
 
-
 	#Accessor for password
 	attr_accessor :password
 

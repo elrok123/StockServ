@@ -12,6 +12,16 @@ class ClientsController < ApplicationController
 	def new
 		@client = Client.new
 	end
+	def get_clients
+		unless params[:client_name].nil?
+			#t = Client.arel_table
+			#@clients = User.find(session[:user_id]).clients.where(t[:name].matches("%#{params[:client_name]}%"))
+			@clients = User.find(session[:user_id]).clients.where("lower(first_name) LIKE ? OR lower(last_name) LIKE ? OR lower((select concat(first_name, ' ', last_name))) LIKE ?", "%#{params[:client_name].downcase}%", "%#{params[:client_name].downcase}%", "%#{params[:client_name].downcase}%")
+			render json: @clients
+		else
+			render json: "{\"error\" : \"No user specified...\"}"
+		end
+	end
 	def edit
 		@client = Client.find(params[:id])
 	end
@@ -40,6 +50,6 @@ class ClientsController < ApplicationController
 	end
 	private
 	def client_params
-	params.require(:client).permit(:first_name, :last_name, :dob, :address, :home_tel, :mobile_tel, :email, :title, :user)	
+		params.require(:client).permit(:first_name, :last_name, :dob, :address, :home_tel, :mobile_tel, :email, :title, :user)	
 	end
 end
