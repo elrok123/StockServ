@@ -1,16 +1,5 @@
 class MeetingsController < ApplicationController
-<<<<<<< HEAD
-     def show
-        
-        if User.find(session[:user_id]).meetings.count == 1
-            @meetings = User.find(session[:user_id]).meetings
-        else
-            @meetings = Array.new
-            User.find(session[:user_id]).meetings.each do |meeting|
-                @meetings << meeting
-            end
-        end
-=======
+
 
     def index
          @meetings = Meeting.where("user_id = ?", session[:user_id])
@@ -22,7 +11,6 @@ class MeetingsController < ApplicationController
          #This can be replaced with a custom "permission denied" or "no such client" page
                  render :file => "/app/views/errors/error404.erb"
          end
->>>>>>> jack
     end
 
     def new
