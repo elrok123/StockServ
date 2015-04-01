@@ -15,7 +15,7 @@
 
 <div class="row">  
 <div class="col-ld-12 col-md-8 container-fluid panel-default">              
-	<div class="panel panel-primary no-curve">
+    <div class="panel panel-primary no-curve">
         <div class="panel-heading clearfix no-curve">
             <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Meetings List</h4>
             <div class="input-group-btn">
@@ -27,26 +27,26 @@
         <div class="list-group">
         
 
-        		<% if !@meetings.nil? && @meetings.count >= 1 %>
-        			 <% @meetings.each do |meeting| %>
+                <% if !@meetings.nil? && @meetings.count >= 1 %>
+                     <% @meetings.each do |meeting| %>
                      <%=link_to meeting_path(meeting), class:"list-group-item" do %>
-        				<h4 class="list-group-item-heading">Subject: <%= meeting.meeting_subject %></h4> <br/>
+                        <h4 class="list-group-item-heading">Subject: <%= meeting.meeting_subject %></h4> <br/>
                         <p class="list-group-item-text">
-        				Date: <%= meeting.meeting_date %> <br/>
-        				Client: <%= meeting.client_name %> <br/>
-        				Meeting Description: <%= meeting.meeting_description %>
+                        Date: <%= meeting.meeting_date %> <br/>
+                        Client: <%= meeting.client.first_name + " " + meeting.client.last_name%> <br/>
+                        Meeting Description: <%= meeting.meeting_description %>
                         </p>
                         <%end%>
-        			<% end %>
+                    <% end %>
                    
                 <% else %>
                     No meetings currently...
                 <% end %>
                 
-        	
+            
             </div>
         </div>
     </div>
 
-</div>	
+</div>  
 </div>

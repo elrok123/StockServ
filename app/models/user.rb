@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   	has_many :meetings
   	has_many :clients
 
-
 	#Accessor for password
 	attr_accessor :password
 

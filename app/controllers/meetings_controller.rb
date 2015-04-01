@@ -9,7 +9,6 @@ class MeetingsController < ApplicationController
                 @meetings << meeting
             end
         end
-        @meetings = @meetings.sort_by &:meeting_date
     end
     def show
         @meeting = Meeting.find_by_id(params[:id])
@@ -26,13 +25,14 @@ class MeetingsController < ApplicationController
     end
 
     def edit
+        @clients = Client.where(user_id: session[:user_id]).order(:first_name, :last_name)
         @meeting = Meeting.find(params[:id])
     end
     
     def create
 		@meeting = Meeting.new(meeting_params)
 		if @meeting.save
-		    redirect_to '/meetings/show'
+		    redirect_to '/meetings'
 		else
 		    redirect_to '/meetings/new'
 		end
@@ -52,7 +52,7 @@ class MeetingsController < ApplicationController
 		@meeting = Meeting.find(params[:id])
 		@meeting.destroy
 
-		redirect_to '/meetings/show'
+		redirect_to '/meetings'
     end
 
 private

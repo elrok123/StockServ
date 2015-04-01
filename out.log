@@ -1,0 +1,86 @@
+   355	#################### KoanSystems VHost ####################
+   356	<VirtualHost *:80>
+   357	   #conner
+   358	   DocumentRoot /var/www/koansystems
+   359	
+   360	   ServerName www.koansystems.co.uk
+   361	   ServerAlias koansystems.co.uk
+   362	
+   363	   ErrorLog "/var/log/koansystems.in-error_log"
+--
+   367	
+   368	<VirtualHost *:80>
+   369	   #conner
+   370	   DocumentRoot /var/www/pp088
+   371	
+   372	   ServerName group.koansystems.co.uk
+   373	   ServerAlias *.group.koansystems.co.uk
+   374	
+   375	   ErrorLog "/var/log/koansystems.in-error_log"
+--
+   389	</VirtualHost>
+   390	<VirtualHost *:80>
+   391	   #conner
+   392	   DocumentRoot /var/www/group-project
+   393	
+   394	   ServerName mock.koansystems.co.uk
+   395	   ServerAlias *.mock.koansystems.co.uk
+   396	
+   397	   ErrorLog "/var/log/koansystems.in-error_log"
+--
+   400	</VirtualHost>
+   401	<VirtualHost *:80>
+   402	  #conner
+   403	  ServerName  www.elrok.com
+   404	  ServerAlias  elrok.com
+   405	
+   406	  ProxyPass        / http://localhost:9893/
+   407	  ProxyPassReverse / http://localhost:9893/
+   408	
+   409	</VirtualHost>
+   410	<VirtualHost *:80>
+   411	  #conner
+   412	  ServerName  stockserv.koansystems.co.uk
+   413	
+   414	  ProxyPass        / http://localhost:3000/
+   415	  ProxyPassReverse / http://localhost:3000/
+   416	
+   417	</VirtualHost>
+--
+   425	</VirtualHost>
+   426	<VirtualHost *:80>
+   427	   #conner
+   428	   DocumentRoot /var/www/stephen      
+   429	
+   430	   ServerName stephen.koansystems.co.uk
+   431	   ServerAlias *.stephen.koansystems.co.uk
+   432	
+   433	   ErrorLog "/var/log/koansystems.in-error_log"
+--
+   452	</VirtualHost>
+   453	<VirtualHost *:80>
+   454	   #conner
+   455	   DocumentRoot /var/www/tournament
+   456	
+   457	   ServerName tournaments.koansystems.co.uk
+   458	   ServerAlias *.tournaments.koansystems.co.uk
+   459	
+   460	   ErrorLog "/var/log/koansystems.in-error_log"
+--
+   472	</VirtualHost>
+   473	<VirtualHost *:80>
+   474	  #conner
+   475	  ServerName equity-file-api.elrok.com
+   476	
+   477	  ProxyPass        / http://localhost:2465/
+   478	  ProxyPassReverse / http://localhost:2465/
+   479	
+   480	</VirtualHost>
+   481	<VirtualHost *:80>
+   482	  #conner
+   483	  ServerName equity-file-frontend.elrok.com
+   484	   
+   485	  ProxyPass        / http://localhost:2469/
+   486	  ProxyPassReverse / http://localhost:2469/
+   487	
+   488	</VirtualHost>

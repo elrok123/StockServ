@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 	post 'meetings/create'
 	get "/calendar/show"
 	post '/portfolios/add' => 'portfolios#add'
+	post '/portfolios/:id' => 'portfolios#show'
 	post '/clients/get_clients' => 'clients#get_clients'
 	
 	root to: 'sessions#new'
