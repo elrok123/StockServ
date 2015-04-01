@@ -52,11 +52,13 @@ class ClientsController < ApplicationController
 		end
 	end
 	def destroy
-		@client = Client.find(params[:id])
-		@client.user_id = nil
- 		@client.save
+		# @client = Client.find(params[:id])
+		# @client.user_id = nil
+ 	# 	@client.save
  		if @user.access_level > 1
-			@client.destroy
+			# @client.destroy
+			@meetings = Meeting.where("client_id = ?", params[:id])
+			@meetings.update_all(user_id: nil)
 		end
 		redirect_to clients_path			
 	end

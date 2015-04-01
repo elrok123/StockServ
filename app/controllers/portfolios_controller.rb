@@ -3,7 +3,11 @@ class PortfoliosController < ApplicationController
 	helper_method :get_company_details
 
 	def show
+		# if params.has_key?(:client_id)
+		# 	@client = Client.find(params[:client_id])
+		# else
 		@client = Client.find(params[:id])
+		# end
 		if @client.user_id != session[:user_id]
 			#Need a permission denied page, for now set it to new
 			redirect_to "/dashboard/show"
