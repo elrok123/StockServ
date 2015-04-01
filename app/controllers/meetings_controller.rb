@@ -12,7 +12,7 @@ class MeetingsController < ApplicationController
     end
 
     def new
-    	@clients = Client.all
+    	@clients = Client.where(user_id: session[:user_id]).order(:first_name, :last_name)
 
 		@meeting = Meeting.new
     end
@@ -50,7 +50,6 @@ class MeetingsController < ApplicationController
 private
 
 	def meeting_params
-	    params.require(:meeting).permit(:meeting_subject, :meeting_date, :client_name, :meeting_description).merge(user_id: session[:user_id])
+	    params.require(:meeting).permit(:meeting_subject, :meeting_date, :user_id, :client_id, :meeting_description)
 	end
-
 end

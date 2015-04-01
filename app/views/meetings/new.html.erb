@@ -41,15 +41,16 @@
                   <tr>
                     <td>Subject</td>
                     <td><%= f.text_field :meeting_subject %></td>
+                    <%= f.hidden_field :user_id, value: session[:user_id] %>
                   </tr>
                  
                   <tr>
                     <td>Select Client</td>
-                    <td><%= f.collection_select :client_name, @clients, :full_name, :full_name, prompt: "Please select a client..." %></td>
+                    <td><%= f.collection_select :client_id, @clients, :id, :full_name, prompt: "Please select a client..." %></td>
                   </tr>
                   <tr>
                     <td>Date of Meeting</td>
-                    <td><%= f.date_select :meeting_date, start_year: Date.today.year, end_year: 2018 %></td>
+                    <td><%= f.datetime_select :meeting_date, start_year: Date.today.year, end_year: 2018 %></td>
                   </tr>
                   <tr>
                     <td>Meeting Description</td>
@@ -60,7 +61,7 @@
                 </tbody>
               </table>
               <span class="pull-right">
-              <%= f.submit class: "btn btn-primary" %>
+              <%= f.submit class: "btn btn-info" %>
                 
                 <% end %>
                 <a href="/meetings/show" data-original-title="Return" data-toggle="tooltip" type="button" class="btn btn-danger">Cancel </a>

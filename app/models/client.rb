@@ -1,8 +1,10 @@
 class Client < ActiveRecord::Base
+	has_many :meetings
     belongs_to :user
 	validates :first_name, presence: true, length: {minumum: 1, maximum: 30}, format: {without: /[0-9]/}
 	validates :last_name, presence: true, length: {minumum: 1, maximum: 30}, format: {without:/[0-9]/}
-	validates_uniqueness_of :last_name, :scope => [:first_name, :address], :message => ('implies that a client with these details already exists in the database')
+
+    validates_uniqueness_of :last_name, :scope => [:first_name, :address], :message => ('implies that a client with these details already exists in the database')
 	validates_uniqueness_of :email, :scope => [:first_name, :last_name], :message => ('implies that a client with these details already exists in the database')
 	validates :dob, presence: true
 	validates :address, presence: true, length: {minimum: 3, maximum: 50}

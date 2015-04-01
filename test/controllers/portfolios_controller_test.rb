@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class PortfoliosControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should get add" do
+    get :add
+    assert_response :success
+  end
+
 end

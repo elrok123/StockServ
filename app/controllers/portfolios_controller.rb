@@ -7,6 +7,19 @@ class PortfoliosController < ApplicationController
 		end
 			search_company
 	end
+	def add
+		@client = Client.find(params[:client_id])
+		unless params[:funds].nil?
+			@client.funds = @client.funds + params[:funds].to_f
+			if @client.save
+				redirect_to "/portfolios/" + params[:client_id].to_s
+			else
+				redirect_to "/portfolios/" + params[:client_id].to_s
+			end
+		else
+			redirect_to "/portfolios/" + params[:client_id].to_s
+		end
+	end
 
 	def company_tag
 		if params.has_key?(:company_tag)

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   	def check_authentication
   		if params[:controller] != "sessions" && session[:user_id].nil?
-  			render "/login"
+  			redirect_to "/login"
   		else
   			get_set_user_details
   		end
