@@ -14,7 +14,9 @@ class ClientsController < ApplicationController
 	end
 	def get_clients
 		unless params[:client_name].nil?
-			@clients = User.find(session[:user_id]).clients.where("first_name LIKE ? OR last_name LIKE ? OR (select concat(first_name, ' ', last_name)) LIKE ?", "%#{params[:client_name]}%", "%#{params[:client_name]}%", "%#{params[:client_name]}%")
+			#t = Client.arel_table
+			#@clients = User.find(session[:user_id]).clients.where(t[:name].matches("%#{params[:client_name]}%"))
+			@clients = User.find(session[:user_id]).clients.where("lower(first_name) LIKE ? OR lower(last_name) LIKE ? OR lower((select concat(first_name, ' ', last_name))) LIKE ?", "%#{params[:client_name].downcase}%", "%#{params[:client_name].downcase}%", "%#{params[:client_name].downcase}%")
 			render json: @clients
 		else
 			render json: "{\"error\" : \"No user specified...\"}"

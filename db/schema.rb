@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331191936) do
+ActiveRecord::Schema.define(version: 20150401024557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,25 @@ ActiveRecord::Schema.define(version: 20150331191936) do
     t.text     "memo_description"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "owned_shares", force: :cascade do |t|
+    t.integer  "share_id"
+    t.integer  "client_id"
+    t.string   "company_tag"
+    t.decimal  "close_price", precision: 8, scale: 2, default: 0.0
+    t.integer  "quantity"
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+  end
+
+  add_index "owned_shares", ["client_id"], name: "index_owned_shares_on_client_id", using: :btree
+  add_index "owned_shares", ["share_id"], name: "index_owned_shares_on_share_id", using: :btree
+
+  create_table "shares", force: :cascade do |t|
+    t.string   "company_tag"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

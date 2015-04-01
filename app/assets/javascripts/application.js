@@ -28,16 +28,14 @@ function getClients(search_term) {
 			$("#client-container").empty();
 			$("#client-container").append("<tr><th class=\"padding-10\">First name</th><th class=\"padding-10\">Last name</th><th class=\"padding-10\">Email</th><th class=\"padding-10\"></th><th class=\"padding-10\"></th></tr>");
 			for(i = 0; i < data.length; i++)
-			{
-				$("#client-container").append("<tr><td class=\"padding-10\">" + data[i].first_name + "</td><td class=\"padding-10\">" + data[i].last_name + "</td><td class=\"padding-10\">" + data[i].email + "</td><td class=\"padding-10\">" + data[i].first_name + "</td><td class=\"padding-10\"><a href=\"/portfolio/" + data[i].id + "\" class=\"btn btn-success btn-xs\" >Portfolio</a></td></tr>");
-			}
+				$("#client-container").append("<tr><td class=\"padding-10\">" + data[i].first_name + "</td><td class=\"padding-10\">" + data[i].last_name + "</td><td class=\"padding-10\">" + data[i].email + "</td><td class=\"padding-10\"><a href=\"/portfolio/" + data[i].id + "\" class=\"btn btn-success btn-xs\" >Portfolio</a></td><td class=\"padding-10\"><a href=\"/clients/" + data[i].id + "\" class=\"btn btn-info btn-xs\">Additional Info</a></td></tr>");
+			
 		});
 	else
 	{
 		$("no-search").empty();
 		$("#client-container").empty();
 		$("#client-container").append("Search for a client...");
-			
 	}
 }
 
