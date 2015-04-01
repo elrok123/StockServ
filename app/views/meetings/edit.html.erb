@@ -46,7 +46,7 @@
                  
                   <tr>
                     <td>Select Client</td>
-                    <td><%= f.collection_select :user_id, @clients, :id, :full_name, prompt: "Please select a client..." %></td>
+                    <td><%= f.collection_select :client_id, @clients, :id, :full_name, prompt: "Please select a client..." %></td>
                   </tr>
                   <tr>
                     <td>Date of Meeting</td>
@@ -64,7 +64,7 @@
               <%= f.submit class: "btn btn-info",data: { no_turbolink: true } %>
                 
                 <% end %>
-                <a href="/meetings/show" data-original-title="Return" data-toggle="tooltip" type="button" class="btn btn-danger">Cancel </a>
+                <a href="/meetings" data-original-title="Return" data-toggle="tooltip" type="button" class="btn btn-danger">Cancel </a>
               </span>
               
             </div>

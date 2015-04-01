@@ -2,6 +2,7 @@ class MeetingsController < ApplicationController
 
     def index
          @meetings = Meeting.where("user_id = ?", session[:user_id])
+         @meetings = @meetings.sort_by &:meeting_date
     end
     def show
         @meeting = Meeting.find_by_id(params[:id])
