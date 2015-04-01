@@ -54,6 +54,6 @@ class MeetingsController < ApplicationController
 private
 
 	def meeting_params
-	    params.require(:meeting).permit(:meeting_subject, :meeting_date, :user_id, :client_id, :meeting_description)
+	    params.require(:meeting).permit(:meeting_subject, :meeting_date, :user_id, :client_id, :meeting_description).merge(user_id: session[:user_id])
 	end
 end
