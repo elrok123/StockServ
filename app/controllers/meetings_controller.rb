@@ -1,14 +1,7 @@
 class MeetingsController < ApplicationController
 
     def index
-        @meetings = Array.new
-        unless Meeting.all.count > 0
-            @meetings << Meeting.all.limit(1)
-        else
-            Meeting.all.each do |meeting|
-                @meetings << meeting
-            end
-        end
+         @meetings = Meeting.where("user_id = ?", session[:user_id])
     end
     def show
         @meeting = Meeting.find_by_id(params[:id])
