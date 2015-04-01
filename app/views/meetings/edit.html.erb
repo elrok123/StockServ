@@ -32,7 +32,8 @@
                    
             
             <div class=" col-md-9 col-lg-9 "> 
-              <%= form_for :meeting, url: meeting_path(@meeting), method: :patch  do |f| %>
+              <%= form_for :meeting, url: meeting_path(@meeting),:html => { :class =>
+                'table-user-information' }, method: :patch do |f| %>
               <table class="table table-user-information">
                 <tbody>
                 
@@ -62,7 +63,6 @@
               </table>
               <span class="pull-right">
               <%= f.submit class: "btn btn-info",data: { no_turbolink: true } %>
-                
                 <% end %>
                 <a href="/meetings" data-original-title="Return" data-toggle="tooltip" type="button" class="btn btn-danger">Cancel </a>
               </span>

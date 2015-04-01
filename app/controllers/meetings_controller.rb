@@ -24,6 +24,7 @@ class MeetingsController < ApplicationController
     end
     
     def create
+        @clients = Client.where(user_id: session[:user_id]).order(:first_name, :last_name)
 		@meeting = Meeting.new(meeting_params)
 		if @meeting.save
 		    redirect_to '/meetings'
@@ -33,6 +34,7 @@ class MeetingsController < ApplicationController
     end
 
     def update
+        @clients = Client.where(user_id: session[:user_id]).order(:first_name, :last_name)
 		@meeting = Meeting.find(params[:id])
 
 		if @meeting.update(meeting_params)

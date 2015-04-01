@@ -25,7 +25,7 @@ class DashboardController < ApplicationController
 		@favourites_data = Array.new()
 		@favourites = User.find(session[:user_id]).favourites
 
-		@favourites_data = YahooFinance.quotes(@favourites.collect {|e| e.stock_symbol }, [:high, :name, :symbol, :low, :open])
+		@favourites_data = YahooFinance.quotes(@favourites.collect {|e| e.stock_symbol }, [:high, :name, :symbol, :low, :open, :close])
 
 		if params.has_key?(:stock_symbol) 
 			delete_favourite
@@ -134,7 +134,7 @@ private
 	end
 
 	def search_company
-		@search_company_data = YahooFinance.quotes([params[:search_company_tag].upcase], [:high, :name, :symbol, :low, :open])
+		@search_company_data = YahooFinance.quotes([params[:search_company_tag].upcase], [:high, :name, :symbol, :low, :open, :close])
 	end
 
 	def search_client
