@@ -25,35 +25,23 @@
 
         <div class="panel-body">
         <div class="list-group">
-        
-
-        		<% if !@meetings.nil? && @meetings.count > 1 %>
-        			 <% @meetings.each do |meeting| %>
+       
                      <a class="list-group-item">
-        				<h4 class="list-group-item-heading">Subject: <%= meeting.meeting_subject %></h4> <br/>
+        				<h4 class="list-group-item-heading">Subject: <%= @meeting.meeting_subject %></h4> <br/>
                         <p class="list-group-item-text">
-        				Date: <%= meeting.meeting_date.strftime("%A, %B %d, %Y") %> <br/>
-        				Client: <%= meeting.client.first_name + " " + meeting.client.last_name %> <br/>
-                        Time: <%= meeting.meeting_date.strftime("%H:%M %p") %> <br/>
-        				Meeting Description: <%= meeting.meeting_description %>
+        				Date: <%= @meeting.meeting_date.strftime("%A, %B %d, %Y") %> <br/>
+        				Client: <%= @meeting.client_name %> <br/>
+                        Time: <%= @meeting.meeting_date.strftime("%H:%M %p") %> <br/>
+        				Meeting Description: <%= @meeting.meeting_description %>
                         </p>
                         </a>
-        			<% end %>
-                   
-                <% elsif @meetings.count == 1 %>
-                    Subject: <%= @meetings[0].meeting_subject %> <br/>
-                    Date: <%= @meetings[0].meeting_date.strftime("%A, %B %d, %Y") %> <br/>
-                    Time: <%= @meetings[0].meeting_date.strftime("%H:%M %p") %> <br/>
-                    Client: <%= @meetings[0].client.first_name + " " + @meetings[0].client.last_name %> <br/>
-                    Meeting Description: <%= @meetings[0].meeting_description %>
-                <% else %>
-                    No meetings currently...
-                <% end %>
+        	
                 
         	
-            </div>
+ 
         </div>
     </div>
 
 </div>	
+</div>
 </div>
