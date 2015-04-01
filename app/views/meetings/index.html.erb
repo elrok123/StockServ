@@ -29,14 +29,14 @@
 
         		<% if !@meetings.nil? && @meetings.count >= 1 %>
         			 <% @meetings.each do |meeting| %>
-                     <a class="list-group-item">
+                     <%=link_to meeting_path(meeting), class:"list-group-item" do %>
         				<h4 class="list-group-item-heading">Subject: <%= meeting.meeting_subject %></h4> <br/>
                         <p class="list-group-item-text">
         				Date: <%= meeting.meeting_date %> <br/>
         				Client: <%= meeting.client_name %> <br/>
         				Meeting Description: <%= meeting.meeting_description %>
                         </p>
-                        </a>
+                        <%end%>
         			<% end %>
                    
                 <% else %>
