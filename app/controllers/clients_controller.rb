@@ -44,9 +44,6 @@ class ClientsController < ApplicationController
 	def create
 		@users = User.all.order(:firstname, :surname)
 		@client = Client.new(client_params)
-		if params.has_key?(:user_id) 
-		@client.user_id = session[:user_id]
-		end
 		if @client.save
 			redirect_to @client
 		else
