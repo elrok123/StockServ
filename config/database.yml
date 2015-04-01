@@ -21,14 +21,11 @@ default: &default
   username: postgres
   password: mccabec123
   pool: 5
-  
+
 development:
   <<: *default
-<<<<<<< .merge_file_pAUJUQ
-  database: stockserv_development
-=======
-  database: jacky_stockserv_development
->>>>>>> .merge_file_XonvDQ
+
+  database: oogis_stockserv_development
 # The specified database role being used to connect to postgres.
 # To create additional roles in postgres see `$ createuser --help`.
 # When left blank, postgres will use the default role. This is
@@ -63,13 +60,9 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-<<<<<<< .merge_file_pAUJUQ
-  database: stockserv_test
-=======
 
-  database: jacky_stockserv_test
+  database: oogis_stockserv_test
 
->>>>>>> .merge_file_XonvDQ
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.
@@ -91,12 +84,8 @@ test:
 #
 production:
   <<: *default
-<<<<<<< .merge_file_pAUJUQ
-  database: stockserv_production
-=======
 
-  database: jacky_stockserv_production
+  database: oogis_stockserv_production
 
->>>>>>> .merge_file_XonvDQ
   username: stockserv
   password: mccabec123

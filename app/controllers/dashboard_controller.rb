@@ -85,6 +85,9 @@ private
 		end
 	end
 
+	
+
+
 	def get_favourite_symbol(symbol_stock)
 		if params.has_key?(symbol_stock)
 			params[symbol_stock].upcase
@@ -119,7 +122,8 @@ private
 			Memo.new(user_id: session[:user_id], description: @description).save
 		end
 	end
-
+	
+	
 	def search_company
 		@search_company_data = YahooFinance.quotes([params[:search_company_tag].upcase], [:high, :name, :symbol, :low, :open])
 	end
@@ -131,16 +135,7 @@ private
 	def get_meetings_by_week(start_date=nil)
 		meetings ||= Hash.new()
 		if start_date.nil?
-<<<<<<< .merge_file_C2dFzn
-			User.find(session[:user_id]).meetings.where(meeting_date: Date.today.beginning_of_week.strftime..Date.today.end_of_week.strftime).each do |meeting|
-				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] ||= Array.new()
-				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] << [Meeting.find(meeting.id).client.full_name, meeting.meeting_time]
-			end
-		else
-			User.find(session[:user_id]).meetings.where(meeting_date: start_date.to_date.beginning_of_week.strftime..start_date.to_date.end_of_week.strftime).order(:meeting_date).each do |meeting|
-				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] ||= Array.new()
-				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] << [Meeting.find(meeting.id).client.full_name, meeting.meeting_time]
-=======
+
 			Meeting.where(meeting_date: Date.today.beginning_of_week.strftime..Date.today.end_of_week.strftime).each do |meeting|
 				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] ||= Array.new()
 				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] << [meeting.client_name, meeting.meeting_time]
@@ -149,7 +144,7 @@ private
 			Meeting.where(meeting_date: start_date.to_date.beginning_of_week.strftime..start_date.to_date.end_of_week.strftime).each do |meeting|
 				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] ||= Array.new()
 				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] << [meeting.client_name, meeting.meeting_time]
->>>>>>> .merge_file_pB1CMq
+
 			end
 		end
 		return meetings

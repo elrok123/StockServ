@@ -1,21 +1,14 @@
 class MeetingsController < ApplicationController
-    def show
-<<<<<<< .merge_file_4LYRcs
-    	
-    	if User.find(session[:user_id]).meetings.count == 1
-    		@meetings = User.find(session[:user_id]).meetings
-=======
-    	@meetings = Array.new
-    	unless Meeting.all.count > 0
-    		@meetings << Meeting.all.limit(1)
->>>>>>> .merge_file_sEMyHs
-    	else
-    		@meetings = Array.new
-	    	User.find(session[:user_id]).meetings.each do |meeting|
-				@meetings << meeting
-	    	end
-    	end
-    	@meetings = @meetings.sort_by &:meeting_date
+     def show
+        
+        if User.find(session[:user_id]).meetings.count == 1
+            @meetings = User.find(session[:user_id]).meetings
+        else
+            @meetings = Array.new
+            User.find(session[:user_id]).meetings.each do |meeting|
+                @meetings << meeting
+            end
+        end
     end
 
     def new
@@ -60,3 +53,4 @@ private
 	    params.require(:meeting).permit(:meeting_subject, :meeting_date, :user_id, :client_id, :meeting_description)
 	end
 end
+

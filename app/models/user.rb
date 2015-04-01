@@ -4,11 +4,9 @@ class User < ActiveRecord::Base
   	has_many :favourites, through: :watchlists
   	has_many :appointments
   	has_many :meetings
-<<<<<<< .merge_file_lr9euK
-  	has_many :clients
-=======
+
   	has_many :clients, through: :meetings
->>>>>>> .merge_file_WyKGiK
+
 
 
 	#Accessor for password
