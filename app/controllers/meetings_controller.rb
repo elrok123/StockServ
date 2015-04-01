@@ -36,7 +36,7 @@ class MeetingsController < ApplicationController
 		@meeting = Meeting.find(params[:id])
 
 		if @meeting.update(meeting_params)
-		    redirect_to @meeting
+		    redirect_to '/meetings'
 		else
 		    render 'edit'
 		end

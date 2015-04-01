@@ -46,7 +46,7 @@
                  
                   <tr>
                     <td>Select Client</td>
-                    <td><%= f.select :client_id, @clients, :id, :full_name, prompt: "Please select a client..." %></td>
+<td><%= f.collection_select :user_id, @clients, :id, :full_name, prompt: "Please select a client..." %></td>
                   </tr>
                   <tr>
                     <td>Date of Meeting</td>

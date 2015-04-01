@@ -49,6 +49,7 @@
                             Meeting Description: <%= @meetings[0].meeting_description %>
                             </p>
                             <%= link_to 'Remove', meeting_path(@meetings[0]), method: :delete, data: { confirm: 'Are you sure you want to remove your meeting with '+@meetings[0].client.first_name+'?' }, class: "btn btn-danger btn-xs" %>
+                            <%= link_to 'Edit', edit_meeting_path(@meetings[0]), class: "btn btn-warning btn-xs" %>
                         </br></br>
                 <% else %>
                     No meetings currently...
