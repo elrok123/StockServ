@@ -7,7 +7,20 @@
 </div>
 
 <div class="row">
-
+  <% unless flash[:success].nil? %>
+      <div class="alert alert-success" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        <%= flash[:success] %>
+      </div>
+    <% end %>
+    <% unless flash[:error].nil? %>
+      <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        <%= flash[:error] %>
+      </div>
+    <% end %>
     <div class="col-xs-12 col-md-3 container-fluid panel-default" >
       <div class="panel panel-primary no-curve">
         <div class="panel-heading">
@@ -44,6 +57,7 @@
               <th class="padding-10">High</th>
               <th class="padding-10">Low</th>
               <th class="padding-10">Open</th>
+              <th class="padding-10">Close</th>
               <th class="padding-10"></th>
               <th class="padding-10"></th>
             </tr>
@@ -53,14 +67,18 @@
               <td class="padding-10"><%= @search_company_data[0].high %></td>
               <td class="padding-10"><%= @search_company_data[0].low %></td>
               <td class="padding-10"><%= @search_company_data[0].open %></td>
+              <td class="padding-10"><%= @search_company_data[0].close %></td>
             
             
-              <%= form_tag "PUTSTUFFHERE", method: :post, class:"" do %>
+              <%= form_tag "/portfolios/add" + @client_id.to_s, method: :post, class:"" do %>
               <td>
-                <%= text_field_tag(:shares_to_alter, nil, class: "form-control tblack", placeholder: "Enter number of shares")%>
+                <%= hidden_field_tag :client_id, @client.id.to_s %>
+                <%= text_field_tag(:shares_quantity, nil, class: "form-control tblack", placeholder: "Enter number of shares to buy...")%>
               </td>
               <td>
-                <button type="submit" name="buy_shares" value=<%=@search_company_data[0].symbol%> class="btn btn-success">Buy</button>
+                <%= hidden_field_tag :company_tag, @search_company_data[0].symbol %>
+                <%= hidden_field_tag :close_price, @search_company_data[0].close %>
+                <input type="submit" name="buy_shares" value="Buy" class="btn btn-success"></input>
               </td>
             </tr>
             <% end %>
@@ -69,8 +87,8 @@
             <% end %>
           </table>
         </div>
-      </div>
-  </div>
+      </div> 
+    </div> 
   </div>
 
   <div class="row">
@@ -86,40 +104,50 @@
         <div class="panel-body">
           <table class="table table-striped">
             <% if @search_company_data %>
-            <tr>
-              <th class="padding-10">Name</th>
-              <th class="padding-10">Symbol</th>
-              <th class="padding-10">High</th>
-              <th class="padding-10">Low</th>
-              <th class="padding-10">Open</th>
-              <th class="padding-10">Shares Owned</th>
-              <th class="padding-10"></th>
-              <th class="padding-10"></th>
-              <th class="padding-10"></th>
-            </tr>
-            <tr>
-              <td class="padding-10"><%= @search_company_data[0].name %></td>
-              <td class="padding-10"><%= @search_company_data[0].symbol %></td>
-              <td class="padding-10"><%= @search_company_data[0].high %></td>
-              <td class="padding-10"><%= @search_company_data[0].low %></td>
-              <td class="padding-10"><%= @search_company_data[0].open %></td>
-              <td class="padding-10"><!--OWNED SHARES !--></td>
-            
-            
-              <%= form_tag "PUTSTUFFHERE", method: :post, class:"" do %>
-              <td>
-                <%= text_field_tag(:shares_to_alter, nil, class: "form-control tblack", placeholder: "Enter number of shares")%>
-              </td>
-              <td>
-                <button type="submit" name="buy_shares" value=<%=@search_company_data[0].symbol%> class="btn btn-success">Sell</button>
-              </td>
-              <td>
-                <button type="submit" name="sell_shares" value=<%=@search_company_data[0].symbol%> class="btn btn-danger">Sell All</button>
-              </td>
-            </tr>
+              <tr>
+                <th class="padding-10">Name</th>
+                <th class="padding-10">Symbol</th>
+                <th class="padding-10">Current High</th>
+                <th class="padding-10">Current Low</th>
+                <th class="padding-10">Current Open</th>
+                <th class="padding-10">Current Close</th>
+                <th class="padding-10">Close Price on Purchase</th>
+                <th class="padding-10">Shares Owned</th>
+                <th class="padding-10"></th>
+                <th class="padding-10"></th>
+                <th class="padding-10"></th>
+              </tr>
+              <% @client.owned_shares.each do |owned_share| %>
+                <tr>
+                  
+                    <% company_info = get_company_details(owned_share.share.company_tag) %>
+                    <td class="padding-10"><%= company_info[0].name %></td>
+                    <td class="padding-10"><%= company_info[0].symbol %></td>
+                    <td class="padding-10"><%= company_info[0].high %></td>
+                    <td class="padding-10"><%= company_info[0].low %></td>
+                    <td class="padding-10"><%= company_info[0].open %></td>
+                    <td class="padding-10"><%= company_info[0].close %></td>
+                    <td class="padding-10"><%= owned_share.close_price %></td>
+                    <td class="padding-10"><%= owned_share.quantity %></td>
+                  
+                  
+                  <%= form_tag "/portfolios/sell", method: :post, class:"" do %>
+                  <td>
+                    <%= text_field_tag(:shares_quantity, nil, class: "form-control tblack", placeholder: "Enter number of shares to sell...")%>
+                  </td>
+                  <td>
+                    <input type="submit" name="sell_quantity" value="Sell" class="btn btn-success" />
+                  </td>
+                  <td>
+                    <%= hidden_field_tag :owned_share_id, owned_share.id %>
+                    <%= hidden_field_tag :client_id, @client.id %>
+                    <input type="submit" name="sell_all" value="Sell All" class="btn btn-danger" />
+                  </td>
+                </tr>
+              <% end %>
             <% end %>
             <% else %>
-            Search for a company...
+              Search for a company...
             <% end %>
           </table>
         </div>
