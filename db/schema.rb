@@ -50,13 +50,11 @@ ActiveRecord::Schema.define(version: 20150401034824) do
     t.datetime "meeting_date"
   end
 
-  add_index "meetings", ["client_id"], name: "index_meetings_on_client_id", using: :btree
-  add_index "meetings", ["user_id"], name: "index_meetings_on_user_id", using: :btree
-
   create_table "memos", force: :cascade do |t|
-    t.text     "memo_description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
+    t.integer  "user_id"
   end
 
   create_table "owned_shares", force: :cascade do |t|
@@ -76,6 +74,7 @@ ActiveRecord::Schema.define(version: 20150401034824) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+  add_index "memos", ["user_id"], name: "index_memos_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"

@@ -87,7 +87,10 @@
 				
 			</div>
 			<div class="panel-body">
-				Panel content
+				<%= form_tag("/dashboard/show", method: :post) do %>
+				<%= text_area_tag(:memo_box, @memo_description, rows: 7, class: "form-control")%></br>
+				<%= submit_tag("Save", class: "btn btn-success pull-left") %>
+				<% end %>
 			</div>
 		</div>
 	</div> 
@@ -116,12 +119,14 @@
 					</tr>
 					Results For: <%= @search_company_data[0].symbol %>
 					<tr>
-						<%= form_tag "/dashboard/show", method: :post, class:"" do %>
-						<td class="padding-10"><%= @search_company_data[0].name %></td>
+						<%= form_tag "/market/show", method: :post, class:"" do %>
+						<td class="padding-10 tblack"><button type="submit" name="company_tag" value=<%=(@search_company_data[0].symbol).to_s%> class="btn btn-xs"><%= @search_company_data[0].name %></button></td>
+						<% end %>
 						<td class="padding-10"><%= @search_company_data[0].symbol %></td>
 						<td class="padding-10"><%= @search_company_data[0].high %></td>
 						<td class="padding-10"><%= @search_company_data[0].low %></td>
 						<td class="padding-10"><%= @search_company_data[0].open %></td>
+						<%= form_tag "/dashboard/show", method: :post, class:"" do %>
 						<td>
 							<button type="submit" name="favourite_tag" value=<%=@search_company_data[0].symbol%> class="btn btn-success btn-xs">Add</button>
 						</td>
@@ -159,15 +164,16 @@
 
 					</tr>
 					<% @favourites_data.map.with_index do |e, i| %>
-					<%= form_tag "/dashboard/show", method: :post, class:"" do %>
 					<tr>
-						<td class="padding-10"><%= e.name %></td>
+						<%= form_tag "/market/show", method: :post, class:"" do %>
+						<td class="padding-10 tblack"><button type="submit" name="company_tag" value=<%=(e.symbol).to_s%> class="btn btn-xs"><%= e.name %></button></td>
+						<% end %>
 						<td class="padding-10"><%= e.symbol %></td>
 						<td class="padding-10"><%= e.high %></td>
 						<td class="padding-10"><%= e.low %></td>
 						<td class="padding-10"><%= e.open %></td>
 						<td class="padding-10"> 
-							
+						<%= form_tag "/dashboard/show", method: :post, class:"" do %>
 							<% #hidden_field_tag :unfavourite_tag, :value => "AAPL" %>
 							<button type="submit" name="stock_symbol" value=<%=(@favourites[i].id).to_s%> class="btn btn-danger btn-xs">Remove</button>
 

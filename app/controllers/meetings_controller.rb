@@ -1,15 +1,8 @@
 class MeetingsController < ApplicationController
-    def show
-    	
-    	if User.find(session[:user_id]).meetings.count == 1
-    		@meetings = User.find(session[:user_id]).meetings
-    	else
-    		@meetings = Array.new
-	    	User.find(session[:user_id]).meetings.each do |meeting|
-				@meetings << meeting
-	    	end
-    	end
-    end
+    def index
+         @meetings = Meeting.where("user_id = ?", session[:user_id])
+         @meetings = @meetings.sort_by &:meeting_date
+    end       
 
     def new
     	@clients = Client.where(user_id: session[:user_id]).order(:first_name, :last_name)
@@ -44,7 +37,7 @@ class MeetingsController < ApplicationController
 		@meeting = Meeting.find(params[:id])
 		@meeting.destroy
 
-		redirect_to meetings_path
+		redirect_to '/meetings/show'
     end
 
 private

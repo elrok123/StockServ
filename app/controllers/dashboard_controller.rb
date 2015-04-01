@@ -31,6 +31,12 @@ class DashboardController < ApplicationController
 			delete_favourite
 			redirect_to "/dashboard/show"
 		end
+
+		if params.has_key?(:memo_box) 
+			:memo_box
+			save_memo
+			redirect_to "/dashboard/show"
+		end
 		
 		@calendar_switch = 1
 
@@ -55,7 +61,12 @@ class DashboardController < ApplicationController
 		@highest = (@i + 10.0)
 		@info_array[3].map {|k, v| @i = v.gsub(/[^\d^\.]/, '').to_f unless @i < v.gsub(/[^\d^\.]/, '').to_f }
 		@lowest = (@i - 10.0)
+		@memo = get_memo[0]
+		if(@memo)
+			@memo_description = @memo.description
+		end
 	end
+
 private
 	def company_tag
 		if params.has_key?(:company_tag)
@@ -76,7 +87,7 @@ private
 
 	def get_favourite_symbol(symbol_stock)
 		if params.has_key?(symbol_stock)
-			params[symbol_stock].upcase
+			params[symbol_stock].upcase.gsub(/\s+/, "")
 		end
 	end
 
@@ -87,12 +98,29 @@ private
 	end 
 
 	def add_favourite
-		#User.find(session[:user_id]).favourites << Favourite.new(stock_symbol: get_favourite_symbol(:favourite_tag))
-		test_exist = Favourite.new(stock_symbol: get_favourite_symbol(:favourite_tag))
-		if(test_exist.save)
-			Watchlist.new(user_id: session[:user_id], favourite_id: test_exist.id).save
+		test_symbol = YahooFinance.quotes([get_favourite_symbol(:favourite_tag)], [:name])
+		if( test_symbol[0].name!="N/A")
+			test_exist = Favourite.new(stock_symbol: get_favourite_symbol(:favourite_tag))
+			if(test_exist.save)
+				Watchlist.new(user_id: session[:user_id], favourite_id: test_exist.id).save
+			else
+				Watchlist.new(user_id: session[:user_id], favourite_id: Favourite.find_by(stock_symbol: get_favourite_symbol(:favourite_tag)).id).save
+			end
 		else
-			Watchlist.new(user_id: session[:user_id], favourite_id: Favourite.find_by(stock_symbol: get_favourite_symbol(:favourite_tag)).id).save
+			flash.now[:alert] = 'Please enter a stock ticker'
+		end
+	end
+
+	def get_memo
+		 return Memo.where("user_id = #{session[:user_id]}")
+	end
+
+	def save_memo
+		if(@memo = get_memo[0])
+			@description = params[:memo_box]
+			@memo.update_attribute(:description, @description)
+		else
+			Memo.new(user_id: session[:user_id], description: @description).save
 		end
 	end
 
