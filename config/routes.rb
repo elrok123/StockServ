@@ -35,5 +35,6 @@ Rails.application.routes.draw do
  	match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
 	resources :clients
 	resources :portfolios
+	resources :users
 
 end

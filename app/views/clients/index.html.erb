@@ -1,7 +1,11 @@
 <div class="row">
  <div class="col-lg-12">
   <h1 class="page-header">
-    Clients
+    <% if @user.access_level > 1 %>
+       All Clients
+       <% else %>
+       Clients
+       <% end %>
   </h1>
   <ol class="breadcrumb">
     <li>
@@ -20,11 +24,9 @@
     <div class="panel-heading clearfix ">
       <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Client List</h4>
       <div class="input-group col-md-offset-6 col-xs-offset-8">
-        <input id="Special" type="text" class="form-control no-curve" placeholder="Search">
-        <div class="input-group-btn">
-          <button class="btn btn-primary no-curve"><i class="glyphicon glyphicon-search "></i></button>&nbsp;
+        <div class="input-group-btn"></i></button>&nbsp;
           <div class="divider"></div>
-          <a href="/clients/new"><button class="btn btn-primary no-curve">Add Client</button></a>
+          <a href="/clients/new"><button class="btn btn-primary no-curve pull-right">Add Client</button></a>
           
         </div>
       </div>

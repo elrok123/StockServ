@@ -68,6 +68,12 @@
                         <td>Email</td>
                         <td><%= @client.email %></td>
                       </tr>
+                      <% if @user.access_level > 1 %>
+                    <tr>
+                      <td>User</td>
+                      <td><%= @client.user.firstname + " " + @client.user.surname %></td>
+                    </tr>
+                      <% end %>
                       
                      
                     </tbody>

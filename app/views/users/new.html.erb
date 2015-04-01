@@ -1,2 +1,91 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="row">
+ <div class="col-lg-12">
+  <h1 class="page-header">
+    Users
+  </h1>
+  <ol class="breadcrumb">
+    <li>
+      <a href="/dashboard/show">Dashboard</a>
+    </li>
+    <li>
+      <a href="/users">Users</a>
+    </li>
+    <li class="active">
+      New User
+    </li>
+  </ol>
+</div>
+</div>
+
+<div class="row">
+  <div class="container-fluid">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 toppad" >
+     
+      
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Edit User</h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
+            
+            
+            <div class=" col-md-9 col-lg-9 "> 
+              <%= form_for :user_entry,:html => { :class =>
+                'table-user-information' }, url: users_path do |f| %>
+              <table class="table table-user-information">
+                <tbody>
+                 <% if @user_entry.errors.any? %>
+                 <div id="error_explanation">
+                  <h2>
+                    <%= pluralize(@user_entry.errors.count, "error") %> require fixing before this user can be saved:
+                  </h2>
+                  <ul>
+                    <% @user_entry.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+                <% end %>
+                
+                <tr>
+                  <tr>
+                    <td>First Name</td>
+                    <td><%= f.text_field :firstname,class: "form-control" %></td>
+                  </tr>
+                  <tr>
+                    <td>Last Name</td>
+                    <td><%= f.text_field :surname,class: "form-control" %></td>
+                  </tr>
+                  <tr>
+                    <td>Email</td>
+                    <td><%= f.email_field :email,class: "form-control" %></td>
+                  </tr>
+                  <tr>
+                    <td>Username</td>
+                    <td><%= f.text_field :username,class: "form-control" %></td>
+                  </tr>
+                  <tr>
+                    <td>Password</td>
+                    <td><%= f.text_field :password,class: "form-control" %></td>
+                  </tr>
+                  <tr>
+                    <td>Access Level</td>
+                    <td><%= f.select :access_level, [1,2] %></td>
+                  </tr>                  
+                </tbody>
+              </table>
+              <span class="pull-right">
+                <%= f.submit class: "btn btn-success", data: { no_turbolink: true }%>
+                <% end %>
+                <a href="/users" data-original-title="Return" data-toggle="tooltip" type="button" class="btn btn-danger">Cancel </a>
+              </span>
+              
+            </div>
+          </div>
+        </div>
+      </div>                 
+    </div>
+  </div>
+</div>
