@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   	has_many :favourites, through: :watchlists
   	has_many :appointments
   	has_many :meetings
-  	has_many :clients, through: :meetings
+  	has_many :clients
 
 
 	#Accessor for password

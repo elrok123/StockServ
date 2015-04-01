@@ -32,7 +32,7 @@
                    
             
             <div class=" col-md-9 col-lg-9 "> 
-              <%= form_for @meeting, url: "/meetings/create" do |f| %>
+              <%= form_for :meeting, url: meeting_path(@meeting), method: :patch  do |f| %>
               <table class="table table-user-information">
                 <tbody>
                 
@@ -46,7 +46,7 @@
                  
                   <tr>
                     <td>Select Client</td>
-                    <td><%= f.collection_select :client_id, @clients, :id, :full_name, prompt: "Please select a client..." %></td>
+                    <td><%= f.collection_select :user_id, @clients, :id, :full_name, prompt: "Please select a client..." %></td>
                   </tr>
                   <tr>
                     <td>Date of Meeting</td>
@@ -61,7 +61,7 @@
                 </tbody>
               </table>
               <span class="pull-right">
-              <%= f.submit class: "btn btn-info" %>
+              <%= f.submit class: "btn btn-info",data: { no_turbolink: true } %>
                 
                 <% end %>
                 <a href="/meetings/show" data-original-title="Return" data-toggle="tooltip" type="button" class="btn btn-danger">Cancel </a>

@@ -18,7 +18,7 @@
 
   <div class="panel panel-primary">
     <div class="panel-heading clearfix ">
-      <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Client List</h4> <!-- Dont laught at this, couldnt be bothered googling how to add spaces lol -->
+      <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Client List</h4>
       <div class="input-group col-md-offset-6 col-xs-offset-8">
         <input id="Special" type="text" class="form-control no-curve" placeholder="Search">
         <div class="input-group-btn">
@@ -40,7 +40,7 @@
         <th></th>
       </tr>
       <% @clients.each do |client| %>
-      <tr>
+      <tr> 
         <td><%= client.first_name %> <%= client.last_name %></td>
         <td><%= client.email %></td>
         <td><%= link_to 'Show', client_path(client), class: "btn btn-warning btn-xs" %></td>
@@ -48,7 +48,7 @@
         <td><%= link_to 'Portfolio', portfolio_path(client), class: "btn btn-success btn-xs" %></td>
         <td><%= link_to 'Delete', client_path(client),
         method: :delete,
-        data: { confirm: 'Are you sure you want to delete?' }, class: "btn btn-danger btn-xs" %></td>
+        data: { confirm: "Are you sure you want to delete "+ client.first_name + " " + client.last_name + "?"}, class: "btn btn-danger btn-xs" %></td>
       </tr>
       <% end %>
     </table>

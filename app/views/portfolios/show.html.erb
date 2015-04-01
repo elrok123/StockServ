@@ -13,11 +13,12 @@
         <div class="panel-heading">
           <h3 class="panel-title" style="padding-top: 7.5px;">Balance Info</h3>
         </div>
-        <%= form_tag("PUTSTUFFHERE", method: :post) do %>
+        <%= form_tag("/portfolios/add", method: :post) do %>
         <div class="panel-body">
-          Current Balance: £<%= @client.balance %> </br>
-          <%= text_field_tag(:funds_to_add, nil, class: "form-control tblack", placeholder: "Enter amount of money")%></br>
-          <button type="submit" name="add_money" value="funds_to_add" class="btn btn-success">Add funds</button>
+          Current Balance: <%= number_to_currency(@client.funds, :unit => "£") %> </br>
+          <%= hidden_field_tag(:client_id, @client.id) %>
+          <%= text_field_tag :funds, "", placeholder: "Enter amount of money", class: "form-control tblack" %></br>
+          <%= submit_tag "Add Funds", class: "btn btn-success" %>
         </div>
         <% end %>
       </div>                 
@@ -28,7 +29,7 @@
         <div class="panel-heading clearfix no-curve">
           <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Stock Buying</h4>
           <%= form_tag("PUTSTUFFHERE", method: :post, class:"input-group col-md-offset-6 col-xs-offset-8 ") do %>
-          <%= text_field_tag(:search_company_tag, nil, class: "form-control tblack", placeholder: "Enter company tag")%>
+          <%= text_field_tag(:search_company_tag, nil, class: "form-control tblack", placeholder: "Enter company tag") %>
           <div class="input-group-btn no-curve">
             <%= submit_tag("Search", class: "btn btn-primary pull-right") %>
             <% end %>
