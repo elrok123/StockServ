@@ -12,6 +12,14 @@ class ClientsController < ApplicationController
 	def new
 		@client = Client.new
 	end
+	def get_clients
+		unless params[:client_name].nil?
+			@clients = User.find(session[:user_id]).clients.where("first_name LIKE ? OR last_name LIKE ? OR (select concat(first_name, ' ', last_name)) LIKE ?", "%#{params[:client_name]}%", "%#{params[:client_name]}%", "%#{params[:client_name]}%")
+			render json: @clients
+		else
+			render json: "{\"error\" : \"No user specified...\"}"
+		end
+	end
 	def edit
 		@client = Client.find(params[:id])
 	end
@@ -40,6 +48,6 @@ class ClientsController < ApplicationController
 	end
 	private
 	def client_params
-	params.require(:client).permit(:first_name, :last_name, :dob, :address, :home_tel, :mobile_tel, :email, :title, :user)	
+		params.require(:client).permit(:first_name, :last_name, :dob, :address, :home_tel, :mobile_tel, :email, :title, :user)	
 	end
 end

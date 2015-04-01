@@ -1,8 +1,6 @@
 
 Rails.application.routes.draw do
   
-  get 'portfolios/add'
-
 	get 'sessions/new'
 	post 'sessions/create'
 	get 'sessions/destroy'
@@ -19,6 +17,7 @@ Rails.application.routes.draw do
 	post 'meetings/create'
 	get "/calendar/show"
 	post '/portfolios/add' => 'portfolios#add'
+	post '/clients/get_clients' => 'clients#get_clients'
 	
 	root to: 'sessions#new'
 
