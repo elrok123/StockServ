@@ -90,7 +90,7 @@ private
 
 	def get_favourite_symbol(symbol_stock)
 		if params.has_key?(symbol_stock)
-			params[symbol_stock].upcase
+			params[symbol_stock].upcase.gsub(/\s+/, "")
 		end
 	end
 
@@ -101,12 +101,16 @@ private
 	end 
 
 	def add_favourite
-		#User.find(session[:user_id]).favourites << Favourite.new(stock_symbol: get_favourite_symbol(:favourite_tag))
-		test_exist = Favourite.new(stock_symbol: get_favourite_symbol(:favourite_tag))
-		if(test_exist.save)
-			Watchlist.new(user_id: session[:user_id], favourite_id: test_exist.id).save
+		test_symbol = YahooFinance.quotes([get_favourite_symbol(:favourite_tag)], [:name])
+		if( test_symbol[0].name!="N/A")
+			test_exist = Favourite.new(stock_symbol: get_favourite_symbol(:favourite_tag))
+			if(test_exist.save)
+				Watchlist.new(user_id: session[:user_id], favourite_id: test_exist.id).save
+			else
+				Watchlist.new(user_id: session[:user_id], favourite_id: Favourite.find_by(stock_symbol: get_favourite_symbol(:favourite_tag)).id).save
+			end
 		else
-			Watchlist.new(user_id: session[:user_id], favourite_id: Favourite.find_by(stock_symbol: get_favourite_symbol(:favourite_tag)).id).save
+			flash.now[:alert] = 'Please enter a stock ticker'
 		end
 	end
 
