@@ -78,7 +78,11 @@
 					<li class=<%= current_class?('/clients') %>>
 						<a href="/clients">
 							<i class="fa fa-users"></i>
+							<% if @user.access_level > 1 %>
+							Clients
+							<% else %>
 							My Clients
+							<% end %>
 						</a>
 					</li>
 					<li class=<%= current_class?('/meetings') %>>
