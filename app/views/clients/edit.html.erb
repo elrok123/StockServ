@@ -58,7 +58,7 @@
                     
                     <tr>
                       <td>Title</td>
-                      <td><%= f.select :title, options_for_select([["Mr","Mr"],["Mrs","Mrs"],["Miss","Miss"], ["Ms","Ms"],["Dr","Dr"]],1) %></td>
+                      <td><%= f.select :title, ["Mr","Mrs","Miss","Ms","Dr"] %></td>
                     </tr>
                     <tr>
                       <td>First Name</td>
