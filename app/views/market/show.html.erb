@@ -100,7 +100,7 @@
 	<%=
 		line_chart (0..1).map {|e| 
 			{	
-				name: @info_array_compare[e*2], 
+				name: @info_array_compare[e*2]+"(close)", 
 				data: @info_array_compare[e*2+1]
 			}
 		},
