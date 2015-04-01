@@ -15,7 +15,7 @@
         </div>
         <%= form_tag("/portfolios/add", method: :post) do %>
         <div class="panel-body">
-          Current Balance: £<%= @client.funds %> </br>
+          Current Balance: <%= number_to_currency(@client.funds, :unit => "£") %> </br>
           <%= hidden_field_tag(:client_id, @client.id) %>
           <%= text_field_tag :funds, "", placeholder: "Enter amount of money", class: "form-control tblack" %></br>
           <%= submit_tag "Add Funds", class: "btn btn-success" %>
