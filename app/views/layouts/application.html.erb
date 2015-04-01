@@ -93,6 +93,7 @@
 							
 							Calendar
 						</a>
+<<<<<<< HEAD
 					</li><br />
 					<% if @user.access_level > 1 %>
                         <li class=<%= current_class?('/users/index') %>>
@@ -103,6 +104,19 @@
                             </a>
                         </li>
                     <% end %>
+=======
+					</li>
+					<% if @user.access_level > 1 %>
+						<li class=<%= current_class?('/users/index') %>>
+							<a href="/users">
+								<i class="fa  fa-user"></i>
+								
+								Users
+							</a>
+						</li>
+					<% end %>
+					<br />
+>>>>>>> 528b37f4e19778c3c721c2b81d9e6e34d06c526b
 					
 				</ul>
 			</div>

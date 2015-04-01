@@ -145,12 +145,12 @@ private
 	def get_meetings_by_week(start_date=nil)
 		meetings ||= Hash.new()
 		if start_date.nil?
-			User.find(session[:user_id]).meetings.where(meeting_date: Date.today.beginning_of_week.strftime..Date.today.end_of_week.strftime).each do |meeting|
+			User.find(session[:user_id]).meetings.where(meeting_date: DateTime.now.beginning_of_week.strftime..DateTime.now.end_of_week.strftime).each do |meeting|
 				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] ||= Array.new()
 				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] << [Meeting.find(meeting.id).client.full_name, meeting.meeting_time]
 			end
 		else
-			User.find(session[:user_id]).meetings.where(meeting_date: start_date.to_date.beginning_of_week.strftime..start_date.to_date.end_of_week.strftime).order(:meeting_date).each do |meeting|
+			User.find(session[:user_id]).meetings.where(meeting_date: DateTime.parse(start_date.to_s).beginning_of_week.strftime..DateTime.parse(start_date.to_s).end_of_week.strftime).order(:meeting_date).each do |meeting|
 				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] ||= Array.new()
 				meetings[meeting.meeting_date.to_date.to_formatted_s(:db)] << [Meeting.find(meeting.id).client.full_name, meeting.meeting_time]
 			end
