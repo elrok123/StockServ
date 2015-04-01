@@ -44,6 +44,7 @@ class ClientsController < ApplicationController
 	def create
 		@users = User.all.order(:firstname, :surname)
 		@client = Client.new(client_params)
+		@client.user_id = session[:user_id]
 		if @client.save
 			redirect_to @client
 		else
@@ -53,7 +54,10 @@ class ClientsController < ApplicationController
 	def destroy
 		@client = Client.find(params[:id])
 		@client.user_id = nil
- 		@client.save	
+ 		@client.save
+ 		if @user.access_level > 1
+			@client.destroy
+		end
 		redirect_to clients_path			
 	end
 	private
