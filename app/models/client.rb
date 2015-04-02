@@ -1,7 +1,7 @@
 class Client < ActiveRecord::Base
-	has_many :meetings
+	has_many :meetings, dependent: :destroy
 	has_many :shares
-	has_many :owned_shares
+	has_many :owned_shares, dependent: :destroy
 	has_many :shares, through: :owned_shares
     belongs_to :user
 	validates :first_name, presence: true, length: {minumum: 1, maximum: 30}, format: {without: /[0-9]/}
