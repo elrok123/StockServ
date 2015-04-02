@@ -4,15 +4,13 @@ class PortfoliosController < ApplicationController
 
 	def show
 		@client = Client.find(params[:id])
-		if @client.user_id != session[:user_id]
-			#Need a permission denied page, for now set it to new
-			redirect_to :root
-		end
+
 		@search_company_data = search_company
 	end
 	def add
 		@client = Client.find(params[:client_id])
 
+		#This if statement is used to decide whether the user is add shares or adding funds
 		if !params[:funds].nil?
 			@client.funds = @client.funds + params[:funds].to_f
 			if @client.save
@@ -26,7 +24,7 @@ class PortfoliosController < ApplicationController
 				new_share = Share.new(company_tag: searched_company[0].symbol)
 
 				if new_share.save 
-					if @client.funds >= params[:close_price].to_f
+					if @client.funds.to_f >= (params[:close_price].to_f * params[:shares_quantity].to_f)
 						if @client.shares.exists?(company_tag: params[:company_tag])
 						share_detail = @client.shares.where(company_tag: params[:company_tag]).first.id
 						new_client_share = @client.owned_shares.where(share_id: share_detail).first
@@ -34,6 +32,7 @@ class PortfoliosController < ApplicationController
 					else
 						new_client_share = OwnedShare.new(share_id: Share.where(company_tag: searched_company[0].symbol).first.id, client_id: params[:client_id], close_price: params[:close_price], quantity: params[:shares_quantity])
 					end
+					#Check saved properly
 					if new_client_share.save
 							@client.funds = @client.funds - (params[:close_price].to_f * params[:shares_quantity].to_f)
 							if @client.save
@@ -47,7 +46,7 @@ class PortfoliosController < ApplicationController
 					redirect_to "/portfolios/" + params[:client_id].to_s, :flash => { :error => "There was a problem saving your shares!" }
 				end
 			else
-				if params[:close_price].to_f < @client.funds.to_f
+				if @client.funds.to_f >= (params[:close_price].to_f * params[:shares_quantity].to_f)
 					if @client.shares.exists?(company_tag: params[:company_tag])
 						share_detail = @client.shares.where(company_tag: params[:company_tag]).first.id
 						new_client_share = @client.owned_shares.where(share_id: share_detail).first
@@ -55,6 +54,8 @@ class PortfoliosController < ApplicationController
 					else
 						new_client_share = OwnedShare.new(share_id: Share.where(company_tag: searched_company[0].symbol).first.id, client_id: params[:client_id], close_price: params[:close_price], quantity: params[:shares_quantity])
 					end
+
+					#Check saved properly
 					if new_client_share.save
 						@client.funds = @client.funds - (params[:close_price].to_f * params[:shares_quantity].to_f)
 						if @client.save
@@ -68,7 +69,7 @@ class PortfoliosController < ApplicationController
 				end
 			end
 		else
-			redirect_to "/portfolios/" + params[:client_id].to_s
+			redirect_to "/portfolios/" + params[:client_id].to_s, :flash => { :error => "Insufficient funds!" }
 		end
 	end
 	def sell
@@ -102,7 +103,6 @@ class PortfoliosController < ApplicationController
 		if params.has_key?(:company_tag)
 			[params[:company_tag].upcase]
 		else
-			#PUT STUFF IN HERE FOR RETREIVING CURRENTLY OWNED SHARES
 			["GOOG"]
 		end
 	end
