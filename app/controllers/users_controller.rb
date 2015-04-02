@@ -18,12 +18,14 @@ class UsersController < ApplicationController
 		@user_entry = User.find(params[:id])
 	end
 	def update
+		@check_params = user_params
+		@check_params.delete(:password) if user_params[:password].blank?
 		if @user.access_level < 2
 			redirect_to "/dashboard/show"
 		end
 		@user_entry = User.find(params[:id])
-		if @user_entry.update(user_params)
-			redirect_to @user_entry
+		if @user_entry.update(@check_params)
+			redirect_to '/users'
 		else
 			render 'edit'
 		end
@@ -51,5 +53,8 @@ class UsersController < ApplicationController
 	private
 	def user_params
 		params.require(:user_entry).permit(:firstname, :surname, :email, :username, :password, :access_level)	
+	end
+	def edit_user_params
+		params.require(:user_entry).permit(:firstname, :surname, :email, :username, :access_level)	
 	end
 end

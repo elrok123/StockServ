@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
 
 	#Methods to be executed before saving 
 	validates :password, :presence => true,
-	:confirmation => true
+	:confirmation => true,
+	:on => :create
 	before_save :encrypt_password
 	validates_presence_of :firstname
 	validates_presence_of :surname
