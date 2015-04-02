@@ -3,14 +3,10 @@ class PortfoliosController < ApplicationController
 	helper_method :get_company_details
 
 	def show
-		# if params.has_key?(:client_id)
-		# 	@client = Client.find(params[:client_id])
-		# else
 		@client = Client.find(params[:id])
-		# end
 		if @client.user_id != session[:user_id]
 			#Need a permission denied page, for now set it to new
-			redirect_to "/dashboard/show"
+			render 'new'
 		end
 		@search_company_data = search_company
 	end
@@ -51,7 +47,7 @@ class PortfoliosController < ApplicationController
 					redirect_to "/portfolios/" + params[:client_id].to_s, :flash => { :error => "There was a problem saving your shares!" }
 				end
 			else
-				if @client.funds >= params[:close_price].to_f
+				if params[:close_price].to_f < @client.funds.to_f
 					if @client.shares.exists?(company_tag: params[:company_tag])
 						share_detail = @client.shares.where(company_tag: params[:company_tag]).first.id
 						new_client_share = @client.owned_shares.where(share_id: share_detail).first

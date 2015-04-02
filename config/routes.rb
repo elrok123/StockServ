@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 	post 'meetings/create'
 	get "/calendar/show"
 	post '/portfolios/add' => 'portfolios#add'
+	post '/portfolios/sell' => 'portfolios#sell'
 	post '/portfolios/:id' => 'portfolios#show'
 	post '/clients/get_clients' => 'clients#get_clients'
 	post '/meetings/update' => 'meetings#update'
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
 	resources :meetings
  	match "/404" => "errors#error404", via: [ :get, :post, :patch, :delete ]
 	resources :clients
+	resources :users
 	resources :portfolios
 	resources :users
 
