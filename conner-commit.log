@@ -1,0 +1,670 @@
+commit a499c6aedb4d3170b82909d4c2e05e79a678b3da
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Thu Apr 2 11:14:07 2015 +0100
+
+    Added dependence of clients -> meetings
+
+commit cbbd73ce8a07c8bf4af2926910163c98ad981fa5
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Thu Apr 2 10:33:30 2015 +0100
+
+    Fixed merging problems, and fixed other errors, this is a working build.
+
+commit 59315df29616717c24d29c79d735b27e1dc6c908
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Apr 1 13:02:53 2015 +0100
+
+    Added some untracked files
+
+commit c34afc881e443fd795ed32fba84d0b33242d90ad
+Merge: 6d4b9c0 0c1f7df
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Apr 1 13:00:52 2015 +0100
+
+    Merged changes with jacks branch
+
+commit 6d4b9c05146d575add939b5816909033d039d1f0
+Merge: 528b37f 9907415
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Apr 1 12:54:47 2015 +0100
+
+    Added more migrations and sell method/view
+
+commit 528b37f4e19778c3c721c2b81d9e6e34d06c526b
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Apr 1 10:41:29 2015 +0100
+
+    Finished portfolio buying and selling shares, and adding funds.
+
+commit 12dee13319c9fec8dc78bc15d38d481f69cd7480
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Apr 1 04:14:02 2015 +0100
+
+    Push untracked migrations and models
+
+commit 8e129a34ec425b5cc4bf621cb2563cea2e86409b
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Apr 1 02:11:11 2015 +0100
+
+    Added AJAX client search on dashboard
+
+commit 1375251bf0ac266efeaeb063d687ca9091992791
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Apr 1 00:21:36 2015 +0100
+
+    Fixed calendar area for individual users.
+
+commit a2615fc145ef40586f8b9ffe475cb8efd04f8dde
+Merge: dd9b7ba 771a453
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Apr 1 00:00:18 2015 +0100
+
+    Sorted problems with meetings and added final relations, along with only getting meetings on a per user basis rather than retrieving all for every user.
+
+commit dd9b7bad1c67851fba864f592c388dc52de1c976
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Tue Mar 31 16:33:00 2015 +0100
+
+    Sorted relationship assignment between clients and users
+
+commit 4633729cbf373333bd4d9de67b2a94dfebe007b4
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Tue Mar 31 11:02:03 2015 +0100
+
+    Added relations for: clients -> meetings <- users
+
+commit b1ad8908c5d9c006f0592540e2967393c70bf95a
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Mon Mar 30 19:12:05 2015 +0100
+
+    Fixed meeting error in calendar where the parameter was not linked to the meetings returned.
+
+commit 8da152d6985bdc948fbc9a82e8848f095a44fcc1
+Merge: b1f22ee 9396158
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Mon Jan 26 14:53:57 2015 +0000
+
+    Merge branch 'ugis'
+
+commit b1f22eee436be358b2d0bc8e6e56b103e33d18e3
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Mon Jan 26 14:52:56 2015 +0000
+
+    Added changes and bug fixes and full functionality for the dashboard calender, will require a revision when client relations are added to meetings though.
+
+commit 25c4e93d1bf78faab073c319b476a0e46d03b760
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Mon Jan 26 12:25:33 2015 +0000
+
+    Sorted bugs and added budget to client table
+
+commit 05e353db67181fb1ff373cde61882bb9f6afa681
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Mon Jan 26 11:14:55 2015 +0000
+
+    Added a bunch of bug fixes and part of the calender/meeting funcionality
+
+commit a0c25713fe486c36aa5e4e3e33114075f66ebf15
+Merge: c39b9aa 7c65145
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Mon Jan 26 07:28:12 2015 +0000
+
+    Merge branch 'jack'
+
+commit 7c6514592026a2efeafe41cb8f7f08ad2a2402a8
+Merge: 3c5b799 dd59d69
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Mon Jan 26 07:27:44 2015 +0000
+
+    Updated and prepared for merge with master
+
+commit c39b9aa669c4499d0f29eee7ead077049c664c0d
+Merge: b96d0cd f627f7c
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Mon Jan 26 07:11:16 2015 +0000
+
+    Merge branch 'ugis'
+
+commit 3c5b799c9c5bd25ac24e036aca02f98731533807
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Mon Jan 26 04:11:56 2015 +0000
+
+    steepthrudiss
+
+commit b96d0cdd61c24cf38517576aab1efb25b41e84ba
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Mon Jan 26 04:07:10 2015 +0000
+
+    Updates
+
+commit 888fe348dcaed12fa88f7b221fc712eba321f55b
+Merge: fa3875f 58b4c58
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Sun Jan 25 19:02:08 2015 +0000
+
+    Fixed some bugs and added styling
+
+commit fa3875f5eea73a591bc82a980a3cde29c12fc6b1
+Merge: 0506c74 1f427af
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Sat Jan 24 19:30:14 2015 +0000
+
+    Merge branch 'master' of https://github.com/mccabec123/StockServ
+
+commit 0506c74031a7570b093d4a1bafe0ffe1f783dfc3
+Merge: 0f7c4ce ce4937c
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Sat Jan 24 19:25:34 2015 +0000
+
+    Merged an older version of Ugis' theme
+
+commit 5ca92d09f903ecff12ffce01c4374a7f8ea2be26
+Merge: 8db0d34 0f7c4ce
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Sat Jan 24 16:41:02 2015 +0000
+
+    Sorted out merges that git was unable to cleanly merge
+
+commit 0f7c4cef463b5f8e686e3012d7723d31fe5f860c
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Thu Jan 22 15:42:45 2015 +0000
+
+    Some changes to app, and removed unnecessary Users column
+
+commit 061e721caf973330922472c14012e4d189ecda6e
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Jan 21 13:14:14 2015 +0000
+
+    Done stuff
+
+commit 713d550e8d4b44a5eeb848aaf0746e5c38c719bd
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Jan 21 13:07:03 2015 +0000
+
+    Added some more login session created verification, along with redirections
+
+commit ce4937c630646d46c09c4968f9cc8600244e1df3
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Jan 21 02:22:44 2015 +0000
+
+    Removed unnecessary folders
+
+commit 0dcb5a5147716dc977f7fdbb3ffb690fe38ebc37
+Merge: 0e9b77b 1b37f1a
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Tue Jan 20 23:15:54 2015 +0000
+
+    Merged some of Callum\'s stuff
+
+commit 0e9b77b439bfcbfff1896484953775cfbb9aedee
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Tue Jan 20 23:04:09 2015 +0000
+
+    Added calendar functionality to the dashboard
+
+commit 003139968f37fb62465d1f5dd110a8178e59fe80
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Sun Jan 18 21:35:11 2015 +0000
+
+    Some graph styling fixes
+
+commit 00e7f1f386362d050a9d03a57a78230e56e1c689
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Sun Jan 18 21:19:07 2015 +0000
+
+    Formatting
+
+commit 307435abd02e3ec5e942dd60a1e8f83395f8ca9e
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Sun Jan 18 21:08:05 2015 +0000
+
+    Added stock symbol lookup and title display
+
+commit 320dda361bd799ce21c109b0fb62f88f0e615373
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Sun Jan 18 19:08:20 2015 +0000
+
+    Added search functionality to stockserv
+
+commit f75ff1bf8d702d7aac28714e090cc052bb4af241
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Thu Jan 15 00:36:49 2015 +0000
+
+    Resolved problems with bad commit
+
+commit a9855531629a7cfaaa064f3f6aa578c4893c64a6
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Thu Jan 15 00:33:49 2015 +0000
+
+    Fixed errors caused by bad merges.
+
+commit afe993ec66622ea8a86c3aec8e0959fbd8ebf74f
+Merge: 1d60802 691ec85
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Jan 14 21:24:47 2015 +0000
+
+    Merge branch 'jack' of https://github.com/mccabec123/StockServ into jack
+    
+    Conflicts:
+    	app/controllers/application_controller.rb
+    	app/controllers/dashboard_controller.rb
+    	app/views/dashboard/show.html.erb
+
+commit 54e84ac61d16676434b5d28d60c6089bd2a5c849
+Merge: 756a246 691ec85
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Jan 14 11:41:30 2015 +0000
+
+    Merge branch 'jack' of https://github.com/elrok123/StockServ
+
+commit 756a246a92c70ee136a4711a560f04f9b2b2e563
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Jan 14 11:40:25 2015 +0000
+
+    Added some gitignores etc
+
+commit 431e0ea9a06cace7be6210f5d357909a88ac8836
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Sun Jan 11 20:49:18 2015 +0000
+
+    Sorted missing user id error when system was looking for a user session but not present
+
+commit 24cd9533a4a3f84ca2811296eeaa12e142dce0dd
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Fri Jan 9 09:11:41 2015 +0000
+
+    Added authentication requirement in application controller to ensure that users must login before they are able to view anything past the login.
+
+commit 76908965194d97a34849b1c7fc3cfabaaf9d21f1
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Fri Jan 9 09:09:30 2015 +0000
+
+    Added authentication, login and stuffs
+
+commit e23037383a418409ab10e7a1dac354efe1885d53
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Fri Jan 9 07:55:21 2015 +0000
+
+    Made the graph look prettier still
+
+commit bd17386a7a76a875cdedab9756b1cd4bced45028
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Fri Jan 9 07:33:40 2015 +0000
+
+    Added min/max calculations for graphing
+
+commit 1d60802caad766b584d710d32a0aa2098e52e09f
+Merge: 35ad6cb 97aad93
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Fri Jan 9 06:55:04 2015 +0000
+
+    Sync
+
+commit 4a3b8530060e869ee5fb99ceb35efd78619432ab
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Fri Jan 9 06:53:24 2015 +0000
+
+    Creating myself a seperate branch
+
+commit 35ad6cb8c734741d6afdf19ae802dcf72a777523
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Fri Jan 9 06:39:55 2015 +0000
+
+    Adding changes
+
+commit 62d167a147aaacefeb76dfe48ea1466997d5b990
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Fri Jan 9 06:12:31 2015 +0000
+
+    Making sure master is upto date
+
+commit ff08f86be7332655eb21e3cdc895bda281f8fce8
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Jan 7 04:19:03 2015 +0000
+
+    Added some stuff, and removed some stuff
+
+commit 64371e3ebe9bba5e89b8ff3b74fcd78c6433cafa
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Dec 3 00:36:44 2014 +0000
+
+    Got everything upto date after users pushed to wrong branch.
+
+commit 118e2bee021861ca65883c492b2bc0ff229fbc69
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Dec 3 00:31:03 2014 +0000
+
+    Readded stuff
+
+commit 1e458097deb5858fc7a19f2d1412685043df197a
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Dec 3 00:28:40 2014 +0000
+
+    Readded pages due to someone pushing to wrong branch
+
+commit 1e5d199538015da772d77109b5647c285a32c4da
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Dec 3 00:21:33 2014 +0000
+
+    General update
+
+commit 56e8f2f136f463bf1f641a9c47dce541a6cfc67d
+Merge: dcccbb8 39a13e1
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Dec 3 00:16:31 2014 +0000
+
+    Merge branch 'master' of https://github.com/mccabec123/StockServ
+
+commit dcccbb835a67bbb559235c884dce1a4f531c2ce1
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Dec 3 00:15:04 2014 +0000
+
+    Removed locally installed gems due to heavy repo download issues. Please install gems using bundle install.
+
+commit a0e66ad6e9326b2830f88a407e8cba1a31f87cf2
+Author: Conner Stephen McCabe <conner@elrok.com>
+Date:   Sun Nov 30 13:02:33 2014 +0000
+
+    Removed Ugis's changes
+    
+    Removed Ugis's changes
+
+commit 3559f170229543405ea922b62e2750a91f682031
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Fri Nov 28 20:13:16 2014 +0000
+
+    Delete test.txt
+
+commit 05442ffa92bfd2c1fd0df88387c748475294222a
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Fri Nov 28 19:26:19 2014 +0000
+
+    Removed chartkick setting
+
+commit 36744902e35574ff325da9de524a54ade87b4f71
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Fri Nov 28 19:22:54 2014 +0000
+
+    Added CodeShip status image
+
+commit 1f58b4e03a988a38aa11d1d0bbbee2b6c3a96f7f
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Fri Nov 28 19:17:37 2014 +0000
+
+    Commit to sync with CodeShip
+
+commit 7d27433a92d777cc647ecda05cb84b98bc2a5075
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Fri Nov 28 12:17:29 2014 +0000
+
+    ActiveRecord time test
+
+commit 698918f15e452624a8e9ef5df726e7f19283a1be
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Fri Nov 28 12:16:09 2014 +0000
+
+    Changed array to string
+
+commit 9f91c6db900d9ae2247078489fbfb46a8d605626
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Fri Nov 28 12:15:16 2014 +0000
+
+    Removed ambiguous group_by
+
+commit ad407ca7de88fea0f19b6be1d0bd18701c49c2d4
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Fri Nov 28 12:14:25 2014 +0000
+
+    Changed to historical data
+
+commit 01211df486fe2b75e699043b38456fbdeb6a6c89
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Fri Nov 28 11:46:24 2014 +0000
+
+    Added real time change
+
+commit c47619c49e0a8c77b925222b320442ddb903a693
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Fri Nov 28 11:41:13 2014 +0000
+
+    Added daily value change
+
+commit 302a3070e5c7463fc6145bdc0d8bddccf9c106ab
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Fri Nov 28 11:37:44 2014 +0000
+
+    Remove error
+
+commit 6abcb8b4f2c269b51067552f69f2c625f68d90af
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Fri Nov 28 11:37:09 2014 +0000
+
+    Ruby ethics
+
+commit 6f69732aae790c60f3c18d2ac6df48db16dd4818
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Fri Nov 28 11:35:37 2014 +0000
+
+    More stock stats
+
+commit 1bfe1d1c80af3ce5b678b5d591318934eea6f7e1
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Fri Nov 28 11:33:37 2014 +0000
+
+    Added some stock related stuff
+
+commit 7755a65c4078355f488a67ab15e76655dbcb3949
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Fri Nov 28 11:28:22 2014 +0000
+
+    Mar tests
+
+commit e6b92fcd9aab4fc85f3c16827b621f680906a890
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 18:50:06 2014 +0000
+
+    Added initialiser for Chartkick with some test styles
+
+commit 41335ae5af9933d9a35d13b182e5dcf6c576dd08
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 18:34:45 2014 +0000
+
+    General update making sure upto date
+
+commit 37ab5acde73e4e5373df260eb52d92de9fb4e967
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 16:33:14 2014 +0000
+
+    Added chart kick js tag
+
+commit 185d666df72a79d050ca6e04b2d9dd664009a974
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 14:06:11 2014 +0000
+
+    Added chart test
+
+commit 84f0e7cef752141e6f6f256af2f0a2257761b441
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 14:01:51 2014 +0000
+
+    More tests
+
+commit b8576f989d0b07797c64128f6771dba506a5387e
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 13:56:41 2014 +0000
+
+    Added Yahoo Finance integration Gem and Chartkick charting Gem
+
+commit 854f040ca1ba912c0849ef2e2c873aca3dd03418
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 13:25:57 2014 +0000
+
+    Yahoo test again...
+
+commit 45b795234b243674e802f2f14851d407a6309355
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 13:22:29 2014 +0000
+
+    Changed test for yahoo finance gem
+
+commit 3b81ca3f80dd517b7491cb2ab1dcb309d825db1a
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 13:21:21 2014 +0000
+
+    Changed test for yahoo finance gem
+
+commit 6d55535820cbe73f5e301ed34878cb94fe576051
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 13:18:49 2014 +0000
+
+    Added methods
+
+commit 67016218968e2c17a7352766d8be4ef39da8ea65
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 13:17:06 2014 +0000
+
+    Removed inspect method
+
+commit 41cbaa7cc75cf73e1012c24e42b6b5fe95c4703a
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 13:16:27 2014 +0000
+
+    Made some changes
+
+commit cd0e4cdd4e61583d0d8c6d855ca52ae13f99fa82
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 13:15:28 2014 +0000
+
+    Removed old graph image
+
+commit 3d762f057757b556f2ec09eb46d5f0db807f1d2f
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 13:13:21 2014 +0000
+
+    Added yahoo finance gem and added a small test
+
+commit ef2a20a2a66bff697a1d6ccaeef08b143bdcfe35
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 02:33:05 2014 +0000
+
+    Altered mockups file structure
+    
+    I done this to adhere to good code ethics, and to increase modularity,
+    and reduce code repetition.
+
+commit a0e2d64137aa80d13dc2d4542421f9d80fc800f9
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 02:18:14 2014 +0000
+
+    Fixed styles missing due to unadded div tag
+
+commit 2a2442813d6f164f49cf19676cc7d10747d5e598
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 02:17:06 2014 +0000
+
+    Test
+
+commit 716df3bfdd56fcf4235589a88e4315dc6f5fd4f8
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 02:15:03 2014 +0000
+
+    More formatting and moving styles and javascripts
+
+commit 7b97d58f678ca4389bae4eb138128a0ab9e0737e
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 02:11:37 2014 +0000
+
+    Styles changes
+
+commit 36e74bc887893085f3c181ba19bb7e957dea8cef
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 02:03:36 2014 +0000
+
+    More changes
+
+commit 924493f8c076b4b160d1913f7a3ff5836d7ba6ab
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 02:00:47 2014 +0000
+
+    General modifications
+
+commit b268fd99074373e1a7616a9a4601e69f7e745558
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 01:57:04 2014 +0000
+
+    Added external resource changes
+
+commit 0c70d4ad51b2b5411939a7c9496ac3113396e7ac
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 01:55:08 2014 +0000
+
+    Styling changes
+
+commit c5b6fbbe38ab51738bb4928f9c82082a93819d66
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 01:53:49 2014 +0000
+
+    More styling
+
+commit f0f17dd51a611a77e7991375fbfea1f1fb06431b
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 01:52:06 2014 +0000
+
+    Changed image links again
+
+commit 5bae783fcffdc8757e0fe7d22abd165b9b8df882
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 01:48:45 2014 +0000
+
+    Changed image locations
+
+commit 537e972221ec62c982d040b96872dfee3f2bab89
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 01:45:34 2014 +0000
+
+    Added mockup assets and styling links etc
+
+commit 7e83230df3a6b582553199ba29ea3d9b32effa73
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 01:28:41 2014 +0000
+
+    New test
+
+commit 5d5a2e764e13661e5783288018a1920cc688db9d
+Author: Conner McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 01:21:23 2014 +0000
+
+    Testing server's cronjob
+    
+    Testing server's cronjob
+
+commit 634beab54bcabda2f84887acd43e954f207a0b10
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 01:05:18 2014 +0000
+
+    Added new rails controller for the dashboard
+
+commit d05deb437f6eedb61f4eeb2ca98fbb4101e1056e
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Thu Nov 27 00:15:18 2014 +0000
+
+    Added base structure
+
+commit 7bd5765e061c95aa53235b8398ad361d167e0057
+Merge: 4c79b5a 2a02dc7
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Nov 26 22:42:43 2014 +0000
+
+    Merge branch 'master' of https://github.com/mccabec123/StockServ
+
+commit 2a02dc77d6a5f1fe346f5ef8542219d1bbd25059
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Nov 26 22:42:27 2014 +0000
+
+    Initial commit
+
+commit 4c79b5a7aca14a8c8e0b2677341ccdf969eb4cff
+Author: Conner Stephen McCabe <conner@koansystems.co.uk>
+Date:   Wed Nov 26 22:38:48 2014 +0000
+
+    Readded everything for database reasons

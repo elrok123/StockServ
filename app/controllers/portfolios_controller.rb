@@ -6,7 +6,7 @@ class PortfoliosController < ApplicationController
 		@client = Client.find(params[:id])
 		if @client.user_id != session[:user_id]
 			#Need a permission denied page, for now set it to new
-			render 'new'
+			redirect_to :root
 		end
 		@search_company_data = search_company
 	end

@@ -82,5 +82,3 @@ test:
 production:
   <<: *default
   database: stockserv_production
-  username: stockserv
-  password: mccabec123
