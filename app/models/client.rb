@@ -13,8 +13,8 @@ class Client < ActiveRecord::Base
 	validates :address, presence: true, length: {minimum: 3, maximum: 50}
 	validates :email, presence: true, length: {minumum: 4, maximum: 30}, format: {with: /[-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+\.[a-zA-Z]{2,4}/}
 	validates :home_tel, presence: true, length: {minimum: 10, maximum: 15}, numericality: :only_integer
-        validates :mobile_tel, :allow_blank => true, length: {minimum: 10, maximum: 15}, numericality: :only_integer
-	has_many :meetings
+    validates :mobile_tel, :allow_blank => true, length: {minimum: 10, maximum: 15}, numericality: :only_integer
+
 	def full_name
 		self.first_name + " " + self.last_name
 	end

@@ -47,7 +47,7 @@ class PortfoliosController < ApplicationController
 					redirect_to "/portfolios/" + params[:client_id].to_s, :flash => { :error => "There was a problem saving your shares!" }
 				end
 			else
-				if @client.funds >= params[:close_price].to_f
+				if params[:close_price].to_f < @client.funds.to_f
 					if @client.shares.exists?(company_tag: params[:company_tag])
 						share_detail = @client.shares.where(company_tag: params[:company_tag]).first.id
 						new_client_share = @client.owned_shares.where(share_id: share_detail).first
